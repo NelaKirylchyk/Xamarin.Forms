@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinEpamVTSClient.Views.LoginPageView"
+             BackgroundImage="illustration.png">
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout VerticalOptions="Center"
+                   Padding="40"
+                   Spacing="20">
+                <Entry Placeholder="User Name"
+                       FontSize="20"
+                       Text="{Binding UserName}"/>
+                <Entry Placeholder="Password"
+                       FontSize="20"
+                       Text="{Binding Password}"
+                       IsPassword="true"/>
+                <Label FontSize="15"
+                       TextColor="Red"
+                       Text="{Binding ErrorMessage}"/>
+                <Button Text="Login" TextColor="White"
+                        FontSize="20"
+                        BackgroundColor="#77D065"
+                        Command="{Binding SignIn}"/>
+            </StackLayout>
+            <Label VerticalOptions="End"
+                   HorizontalTextAlignment="Center"
+                   FontSize="20"
+                   TextColor="White"
+                   Text="{Binding Copyright}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
