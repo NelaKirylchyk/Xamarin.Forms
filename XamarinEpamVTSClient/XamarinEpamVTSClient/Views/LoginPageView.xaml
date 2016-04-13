@@ -5,9 +5,15 @@
              BackgroundImage="illustration.png">
     <ContentPage.Content>
         <Grid>
-            <StackLayout VerticalOptions="Center"
-                   Padding="40"
-                   Spacing="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0"
+                         VerticalOptions="End"
+                         Padding="40"
+                         Spacing="20">
                 <Entry Placeholder="User Name"
                        FontSize="20"
                        Text="{Binding UserName}"/>
@@ -23,11 +29,15 @@
                         BackgroundColor="#77D065"
                         Command="{Binding SignIn}"/>
             </StackLayout>
-            <Label VerticalOptions="End"
+            <Label Grid.Row="1"
+                   VerticalOptions="End"
                    HorizontalTextAlignment="Center"
-                   FontSize="20"
+                   FontSize="12"
                    TextColor="White"
-                   Text="{Binding Copyright}"/>
+                   Text="{Binding Copyright, StringFormat='{0:MMM dd, yyyy}'}"/>
+            <Image Grid.Row="2"
+                   VerticalOptions="End"
+                   Source="logo.png"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
