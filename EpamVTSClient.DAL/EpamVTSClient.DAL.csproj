@@ -49,7 +49,6 @@
     <Compile Include="Models\LoginResponse.cs" />
     <Compile Include="Extensions\HttpClientExtensions.cs" />
     <Compile Include="Services\LoginWebService.cs" />
-    <Compile Include="Services\OfflineService\ConnectionManager.cs" />
     <Compile Include="Services\OfflineService\LoginOfflineDbService.cs" />
     <Compile Include="Services\OfflineService\VacationListOfflineDbService.cs" />
     <Compile Include="Services\VacationListWebService.cs" />

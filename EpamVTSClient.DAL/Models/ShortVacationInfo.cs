@@ -1,7 +1,7 @@
 ﻿using System;
 using EpamVTSClient.Core.Enums;
 
-namespace VtsMockClient.Domain.Models
+namespace EpamVTSClient.DAL.Models
 {
     public class ShortVacationInfo
     {

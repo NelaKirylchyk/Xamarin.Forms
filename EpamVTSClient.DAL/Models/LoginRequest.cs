@@ -1,4 +1,4 @@
-﻿namespace EpamVTSClient.DAL.Services
+﻿namespace EpamVTSClient.DAL.Models
 {
     public class LoginRequest
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EpamVTSClient.BLL.Services;
 using EpamVTSClient.BLL.ViewModels.Base;
-using VtsMockClient.Domain.Models;
+using EpamVTSClient.DAL.Models;
 using Xamarin.Forms;
 
 namespace EpamVTSClient.BLL.ViewModels

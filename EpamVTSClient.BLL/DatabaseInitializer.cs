@@ -1,8 +1,8 @@
 ﻿using System;
+using System.Threading.Tasks;
 using EpamVTSClient.DAL.Models.DTOModels;
 using Microsoft.Practices.Unity;
 using SQLite;
-using VtsMockClient.Domain.Models;
 
 namespace EpamVTSClient.BLL
 {
@@ -16,9 +16,9 @@ namespace EpamVTSClient.BLL
         //    }
         //    var connection = unityContainer.Resolve<SQLiteAsyncConnection>();
         //    CreateTablesResult createTablesResult =
-        //        await connection.CreateTablesAsync<Person, PersonCredentials, ShortVacationInfo, VacationInfo>();
+        //        await connection.CreateTablesAsync<PersonDTO, VacationDTO>();
         //}
-        
+
         public static void Initialize(IUnityContainer unityContainer)
         {
             if (unityContainer == null)
@@ -26,12 +26,12 @@ namespace EpamVTSClient.BLL
                 throw new ArgumentNullException(nameof(unityContainer));
             }
 
-            var sqlConnection = unityContainer.Resolve<SQLiteConnection>();
-            sqlConnection.CreateTable(typeof(PersonDTO));
-            sqlConnection.CreateTable(typeof(VacationDTO));
+            //var sqlConnection = unityContainer.Resolve<SQLiteConnection>();
+            //sqlConnection.CreateTable(typeof(PersonDTO));
+            //sqlConnection.CreateTable(typeof(VacationDTO));
 
-            //var asyncConnection = unityContainer.Resolve<SQLiteAsyncConnection>();
-            //CreateTablesResult createTablesResult = Task.Run(() => asyncConnection.CreateTablesAsync<Person, PersonCredentials, ShortVacationInfo, VacationInfo>()).Result;
+            var asyncConnection = unityContainer.Resolve<SQLiteAsyncConnection>();
+            CreateTablesResult createTablesResult = Task.Run(() => asyncConnection.CreateTablesAsync<PersonDTO, VacationDTO>()).Result;
         }
     }
 }

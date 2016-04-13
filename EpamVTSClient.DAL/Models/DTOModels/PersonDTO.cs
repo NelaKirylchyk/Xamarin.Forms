@@ -1,6 +1,6 @@
 using SQLite;
 
-namespace VtsMockClient.Domain.Models
+namespace EpamVTSClient.DAL.Models.DTOModels
 {
     public class PersonDTO
     {

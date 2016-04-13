@@ -14,8 +14,8 @@ namespace XamarinEpamVTSClient.iOS
             var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             var path = Path.Combine(documentsPath, fileName);
 
-            //var connection = new SQLiteAsyncConnection(path);
-            var connection = new SQLiteConnection(path);
+            var connection = new SQLiteAsyncConnection(path);
+            //var connection = new SQLiteConnection(path);
             unityContainer.RegisterInstance(connection);
 
             unityContainer.RegisterType<ILocalize, Localize>();

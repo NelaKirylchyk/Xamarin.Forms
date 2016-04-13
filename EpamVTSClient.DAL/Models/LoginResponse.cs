@@ -1,6 +1,4 @@
-﻿using EpamVTSClient.DAL.Models;
-
-namespace EpamVTSClient.DAL.Services
+﻿namespace EpamVTSClient.DAL.Models
 {
     public class LoginResponse
     {

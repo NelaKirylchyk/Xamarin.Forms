@@ -1,5 +1,4 @@
 ﻿using System.Runtime.Serialization;
-using VtsMockClient.Domain.Models;
 
 namespace EpamVTSClient.DAL.Models
 {

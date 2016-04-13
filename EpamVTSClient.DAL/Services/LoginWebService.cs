@@ -3,7 +3,6 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using EpamVTSClient.DAL.Extensions;
 using EpamVTSClient.DAL.Models;
-using VtsMockClient.Domain.Models;
 
 namespace EpamVTSClient.DAL.Services
 {

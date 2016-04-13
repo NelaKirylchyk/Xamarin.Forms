@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EpamVTSClient.DAL.Models;
 using EpamVTSClient.DAL.Models.DTOModels;
 using EpamVTSClient.DAL.Services;
 using EpamVTSClient.DAL.Services.OfflineService;
 using Plugin.Connectivity;
-using VtsMockClient.Domain.Models;
 
 namespace EpamVTSClient.BLL.Services
 {
@@ -33,11 +33,11 @@ namespace EpamVTSClient.BLL.Services
             if (IsConnected)
             {
                 IEnumerable<ShortVacationInfo> vacationList = await _vacationListWebService.GetShortVacationsAsync(userId);
-                _vacationListOfflineDbService.AddOrUpdateVacationList(userId, vacationList);
+                await _vacationListOfflineDbService.AddOrUpdateVacationList(userId, vacationList);
                 return vacationList;
             }
 
-            IEnumerable<VacationDTO> offlineVacationList = _vacationListOfflineDbService.GetVacationList(userId);
+            IEnumerable<VacationDTO> offlineVacationList = await _vacationListOfflineDbService.GetVacationList(userId);
             List<ShortVacationInfo> shortVacationList =
                 offlineVacationList.Select(vacationsDto => new ShortVacationInfo()
                 {

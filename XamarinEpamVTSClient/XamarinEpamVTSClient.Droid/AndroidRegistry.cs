@@ -14,9 +14,9 @@ namespace XamarinEpamVTSClient.Droid
             var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             var path = Path.Combine(documentsPath, fileName);
             
-            //var connection = new SQLiteAsyncConnection(path);
-            var syncConnection = new SQLiteConnection(path);
-            unityContainer.RegisterInstance(syncConnection);
+            var connection = new SQLiteAsyncConnection(path);
+            //var connection = new SQLiteConnection(path);
+            unityContainer.RegisterInstance(connection);
 
             unityContainer.RegisterType<ILocalize, Localize>();
         }

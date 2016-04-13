@@ -2,7 +2,7 @@
 using EpamVTSClient.Core.Enums;
 using SQLite;
 
-namespace VtsMockClient.Domain.Models
+namespace EpamVTSClient.DAL.Models
 {
     public class VacationInfo
     {

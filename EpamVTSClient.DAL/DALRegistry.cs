@@ -15,13 +15,6 @@ namespace EpamVTSClient.DAL
             unityContainer.RegisterType<ILoginWebService, LoginWebService>();
             unityContainer.RegisterType<IVacationListWebService, VacationListWebService>();
 
-            //unityContainer.RegisterType<IConnectionManager, ConnectionManager>(new ContainerControlledLifetimeManager());
-
-            //var connectionManager = GetInstance<IConnectionManager>();
-            //var sqLiteAsyncConnection = connectionManager.GetSqLiteAsyncConnection();
-            //sqLiteAsyncConnection.CreateTable<PersonDTO>();
-            //sqLiteAsyncConnection.CreateTable<VacationDTO>();
-
             unityContainer.RegisterType<ILoginOfflineDBService, LoginOfflineDbService>();
             unityContainer.RegisterType<IVacationListOfflineDBService, VacationListOfflineDBService>();
             

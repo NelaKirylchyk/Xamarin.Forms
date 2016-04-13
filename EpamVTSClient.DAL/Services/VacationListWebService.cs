@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using EpamVTSClient.DAL.Extensions;
-using VtsMockClient.Domain.Models;
+using EpamVTSClient.DAL.Models;
 
 namespace EpamVTSClient.DAL.Services
 {

@@ -4,6 +4,6 @@ namespace EpamVTSClient.BLL
 {
     public interface ISQLiteConnectionFactory
     {
-        SQLiteConnection GetAsyncConnection();
+        SQLiteAsyncConnection GetAsyncConnection();
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace VtsMockClient.Domain.Models
+﻿namespace EpamVTSClient.DAL.Models
 {
     public class PersonCredentials
     {

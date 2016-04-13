@@ -3,7 +3,6 @@ using EpamVTSClient.DAL.Models;
 using EpamVTSClient.DAL.Services;
 using EpamVTSClient.DAL.Services.OfflineService;
 using Plugin.Connectivity;
-using VtsMockClient.Domain.Models;
 
 namespace EpamVTSClient.BLL.Services
 {
@@ -36,11 +35,11 @@ namespace EpamVTSClient.BLL.Services
                 {
                     User = loginResponse.Response;
                     loginResponse.Response.Credentials = personCredentials;
-                    _loginOfflineDbService.SaveUserIfNotExist(loginResponse.Response);
+                    await _loginOfflineDbService.SaveUserIfNotExist(loginResponse.Response);
                 }
                 return loginResponse.LoginStatus;
             }
-            var person = _loginOfflineDbService.SignInIfExist(userName, password);
+            var person = await _loginOfflineDbService.SignInIfExist(userName, password);
             if (person != null)
             {
                 User = person;

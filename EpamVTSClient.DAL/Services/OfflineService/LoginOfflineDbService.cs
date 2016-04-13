@@ -1,29 +1,26 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using EpamVTSClient.DAL.Models;
+using EpamVTSClient.DAL.Models.DTOModels;
 using SQLite;
-using VtsMockClient.Domain.Models;
 
 namespace EpamVTSClient.DAL.Services.OfflineService
 {
     public class LoginOfflineDbService : ILoginOfflineDBService
     {
-        private readonly SQLiteConnection _connection;
-        //public LoginOfflineDbService(IConnectionManager connectionManager)
-        //{
-        //    _connection = connectionManager.GetSqLiteAsyncConnection();
-        //}
+        private readonly SQLiteAsyncConnection _connection;
 
-        public LoginOfflineDbService(SQLiteConnection connection)
+        public LoginOfflineDbService(SQLiteAsyncConnection connection)
         {
             _connection = connection;
         }
 
-        private PersonDTO GetUserOffline(string username, string password)
+        private async Task<PersonDTO> GetUserOffline(string username, string password)
         {
             try
             {
-                var user = _connection.Table<PersonDTO>().FirstOrDefault(r => r.Password == password && r.Email == username);
+                var user = await _connection.Table<PersonDTO>().Where(r => r.Password == password && r.Email == username).FirstOrDefaultAsync();
                 if (user != null)
                 {
                     return user;
@@ -36,9 +33,9 @@ namespace EpamVTSClient.DAL.Services.OfflineService
             return null;
         }
 
-        public Person SignInIfExist(string userName, string password)
+        public async Task<Person> SignInIfExist(string userName, string password)
         {
-            PersonDTO person = GetUserOffline(userName, password);
+            var person = await GetUserOffline(userName, password);
             return person != null ? new Person()
             {
                 Id = person.Id,
@@ -53,7 +50,7 @@ namespace EpamVTSClient.DAL.Services.OfflineService
             } : null;
         }
 
-        public void SaveUserIfNotExist(Person person)
+        public async Task SaveUserIfNotExist(Person person)
         {
             try
             {
@@ -67,10 +64,10 @@ namespace EpamVTSClient.DAL.Services.OfflineService
                     SickDays = person.SickDays,
                     VacationDays = person.VacationDays
                 };
-                PersonDTO user = _connection.Table<PersonDTO>().FirstOrDefault(r => r.Id == personDto.Id);
+                PersonDTO user = await _connection.Table<PersonDTO>().Where(r => r.Id == personDto.Id).FirstOrDefaultAsync();
                 if (user == null)
                 {
-                    _connection.Insert(personDto);
+                    await _connection.InsertAsync(personDto);
                 }
             }
             catch (Exception e)
@@ -82,7 +79,7 @@ namespace EpamVTSClient.DAL.Services.OfflineService
 
     public interface ILoginOfflineDBService
     {
-        Person SignInIfExist(string userName, string password);
-        void SaveUserIfNotExist(Person person);
+        Task<Person> SignInIfExist(string userName, string password);
+        Task SaveUserIfNotExist(Person person);
     }
 }
