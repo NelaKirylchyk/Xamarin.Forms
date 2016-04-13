@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using EpamVTSClient.BLL;
+using EpamVTSClient.BLL.Services;
 using EpamVTSClient.BLL.ViewModels;
 using EpamVTSClient.BLL.ViewModels.Base;
 using Microsoft.Practices.Unity;

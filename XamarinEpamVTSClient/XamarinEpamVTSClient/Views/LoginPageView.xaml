@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:XamarinEpamVTSClient.Views;assembly=XamarinEpamVTSClient"
              x:Class="XamarinEpamVTSClient.Views.LoginPageView"
              BackgroundImage="illustration.png">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
@@ -14,17 +15,18 @@
                          VerticalOptions="End"
                          Padding="40"
                          Spacing="20">
-                <Entry Placeholder="User Name"
+                <Entry Placeholder="{views:Translate UserName}"
                        FontSize="20"
                        Text="{Binding UserName}"/>
-                <Entry Placeholder="Password"
+                <Entry Placeholder="{views:Translate Password}"
                        FontSize="20"
                        Text="{Binding Password}"
                        IsPassword="true"/>
                 <Label FontSize="15"
                        TextColor="Red"
                        Text="{Binding ErrorMessage}"/>
-                <Button Text="Login" TextColor="White"
+                <Button Text="{views:Translate LoginBtn}" 
+                        TextColor="White"
                         FontSize="20"
                         BackgroundColor="#77D065"
                         Command="{Binding SignIn}"/>

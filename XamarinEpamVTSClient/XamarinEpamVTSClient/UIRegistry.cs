@@ -1,4 +1,5 @@
 ﻿using EpamVTSClient.BLL;
+using EpamVTSClient.BLL.Services;
 using EpamVTSClient.Core;
 using Microsoft.Practices.Unity;
 using Xamarin.Forms;

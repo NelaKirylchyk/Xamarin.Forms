@@ -17,7 +17,8 @@ namespace XamarinEpamVTSClient.Droid
             //var connection = new SQLiteAsyncConnection(path);
             var syncConnection = new SQLiteConnection(path);
             unityContainer.RegisterInstance(syncConnection);
-            //unityContainer.RegisterInstance(syncConnection);
+
+            unityContainer.RegisterType<ILocalize, Localize>();
         }
     }
 }

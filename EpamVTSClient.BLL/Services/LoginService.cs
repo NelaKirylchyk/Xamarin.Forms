@@ -20,8 +20,7 @@ namespace EpamVTSClient.BLL.Services
 
         public Person User { get; private set; }
 
-        //public bool IsConnected => CrossConnectivity.Current.IsConnected;
-        public bool IsConnected => false;
+        public bool IsConnected => CrossConnectivity.Current.IsConnected;
 
         public async Task<bool> LogInAsync(string userName, string password)
         {

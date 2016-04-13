@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using EpamVTSClient.DAL.Models.DTOModels;
 using EpamVTSClient.DAL.Services;
 using EpamVTSClient.DAL.Services.OfflineService;
+using Plugin.Connectivity;
 using VtsMockClient.Domain.Models;
 
 namespace EpamVTSClient.BLL.Services
@@ -14,10 +15,12 @@ namespace EpamVTSClient.BLL.Services
         private readonly ILoginService _loginService;
         private readonly IVacationListOfflineDBService _vacationListOfflineDbService;
 
-        //public bool IsConnected => CrossConnectivity.Current.IsConnected;
-        public bool IsConnected => false;
+        public bool IsConnected => CrossConnectivity.Current.IsConnected;
 
-        public VacationListService(IVacationListWebService vacationListWebService, ILoginService loginService, IVacationListOfflineDBService vacationListOfflineDbService)
+        public VacationListService(
+            IVacationListWebService vacationListWebService,
+            ILoginService loginService,
+            IVacationListOfflineDBService vacationListOfflineDbService)
         {
             _vacationListWebService = vacationListWebService;
             _loginService = loginService;

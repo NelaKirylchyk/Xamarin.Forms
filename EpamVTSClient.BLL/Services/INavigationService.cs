@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using EpamVTSClient.BLL.ViewModels.Base;
 
-namespace EpamVTSClient.BLL
+namespace EpamVTSClient.BLL.Services
 {
     public interface INavigationService 
     {

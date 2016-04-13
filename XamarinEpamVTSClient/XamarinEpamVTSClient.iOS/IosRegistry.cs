@@ -14,12 +14,11 @@ namespace XamarinEpamVTSClient.iOS
             var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             var path = Path.Combine(documentsPath, fileName);
 
-            //var platform = new SQLite.Net.Platform.XamarinIOS.SQLitePlatformIOS();
-            //var connection = new SQLite.Net.SQLiteConnection(platform, path);
             //var connection = new SQLiteAsyncConnection(path);
             var connection = new SQLiteConnection(path);
             unityContainer.RegisterInstance(connection);
-            //unityContainer.RegisterInstance(syncConnection);
+
+            unityContainer.RegisterType<ILocalize, Localize>();
         }
     }
 }
