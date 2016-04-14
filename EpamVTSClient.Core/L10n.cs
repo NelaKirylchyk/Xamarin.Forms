@@ -30,7 +30,7 @@ namespace EpamVTSClient.Core
         {
             var netLanguage = Locale();
             // Platform-specific
-            ResourceManager temp = new ResourceManager("EpamVTSClient.Core.Resx.AppResource", typeof(L10n).GetTypeInfo().Assembly);
+            ResourceManager temp = new ResourceManager("EpamVTSClient.Core.Resx.AppResources", typeof(L10n).GetTypeInfo().Assembly);
             string result = temp.GetString(key, new CultureInfo(netLanguage));
             return result;
         }
