@@ -3,43 +3,39 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamarinEpamVTSClient.Views.VacationListView"
              BackgroundImage="background.jpg">
-
-    <ContentPage.Resources>
-
-    </ContentPage.Resources>
     <ContentPage.Content>
         <ListView ItemsSource="{Binding VacationList}" RowHeight="70">
             <ListView.ItemTemplate>
                 <DataTemplate>
-            <ViewCell>
-                       <StackLayout Orientation="Horizontal">
-                           <Image HorizontalOptions="Start"
-                                  VerticalOptions="CenterAndExpand"
-                                  Source="rainbow.png"/>
-                           <StackLayout HorizontalOptions="StartAndExpand"
-                                        VerticalOptions="CenterAndExpand"
-                                        Orientation="Vertical">
-                               <Label TextColor="White"
-                                      FontSize="18"
-                                      FontAttributes="Bold"
-                                      Text="{Binding Type}"/>
-                               <StackLayout Orientation="Horizontal"
-                                            HorizontalOptions="CenterAndExpand">
-                                   <Label TextColor="White"
-                                          FontSize="16"
-                                          Text="{Binding StartDate, StringFormat='{0:MMM dd, yyyy} - '}"/>
-                                   <Label TextColor="White"
-                                          FontSize="16"
-                                          Text="{Binding EndDate, StringFormat='{0:MMM dd, yyyy}'}"/>
-                               </StackLayout>
-                           </StackLayout>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image HorizontalOptions="Start"
+                                   VerticalOptions="CenterAndExpand"
+                                   Source="rainbow.png"/>
+                            <StackLayout HorizontalOptions="StartAndExpand"
+                                         VerticalOptions="CenterAndExpand"
+                                         Orientation="Vertical">
+                                <Label TextColor="White"
+                                       FontSize="18"
+                                       FontAttributes="Bold"
+                                       Text="{Binding Type}"/>
+                                <StackLayout Orientation="Horizontal"
+                                             HorizontalOptions="CenterAndExpand">
+                                    <Label TextColor="White"
+                                           FontSize="16"
+                                           Text="{Binding StartDate, StringFormat='{0:MMM dd, yyyy} - '}"/>
+                                    <Label TextColor="White"
+                                           FontSize="16"
+                                           Text="{Binding EndDate, StringFormat='{0:MMM dd, yyyy}'}"/>
+                                </StackLayout>
+                            </StackLayout>
 
-                           <Label HorizontalOptions="End"
-                                  FontSize="16"
-                                  VerticalOptions="CenterAndExpand"
-                                  Text="{Binding Status}"/>
-                       </StackLayout>
-                   </ViewCell>
+                            <Label HorizontalOptions="End"
+                                   FontSize="16"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="{Binding Status}"/>
+                        </StackLayout>
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

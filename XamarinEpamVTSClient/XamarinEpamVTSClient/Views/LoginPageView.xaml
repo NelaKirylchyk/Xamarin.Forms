@@ -6,7 +6,7 @@
              BackgroundImage="illustration.png">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
-            <StackLayout VerticalOptions="Center"
+            <StackLayout VerticalOptions="CenterAndExpand"
                          Padding="40"
                          Spacing="20">
                 <Label Text="VTS"
@@ -16,24 +16,24 @@
                        TextColor="White"
                        FontSize="50"/>
                 <Entry Placeholder="{views:Translate UserName}"
-                       FontSize="20"
+                       FontSize="24"
                        Text="{Binding UserName}"/>
                 <Entry Placeholder="{views:Translate Password}"
-                       FontSize="20"
+                       FontSize="24"
                        Text="{Binding Password}"
                        IsPassword="true"/>
-                <Label FontSize="15"
+                <Label FontSize="20"
                        TextColor="Red"
                        Text="{Binding ErrorMessage}"/>
                 <Button Text="{views:Translate LoginBtn}"
                         TextColor="White"
-                        FontSize="20"
+                        FontSize="26"
                         BackgroundColor="#77D065"
                         Command="{Binding SignIn}"/>
             </StackLayout>
             <StackLayout VerticalOptions="End">
                 <Label HorizontalTextAlignment="Center"
-                       FontSize="12"
+                       FontSize="18"
                        TextColor="White"
                        Text="{Binding Copyright, StringFormat='{0:MMM dd, yyyy}'}"/>
                 <Image VerticalOptions="End"
