@@ -451,3 +451,11 @@ Thumbs.db
 /XamarinEpamVTSClient/XamarinEpamVTSClient.Droid/bin/Debug/ru/*.dll
 /XamarinEpamVTSClient/XamarinEpamVTSClient/bin/Debug/ru/*.dll
 /XamarinEpamVTSClient/XamarinEpamVTSClient/obj/Debug/ru/*.dll
+/EpamVTSClient.BLL/bin/Debug/ru/EpamVTSClient.Core.resources.dll
+/EpamVTSClient.Core/bin
+/EpamVTSClient.Core/obj
+/EpamVTSClient.DAL/bin
+/EpamVTSClientNative.Droid/bin
+/XamarinEpamVTSClient/XamarinEpamVTSClient.Droid/bin
+/XamarinEpamVTSClient/XamarinEpamVTSClient/bin
+/XamarinEpamVTSClient/XamarinEpamVTSClient/obj
