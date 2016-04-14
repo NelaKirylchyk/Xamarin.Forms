@@ -7,9 +7,11 @@
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
             <Label HorizontalOptions="Center"
-                   FontSize="20"
+                   FontSize="26"
                Text="{views:Translate ListViewLabel}"/>
             <ListView ItemsSource="{Binding VacationList}"
+                      SeparatorVisibility="Default"
+                      SeparatorColor="White"
                       RowHeight="100">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -22,22 +24,22 @@
                                              VerticalOptions="CenterAndExpand"
                                              Orientation="Vertical">
                                     <Label TextColor="White"
-                                           FontSize="20"
+                                           FontSize="24"
                                            FontAttributes="Bold"
                                            Text="{Binding Type}"/>
                                     <StackLayout Orientation="Horizontal"
                                                  HorizontalOptions="CenterAndExpand">
                                         <Label TextColor="White"
-                                               FontSize="18"
+                                               FontSize="22"
                                                Text="{Binding StartDate, StringFormat='{0:MMM dd, yyyy} - '}"/>
                                         <Label TextColor="White"
-                                               FontSize="18"
+                                               FontSize="22"
                                                Text="{Binding EndDate, StringFormat='{0:MMM dd, yyyy}'}"/>
                                     </StackLayout>
                                 </StackLayout>
 
                                 <Label HorizontalOptions="End"
-                                       FontSize="18"
+                                       FontSize="22"
                                        VerticalOptions="CenterAndExpand"
                                        Text="{Binding VacationStatusToDisplay}"/>
                             </StackLayout>
