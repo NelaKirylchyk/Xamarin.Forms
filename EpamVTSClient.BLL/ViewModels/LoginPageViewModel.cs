@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using EpamVTSClient.BLL.Services;
 using EpamVTSClient.BLL.ViewModels.Base;
+using EpamVTSClient.Core;
 using Xamarin.Forms;
 
 namespace EpamVTSClient.BLL.ViewModels
@@ -9,6 +10,7 @@ namespace EpamVTSClient.BLL.ViewModels
     public class LoginPageViewModel : ViewModelBase
     {
         private readonly ILoginService _loginService;
+        private readonly IL10n _localization;
         private readonly INavigationService _navigationService;
 
         private string _userName;
@@ -83,15 +85,14 @@ namespace EpamVTSClient.BLL.ViewModels
 
         public Command SignIn { get; }
 
-        public LoginPageViewModel(INavigationService navigation, ILoginService loginService)
+        public LoginPageViewModel(INavigationService navigation, ILoginService loginService, IL10n localization)
         {
             _loginService = loginService;
+            _localization = localization;
             _navigationService = navigation;
 
             SignIn = new Command(async () => { await LoginAsync(); }, () => !IsBusy);
         }
-
-
 
         private async Task LoginAsync()
         {
@@ -99,7 +100,7 @@ namespace EpamVTSClient.BLL.ViewModels
             {
                 if (string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(Password))
                 {
-                    ErrorMessage = "Please, fill in correct user name and password.";
+                    ErrorMessage = _localization.Localize("IncorrectUserNameOrPasswordErrorMsg");
                     return;
                 }
                 IsBusy = true;

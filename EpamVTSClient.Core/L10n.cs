@@ -26,11 +26,11 @@ namespace EpamVTSClient.Core
             return _localize.GetCurrentCultureInfo().Name;
         }
 
-        public string Localize(string key, string comment)
+        public string Localize(string key)
         {
             var netLanguage = Locale();
             // Platform-specific
-            ResourceManager temp = new ResourceManager("XamarinEpamVTSClient.Resx.AppResources", typeof(L10n).GetTypeInfo().Assembly);
+            ResourceManager temp = new ResourceManager("EpamVTSClient.Core.Resx.AppResource", typeof(L10n).GetTypeInfo().Assembly);
             string result = temp.GetString(key, new CultureInfo(netLanguage));
             return result;
         }
@@ -39,5 +39,6 @@ namespace EpamVTSClient.Core
     public interface IL10n
     {
         void SetLocale();
+        string Localize(string key);
     }
 }
