@@ -4,7 +4,6 @@ using EpamVTSClient.BLL.ViewModels;
 using EpamVTSClient.Core;
 using Microsoft.Practices.Unity;
 using Xamarin.Forms;
-using XamarinEpamVTSClient.Resx;
 using XamarinEpamVTSClient.Views;
 
 namespace XamarinEpamVTSClient
@@ -23,8 +22,8 @@ namespace XamarinEpamVTSClient
             loginPageView.BindingContext = loginPageViewModel;
             loginPageViewModel.UserName = "dz@epam.com";
             loginPageViewModel.Password = "test1";
-            
-            AppResources.Culture = GetInstance<ILocalize>().GetCurrentCultureInfo();
+
+            EpamVTSClient.Core.Resx.AppResources.Culture = GetInstance<ILocalize>().GetCurrentCultureInfo();
         }
 
         protected T GetInstance<T>(string key = null)

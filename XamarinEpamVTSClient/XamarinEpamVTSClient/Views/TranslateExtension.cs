@@ -4,7 +4,6 @@ using System.Reflection;
 using System.Resources;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using XamarinEpamVTSClient.Resx;
 
 namespace XamarinEpamVTSClient.Views
 {
@@ -12,7 +11,7 @@ namespace XamarinEpamVTSClient.Views
     [ContentProperty("Text")]
     public class TranslateExtension : IMarkupExtension
     {
-        private readonly CultureInfo _cultureInfo = AppResources.Culture;
+        private readonly CultureInfo _cultureInfo = EpamVTSClient.Core.Resx.AppResources.Culture;
         const string ResourceId = "XamarinEpamVTSClient.Resx.AppResources";
 
         public string Text { get; set; }
