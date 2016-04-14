@@ -1,9 +1,10 @@
 ﻿using System.Globalization;
 
-namespace XamarinEpamVTSClient
+namespace EpamVTSClient.Core
 {
     public interface ILocalize
     {
         CultureInfo GetCurrentCultureInfo();
+        void SetLocale();
     }
 }

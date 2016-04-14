@@ -38,7 +38,6 @@
     <Compile Include="App.cs" />
     <Compile Include="Converters\DateTimeConverter.cs" />
     <Compile Include="Factory.cs" />
-    <Compile Include="ILocalize.cs" />
     <Compile Include="NavigationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resx\AppResources.Designer.cs">

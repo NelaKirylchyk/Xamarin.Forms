@@ -1,38 +1,44 @@
-﻿using Foundation;
+﻿using System.Globalization;
+using System.Threading;
+using EpamVTSClient.Core;
+using Foundation;
 
 namespace XamarinEpamVTSClient.iOS
 {
     public class Localize : ILocalize
     {
-        public System.Globalization.CultureInfo GetCurrentCultureInfo()
+        public void SetLocale()
+        {
+            var ci = new CultureInfo(GetCurrentCultureInfo().Name);
+            Thread.CurrentThread.CurrentCulture = ci;
+            Thread.CurrentThread.CurrentUICulture = ci;
+        }
+        public CultureInfo GetCurrentCultureInfo()
         {
             var netLanguage = "en";
             var prefLanguageOnly = "en";
             if (NSLocale.PreferredLanguages.Length > 0)
             {
-                var pref = NSLocale.PreferredLanguages[0];
-                prefLanguageOnly = pref.Substring(0, 2);
+                var preferredLanguage = NSLocale.PreferredLanguages[0];
+                prefLanguageOnly = preferredLanguage.Substring(0, 2);
                 if (prefLanguageOnly == "pt")
                 {
-                    if (pref == "pt")
-                        pref = "pt-BR"; // get the correct Brazilian language strings from the PCL RESX (note the local iOS folder is still "pt")
-                    else
-                        pref = "pt-PT"; // Portugal
+                    preferredLanguage = preferredLanguage == "pt" ? "pt-BR" : "pt-PT";
                 }
-                netLanguage = pref.Replace("_", "-");
+                netLanguage = preferredLanguage.Replace("_", "-");
             }
-            System.Globalization.CultureInfo ci = null;
+            CultureInfo cultureInfo;
             try
             {
-                ci = new System.Globalization.CultureInfo(netLanguage);
+                cultureInfo = new CultureInfo(netLanguage);
             }
             catch
             {
                 // iOS locale not valid .NET culture (eg. "en-ES" : English in Spain)
                 // fallback to first characters, in this case "en"
-                ci = new System.Globalization.CultureInfo(prefLanguageOnly);
+                cultureInfo = new CultureInfo(prefLanguageOnly);
             }
-            return ci;
+            return cultureInfo;
         }
     }
 }

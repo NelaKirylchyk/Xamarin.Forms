@@ -418,3 +418,15 @@ Thumbs.db
 /XamarinEpamVTSClient/XamarinEpamVTSClient/obj/Debug/*.config
 /XamarinEpamVTSClient/XamarinEpamVTSClient/obj/Debug/*.txt
 /XamarinEpamVTSClient/XamarinEpamVTSClient/obj/Debug/*.dll
+/XamarinEpamVTSClient/XamarinEpamVTSClient.Droid/bin/Debug/*.apk
+/.vs/XamarinEpamVTSClient/v14/*.suo
+/EpamVTSClient.BLL/bin/Debug/ru/*.dll
+/EpamVTSClient.Core/bin/Debug/ru/*.dll
+/EpamVTSClient.Core/obj/Debug/ru/*.dll
+/EpamVTSClient.DAL/bin/Debug/ru/*.dll
+/EpamVTSClientNative.Droid/bin/Debug/ru/*.dll
+/XamarinEpamVTSClient/XamarinEpamVTSClient.Droid/bin/Debug/ru/*.dll
+/XamarinEpamVTSClient/XamarinEpamVTSClient.iOS/obj/iPhone/Debug/*.cs
+/XamarinEpamVTSClient/XamarinEpamVTSClient.iOS/obj/iPhone/Debug/*.force
+/XamarinEpamVTSClient/XamarinEpamVTSClient/bin/Debug/ru/*.dll
+/XamarinEpamVTSClient/XamarinEpamVTSClient/obj/Debug/ru/*.dll

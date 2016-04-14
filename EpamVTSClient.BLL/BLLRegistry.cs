@@ -17,6 +17,8 @@ namespace EpamVTSClient.BLL
             unityContainer.RegisterType<ILoginService, LogInService>(new ContainerControlledLifetimeManager());
             unityContainer.RegisterType<IVacationListService, VacationListService>();
             unityContainer.RegisterInstance(new HttpClient(new HttpClientHandler()));
+
+            unityContainer.RegisterType<IL10n, L10n>();
         }
     }
 }
