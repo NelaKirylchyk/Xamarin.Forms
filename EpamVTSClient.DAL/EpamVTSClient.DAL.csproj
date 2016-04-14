@@ -37,7 +37,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DALRegistry.cs" />
-    <Compile Include="ISQLiteConnectionFactory.cs" />
     <Compile Include="Models\DTOModels\VacationDTO.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\PersonCredentials.cs" />
@@ -45,10 +44,13 @@
     <Compile Include="Models\ShortVacationInfo.cs" />
     <Compile Include="Models\VacationInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\LoginRequest.cs" />
     <Compile Include="Models\LoginResponse.cs" />
     <Compile Include="Extensions\HttpClientExtensions.cs" />
+    <Compile Include="Services\ILoginWebService.cs" />
+    <Compile Include="Services\IVacationListWebService.cs" />
     <Compile Include="Services\LoginWebService.cs" />
+    <Compile Include="Services\OfflineService\ILoginOfflineDBService.cs" />
+    <Compile Include="Services\OfflineService\IVacationListOfflineDBService.cs" />
     <Compile Include="Services\OfflineService\LoginOfflineDbService.cs" />
     <Compile Include="Services\OfflineService\VacationListOfflineDbService.cs" />
     <Compile Include="Services\VacationListWebService.cs" />

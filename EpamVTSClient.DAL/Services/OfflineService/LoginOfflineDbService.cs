@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Threading.Tasks;
 using EpamVTSClient.DAL.Models;
 using EpamVTSClient.DAL.Models.DTOModels;
@@ -18,22 +17,21 @@ namespace EpamVTSClient.DAL.Services.OfflineService
 
         private async Task<PersonDTO> GetUserOffline(string username, string password)
         {
+            PersonDTO personDto = null;
             try
             {
-                var user = await _connection.Table<PersonDTO>().Where(r => r.Password == password && r.Email == username).FirstOrDefaultAsync();
-                if (user != null)
-                {
-                    return user;
-                }
+                personDto = await _connection.Table<PersonDTO>()
+                            .Where(r => r.Password == password && r.Email == username)
+                            .FirstOrDefaultAsync();
             }
             catch (Exception)
             {
-                return null;
+                //LOGGING should be added here
             }
-            return null;
+            return personDto;
         }
 
-        public async Task<Person> SignInIfExist(string userName, string password)
+        public async Task<Person> SignInAsync(string userName, string password)
         {
             var person = await GetUserOffline(userName, password);
             return person != null ? new Person()
@@ -50,11 +48,11 @@ namespace EpamVTSClient.DAL.Services.OfflineService
             } : null;
         }
 
-        public async Task SaveUserIfNotExist(Person person)
+        public async Task SaveUserOfflineAsync(Person person)
         {
             try
             {
-                PersonDTO personDto = new PersonDTO()
+                PersonDTO newPersonDto = new PersonDTO()
                 {
                     Password = person.Credentials.Password,
                     Id = person.Id,
@@ -64,22 +62,17 @@ namespace EpamVTSClient.DAL.Services.OfflineService
                     SickDays = person.SickDays,
                     VacationDays = person.VacationDays
                 };
-                PersonDTO user = await _connection.Table<PersonDTO>().Where(r => r.Id == personDto.Id).FirstOrDefaultAsync();
-                if (user == null)
+                PersonDTO oldPersonDto = await _connection.Table<PersonDTO>().Where(r => r.Id == newPersonDto.Id).FirstOrDefaultAsync();
+                if (oldPersonDto != null)
                 {
-                    await _connection.InsertAsync(personDto);
+                    await _connection.DeleteAsync(oldPersonDto);
+                    await _connection.InsertAsync(newPersonDto);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
-
+                //LOGGING should be added here
             }
         }
-    }
-
-    public interface ILoginOfflineDBService
-    {
-        Task<Person> SignInIfExist(string userName, string password);
-        Task SaveUserIfNotExist(Person person);
     }
 }

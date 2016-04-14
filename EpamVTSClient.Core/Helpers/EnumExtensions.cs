@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace EpamVTSClient.BLL.Helpers
+namespace EpamVTSClient.Core.Helpers
 {
     public static class EnumExtensions
     {

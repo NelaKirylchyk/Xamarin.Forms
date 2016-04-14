@@ -38,9 +38,12 @@
   <ItemGroup>
     <Compile Include="Enums\VacationStatus.cs" />
     <Compile Include="Enums\VacationType.cs" />
-    <Compile Include="ILocalize.cs" />
-    <Compile Include="IUnityContainerRegistry.cs" />
-    <Compile Include="L10n.cs" />
+    <Compile Include="Helpers\EnumExtensions.cs" />
+    <Compile Include="Helpers\PropertySupport.cs" />
+    <Compile Include="Services\Localization\IL10n.cs" />
+    <Compile Include="Services\Localization\ILocalize.cs" />
+    <Compile Include="Services\IUnityContainerRegistry.cs" />
+    <Compile Include="Services\Localization\L10n.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resx\AppResources.Designer.cs">
       <AutoGen>True</AutoGen>

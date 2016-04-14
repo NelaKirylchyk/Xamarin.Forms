@@ -2,43 +2,51 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamarinEpamVTSClient.Views.VacationListView"
+             xmlns:views="clr-namespace:XamarinEpamVTSClient.Views;assembly=XamarinEpamVTSClient"
              BackgroundImage="background.jpg">
     <ContentPage.Content>
-        <ListView ItemsSource="{Binding VacationList}" RowHeight="70">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Image HorizontalOptions="Start"
-                                   VerticalOptions="CenterAndExpand"
-                                   Source="rainbow.png"/>
-                            <StackLayout HorizontalOptions="StartAndExpand"
-                                         VerticalOptions="CenterAndExpand"
-                                         Orientation="Vertical">
-                                <Label TextColor="White"
-                                       FontSize="18"
-                                       FontAttributes="Bold"
-                                       Text="{Binding Type}"/>
-                                <StackLayout Orientation="Horizontal"
-                                             HorizontalOptions="CenterAndExpand">
+        <StackLayout Orientation="Vertical">
+            <Label HorizontalOptions="Center"
+                   FontSize="20"
+               Text="{views:Translate ListViewLabel}"/>
+            <ListView ItemsSource="{Binding VacationList}"
+                      RowHeight="100">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Image HorizontalOptions="Start"
+                                       VerticalOptions="CenterAndExpand"
+                                       Source="rainbow.png"/>
+                                <StackLayout HorizontalOptions="StartAndExpand"
+                                             VerticalOptions="CenterAndExpand"
+                                             Orientation="Vertical">
                                     <Label TextColor="White"
-                                           FontSize="16"
-                                           Text="{Binding StartDate, StringFormat='{0:MMM dd, yyyy} - '}"/>
-                                    <Label TextColor="White"
-                                           FontSize="16"
-                                           Text="{Binding EndDate, StringFormat='{0:MMM dd, yyyy}'}"/>
+                                           FontSize="20"
+                                           FontAttributes="Bold"
+                                           Text="{Binding Type}"/>
+                                    <StackLayout Orientation="Horizontal"
+                                                 HorizontalOptions="CenterAndExpand">
+                                        <Label TextColor="White"
+                                               FontSize="18"
+                                               Text="{Binding StartDate, StringFormat='{0:MMM dd, yyyy} - '}"/>
+                                        <Label TextColor="White"
+                                               FontSize="18"
+                                               Text="{Binding EndDate, StringFormat='{0:MMM dd, yyyy}'}"/>
+                                    </StackLayout>
                                 </StackLayout>
-                            </StackLayout>
 
-                            <Label HorizontalOptions="End"
-                                   FontSize="16"
-                                   VerticalOptions="CenterAndExpand"
-                                   Text="{Binding Status}"/>
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                                <Label HorizontalOptions="End"
+                                       FontSize="18"
+                                       VerticalOptions="CenterAndExpand"
+                                       Text="{Binding VacationStatusToDisplay}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+        
     </ContentPage.Content>
 
 </ContentPage>

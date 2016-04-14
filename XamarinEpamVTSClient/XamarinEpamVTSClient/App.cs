@@ -1,7 +1,8 @@
 ﻿using System;
 using EpamVTSClient.BLL;
 using EpamVTSClient.BLL.ViewModels;
-using EpamVTSClient.Core;
+using EpamVTSClient.Core.Services;
+using EpamVTSClient.Core.Services.Localization;
 using Microsoft.Practices.Unity;
 using Xamarin.Forms;
 using XamarinEpamVTSClient.Views;

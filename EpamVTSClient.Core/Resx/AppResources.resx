@@ -117,16 +117,55 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Approved" xml:space="preserve">
+    <value>approved</value>
+  </data>
+  <data name="Cancelled" xml:space="preserve">
+    <value>cancelled</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>closed</value>
+  </data>
+  <data name="Draft" xml:space="preserve">
+    <value>draft</value>
+  </data>
+  <data name="ExceptionalLeave" xml:space="preserve">
+    <value>EXC</value>
+  </data>
   <data name="IncorrectUserNameOrPasswordErrorMsg" xml:space="preserve">
     <value>Incorrect username or password</value>
+  </data>
+  <data name="LeaveWOPay" xml:space="preserve">
+    <value>Leave Without Pay</value>
+  </data>
+  <data name="ListViewLabel" xml:space="preserve">
+    <value>111</value>
   </data>
   <data name="LoginBtn" xml:space="preserve">
     <value>LOGIN</value>
   </data>
+  <data name="None" xml:space="preserve">
+    <value>none</value>
+  </data>
+  <data name="Overtime" xml:space="preserve">
+    <value>OVT</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="Regular" xml:space="preserve">
+    <value>Regular VAC</value>
+  </data>
+  <data name="Rejected" xml:space="preserve">
+    <value>rejected</value>
+  </data>
+  <data name="Sick" xml:space="preserve">
+    <value>Sick Leave</value>
+  </data>
   <data name="UserName" xml:space="preserve">
     <value>User name</value>
+  </data>
+  <data name="WaitingForApproval" xml:space="preserve">
+    <value>need approval</value>
   </data>
 </root>

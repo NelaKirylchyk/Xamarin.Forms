@@ -120,6 +120,9 @@
   <data name="IncorrectUserNameOrPasswordErrorMsg" xml:space="preserve">
     <value>Incorrect username or password</value>
   </data>
+  <data name="ListViewLabel" xml:space="preserve">
+    <value>List of vacations</value>
+  </data>
   <data name="LoginBtn" xml:space="preserve">
     <value>LOGIN</value>
   </data>

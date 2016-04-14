@@ -8,8 +8,8 @@ namespace EpamVTSClient.DAL.Extensions
 {
     public static class HttpClientExtensions
     {
-        private static readonly string DefaultUrl = "http://epbyminw3859.minsk.epam.com/api/";
-        //private static readonly string DefaultUrl = "http://169.254.80.80/api/";
+        //private static readonly string DefaultUrl = "http://epbyminw3859.minsk.epam.com/api/";
+        private static readonly string DefaultUrl = "http://169.254.80.80/api/";
 
         public static async Task<TResult> GetAsync<TResult>(this HttpClient client, string urlWithParameters)
         {

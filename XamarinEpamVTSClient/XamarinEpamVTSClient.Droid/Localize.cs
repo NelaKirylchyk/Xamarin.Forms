@@ -1,5 +1,5 @@
 using System.Threading;
-using EpamVTSClient.Core;
+using EpamVTSClient.Core.Services.Localization;
 
 namespace XamarinEpamVTSClient.Droid
 {

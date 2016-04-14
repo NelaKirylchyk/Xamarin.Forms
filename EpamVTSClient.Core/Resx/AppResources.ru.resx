@@ -117,16 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Approved" xml:space="preserve">
+    <value>подверждён</value>
+  </data>
+  <data name="Cancelled" xml:space="preserve">
+    <value>отменён</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>закрыт</value>
+  </data>
+  <data name="Draft" xml:space="preserve">
+    <value>черновик</value>
+  </data>
+  <data name="ExceptionalLeave" xml:space="preserve">
+    <value>Исключительный отпуск</value>
+  </data>
   <data name="IncorrectUserNameOrPasswordErrorMsg" xml:space="preserve">
     <value>Неправильное имя или пароль</value>
+  </data>
+  <data name="LeaveWOPay" xml:space="preserve">
+    <value>Неоплачиваемый отпуск</value>
   </data>
   <data name="LoginBtn" xml:space="preserve">
     <value>ВОЙТИ</value>
   </data>
+  <data name="None" xml:space="preserve">
+    <value>отсутствует</value>
+  </data>
+  <data name="Overtime" xml:space="preserve">
+    <value>Овертайм</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Пароль</value>
   </data>
+  <data name="Regular" xml:space="preserve">
+    <value>Оплачиваемый отпуск</value>
+  </data>
+  <data name="Rejected" xml:space="preserve">
+    <value>отказан</value>
+  </data>
+  <data name="Sick" xml:space="preserve">
+    <value>Больничный</value>
+  </data>
   <data name="UserName" xml:space="preserve">
     <value>Имя пользователя</value>
+  </data>
+  <data name="WaitingForApproval" xml:space="preserve">
+    <value>ожидает подтверждение</value>
   </data>
 </root>

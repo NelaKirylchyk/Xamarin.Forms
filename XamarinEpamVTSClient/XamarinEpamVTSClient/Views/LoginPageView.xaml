@@ -11,6 +11,7 @@
                          Spacing="20">
                 <Label Text="VTS"
                        HorizontalTextAlignment="Center"
+                       FontFamily="Droid Sans Mono"
                        FontAttributes="Bold"
                        HorizontalOptions="CenterAndExpand"
                        TextColor="White"
@@ -30,8 +31,10 @@
                         FontSize="26"
                         BackgroundColor="#77D065"
                         Command="{Binding SignIn}"/>
+                <ActivityIndicator IsVisible="{Binding IsBusy}"
+                                   IsRunning="{Binding IsBusy}"/>
             </StackLayout>
-            <StackLayout VerticalOptions="End">
+            <StackLayout VerticalOptions="EndAndExpand">
                 <Label HorizontalTextAlignment="Center"
                        FontSize="18"
                        TextColor="White"

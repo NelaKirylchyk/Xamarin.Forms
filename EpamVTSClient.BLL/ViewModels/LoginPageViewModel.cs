@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using EpamVTSClient.BLL.Services;
 using EpamVTSClient.BLL.ViewModels.Base;
-using EpamVTSClient.Core;
+using EpamVTSClient.Core.Services.Localization;
 using Xamarin.Forms;
 
 namespace EpamVTSClient.BLL.ViewModels

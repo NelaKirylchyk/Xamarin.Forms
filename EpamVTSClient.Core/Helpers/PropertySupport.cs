@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace EpamVTSClient.BLL.Helpers
+namespace EpamVTSClient.Core.Helpers
 {
     public static class PropertySupport
     {

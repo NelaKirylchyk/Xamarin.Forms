@@ -1,6 +1,6 @@
 using Microsoft.Practices.Unity;
 
-namespace EpamVTSClient.Core
+namespace EpamVTSClient.Core.Services
 {
     public interface IUnityContainerRegistry
     {

@@ -2,6 +2,7 @@
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Android.Runtime;
 
 namespace XamarinEpamVTSClient.Droid
 {
@@ -18,12 +19,29 @@ namespace XamarinEpamVTSClient.Droid
 
             var currentDomain = AppDomain.CurrentDomain;
             currentDomain.UnhandledException += CurrentDomainOnUnhandledException;
+            AndroidEnvironment.UnhandledExceptionRaiser += (sender, args) =>
+            {
+                args.Handled = true;
+                ShowAlertMessage();
+            };
         }
 
         private void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs unhandledExceptionEventArgs)
         {
             Exception e = (Exception)unhandledExceptionEventArgs.ExceptionObject;
             Console.WriteLine("Exception was thrown: " + e.Message);
+            ShowAlertMessage();
+        }
+
+        private void ShowAlertMessage()
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.SetTitle("Error");
+            builder.SetMessage("Something went wrong. Please, try again later.");
+            builder.SetCancelable(true);
+            builder.SetPositiveButton("OK", delegate { Finish(); });
+            builder.SetNegativeButton("Cancel", delegate { Finish(); });
+            builder.Show();
         }
     }
 }

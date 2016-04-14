@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using System.Reflection;
 using System.Resources;
+using EpamVTSClient.Core.Services.Localization;
 
 namespace EpamVTSClient.Core
 {
@@ -34,11 +35,5 @@ namespace EpamVTSClient.Core
             string result = temp.GetString(key, new CultureInfo(netLanguage));
             return result;
         }
-    }
-
-    public interface IL10n
-    {
-        void SetLocale();
-        string Localize(string key);
     }
 }

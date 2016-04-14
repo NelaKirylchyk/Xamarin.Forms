@@ -36,7 +36,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
-    <Compile Include="Converters\DateTimeConverter.cs" />
     <Compile Include="Factory.cs" />
     <Compile Include="NavigationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

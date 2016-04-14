@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
-using EpamVTSClient.Core;
+using EpamVTSClient.Core.Services;
+using EpamVTSClient.Core.Services.Localization;
 using Microsoft.Practices.Unity;
 using SQLite;
 

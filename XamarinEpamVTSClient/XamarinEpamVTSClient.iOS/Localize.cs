@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 using System.Threading;
-using EpamVTSClient.Core;
+using EpamVTSClient.Core.Services.Localization;
 using Foundation;
 
 namespace XamarinEpamVTSClient.iOS

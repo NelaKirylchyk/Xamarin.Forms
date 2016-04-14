@@ -33,11 +33,11 @@ namespace EpamVTSClient.BLL.Services
             if (IsConnected)
             {
                 IEnumerable<ShortVacationInfo> vacationList = await _vacationListWebService.GetShortVacationsAsync(userId);
-                await _vacationListOfflineDbService.AddOrUpdateVacationList(userId, vacationList);
+                await _vacationListOfflineDbService.AddOrUpdateVacationListAsync(userId, vacationList);
                 return vacationList;
             }
 
-            IEnumerable<VacationDTO> offlineVacationList = await _vacationListOfflineDbService.GetVacationList(userId);
+            IEnumerable<VacationDTO> offlineVacationList = await _vacationListOfflineDbService.GetVacationListAsync(userId);
             List<ShortVacationInfo> shortVacationList =
                 offlineVacationList.Select(vacationsDto => new ShortVacationInfo()
                 {

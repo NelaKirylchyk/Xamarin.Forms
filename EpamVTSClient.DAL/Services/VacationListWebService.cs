@@ -30,9 +30,4 @@ namespace EpamVTSClient.DAL.Services
             }
         }
     }
-
-    public interface IVacationListWebService
-    {
-        Task<IEnumerable<ShortVacationInfo>> GetShortVacationsAsync(int userId);
-    }
 }

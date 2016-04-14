@@ -71,6 +71,15 @@ namespace XamarinEpamVTSClient.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to List of vacations.
+        /// </summary>
+        public static string ListViewLabel {
+            get {
+                return ResourceManager.GetString("ListViewLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to LOGIN.
         /// </summary>
         public static string LoginBtn {

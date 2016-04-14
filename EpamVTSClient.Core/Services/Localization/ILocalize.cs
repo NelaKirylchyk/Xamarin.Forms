@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace EpamVTSClient.Core
+namespace EpamVTSClient.Core.Services.Localization
 {
     public interface ILocalize
     {

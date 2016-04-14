@@ -30,9 +30,5 @@ namespace EpamVTSClient.DAL.Services
             return loginResponse;
         }
     }
-    public interface ILoginWebService
-    {
-        Task<LoginResponse> LogInAsync(PersonCredentials model);
-    }
 }
 

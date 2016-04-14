@@ -1,5 +1,5 @@
 ﻿using EpamVTSClient.BLL;
-using EpamVTSClient.Core;
+using EpamVTSClient.Core.Services;
 using EpamVTSClient.DAL;
 using Microsoft.Practices.Unity;
 
