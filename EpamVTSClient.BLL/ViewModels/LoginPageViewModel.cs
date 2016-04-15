@@ -10,7 +10,7 @@ namespace EpamVTSClient.BLL.ViewModels
     public class LoginPageViewModel : ViewModelBase
     {
         private readonly ILoginService _loginService;
-        private readonly IL10n _localization;
+        private readonly ILocalizationService _localization;
         private readonly INavigationService _navigationService;
 
         private string _userName;
@@ -85,7 +85,7 @@ namespace EpamVTSClient.BLL.ViewModels
 
         public Command SignIn { get; }
 
-        public LoginPageViewModel(INavigationService navigation, ILoginService loginService, IL10n localization)
+        public LoginPageViewModel(INavigationService navigation, ILoginService loginService, ILocalizationService localization)
         {
             _loginService = loginService;
             _localization = localization;
@@ -109,7 +109,7 @@ namespace EpamVTSClient.BLL.ViewModels
                 {
                     await _navigationService.NavigateToAsync<VacationListViewModel>();
                 }
-                ErrorMessage = "User name or password is incorrect.";
+                ErrorMessage = _localization.Localize("IncorrectUserNameOrPasswordErrorMsg");
             }
             finally
             {

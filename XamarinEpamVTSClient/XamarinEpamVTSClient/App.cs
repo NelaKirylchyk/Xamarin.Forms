@@ -21,8 +21,8 @@ namespace XamarinEpamVTSClient
 
             var loginPageViewModel = Factory.UnityContainer.Resolve<LoginPageViewModel>();
             loginPageView.BindingContext = loginPageViewModel;
-            loginPageViewModel.UserName = "dz@epam.com";
-            loginPageViewModel.Password = "test1";
+            //loginPageViewModel.UserName = "dz@epam.com";
+            //loginPageViewModel.Password = "test1";
 
             EpamVTSClient.Core.Resx.AppResources.Culture = GetInstance<ILocalize>().GetCurrentCultureInfo();
         }

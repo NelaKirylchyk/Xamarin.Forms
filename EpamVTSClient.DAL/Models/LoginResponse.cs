@@ -2,7 +2,7 @@
 {
     public class LoginResponse
     {
-        public bool LoginStatus { get; set; }
+        public bool IsLogedIn { get; set; }
 
         public Person Response { get; set; }
     }

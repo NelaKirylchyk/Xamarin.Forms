@@ -20,7 +20,7 @@ namespace EpamVTSClient.BLL
             unityContainer.RegisterType<IVacationListService, VacationListService>();
             unityContainer.RegisterInstance(new HttpClient(new HttpClientHandler()));
 
-            unityContainer.RegisterType<IL10n, L10n>();
+            unityContainer.RegisterType<ILocalizationService, LocalizationService>();
         }
     }
 }

@@ -35,9 +35,7 @@ namespace XamarinEpamVTSClient
             if (ViewModelPageContainer.TryGetValue(typeof (TViewModelTo), out viewType))
             {
                 var resolvedView = (Page)Activator.CreateInstance(viewType);
-
-                // Page resolvedView = (Page) _unityContainer.Resolve(viewType);
-
+                
                 var viewModelForResolvedView = _unityContainer.Resolve<TViewModelTo>();
                 resolvedView.BindingContext = viewModelForResolvedView;
                 return _navigation.PushAsync(resolvedView);

@@ -7,7 +7,6 @@ namespace XamarinEpamVTSClient.Droid
     {
         public void SetLocale()
         {
-
             var androidLocale = Java.Util.Locale.Default; // user's preferred locale
             var netLocale = androidLocale.ToString().Replace("_", "-");
             var ci = new System.Globalization.CultureInfo(netLocale);

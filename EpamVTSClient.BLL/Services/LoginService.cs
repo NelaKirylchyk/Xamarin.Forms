@@ -31,15 +31,15 @@ namespace EpamVTSClient.BLL.Services
                     Password = password
                 };
                 LoginResponse loginResponse = await _loginWebService.LogInAsync(personCredentials);
-                if (loginResponse.LoginStatus)
+                if (loginResponse.IsLogedIn)
                 {
                     User = loginResponse.Response;
                     loginResponse.Response.Credentials = personCredentials;
                     await _loginOfflineDbService.SaveUserOfflineAsync(loginResponse.Response);
                 }
-                return loginResponse.LoginStatus;
+                return loginResponse.IsLogedIn;
             }
-            var person = await _loginOfflineDbService.SignInAsync(userName, password);
+            Person person = await _loginOfflineDbService.SignInAsync(userName, password);
             if (person != null)
             {
                 User = person;

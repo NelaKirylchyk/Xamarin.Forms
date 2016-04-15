@@ -5,11 +5,11 @@ using EpamVTSClient.Core.Services.Localization;
 
 namespace EpamVTSClient.Core
 {
-    public class L10n : IL10n
+    public class LocalizationService : ILocalizationService
     {
         private readonly ILocalize _localize;
 
-        public L10n(ILocalize localize)
+        public LocalizationService(ILocalize localize)
         {
             _localize = localize;
         }
@@ -18,10 +18,7 @@ namespace EpamVTSClient.Core
         {
             _localize.SetLocale();
         }
-
-        /// <remarks>
-        /// Maybe we can cache this info rather than querying every time
-        /// </remarks>
+        
         public string Locale()
         {
             return _localize.GetCurrentCultureInfo().Name;
@@ -30,8 +27,8 @@ namespace EpamVTSClient.Core
         public string Localize(string key)
         {
             var netLanguage = Locale();
-            // Platform-specific
-            ResourceManager temp = new ResourceManager("EpamVTSClient.Core.Resx.AppResources", typeof(L10n).GetTypeInfo().Assembly);
+
+            ResourceManager temp = new ResourceManager("EpamVTSClient.Core.Resx.AppResources", typeof(LocalizationService).GetTypeInfo().Assembly);
             string result = temp.GetString(key, new CultureInfo(netLanguage));
             return result;
         }

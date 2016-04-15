@@ -1,6 +1,6 @@
 ﻿namespace EpamVTSClient.Core.Services.Localization
 {
-    public interface IL10n
+    public interface ILocalizationService
     {
         void SetLocale();
         string Localize(string key);

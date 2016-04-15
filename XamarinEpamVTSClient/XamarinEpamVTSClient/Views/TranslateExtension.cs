@@ -7,7 +7,6 @@ using Xamarin.Forms.Xaml;
 
 namespace XamarinEpamVTSClient.Views
 {
-    // You exclude the 'Extension' suffix when using in Xaml markup
     [ContentProperty("Text")]
     public class TranslateExtension : IMarkupExtension
     {

@@ -6,11 +6,11 @@ namespace EpamVTSClient.BLL.ViewModels
 {
     public class VacationViewModel
     {
-        private readonly IL10n _l10N;
+        private readonly ILocalizationService _localizationService;
         private string _vacationStatusToDisplay;
-        public VacationViewModel(IL10n l10N)
+        public VacationViewModel(ILocalizationService localizationService)
         {
-            _l10N = l10N;
+            _localizationService = localizationService;
         }
 
         public int Id { get; set; }
@@ -27,7 +27,7 @@ namespace EpamVTSClient.BLL.ViewModels
         {
             get
             {
-                return _l10N.Localize(_vacationStatusToDisplay);
+                return _localizationService.Localize(_vacationStatusToDisplay);
             }
             set
             {
