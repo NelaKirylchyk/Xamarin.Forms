@@ -129,6 +129,9 @@
   <data name="Draft" xml:space="preserve">
     <value>draft</value>
   </data>
+  <data name="EmptyUserNameOrPasswordErrorMsg" xml:space="preserve">
+    <value>User name or password is empty</value>
+  </data>
   <data name="ExceptionalLeave" xml:space="preserve">
     <value>EXC</value>
   </data>

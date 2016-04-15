@@ -100,7 +100,7 @@ namespace EpamVTSClient.BLL.ViewModels
             {
                 if (string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(Password))
                 {
-                    ErrorMessage = _localization.Localize("IncorrectUserNameOrPasswordErrorMsg");
+                    ErrorMessage = _localization.Localize("EmptyUserNameOrPasswordErrorMsg");
                     return;
                 }
                 IsBusy = true;

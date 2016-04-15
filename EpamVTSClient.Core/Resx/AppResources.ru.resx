@@ -129,6 +129,9 @@
   <data name="Draft" xml:space="preserve">
     <value>черновик</value>
   </data>
+  <data name="EmptyUserNameOrPasswordErrorMsg" xml:space="preserve">
+    <value>Имя пользователя или пароль пустые</value>
+  </data>
   <data name="ExceptionalLeave" xml:space="preserve">
     <value>Исключительный отпуск</value>
   </data>

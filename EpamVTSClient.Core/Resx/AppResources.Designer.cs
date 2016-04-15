@@ -98,6 +98,15 @@ namespace EpamVTSClient.Core.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User name or password is empty.
+        /// </summary>
+        public static string EmptyUserNameOrPasswordErrorMsg {
+            get {
+                return ResourceManager.GetString("EmptyUserNameOrPasswordErrorMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to EXC.
         /// </summary>
         public static string ExceptionalLeave {
