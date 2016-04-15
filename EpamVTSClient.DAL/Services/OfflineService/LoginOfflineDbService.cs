@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using EpamVTSClient.DAL.Models;
 using EpamVTSClient.DAL.Models.DTOModels;
 using SQLite;
+using Xamarin.Forms;
 
 namespace EpamVTSClient.DAL.Services.OfflineService
 {
@@ -24,9 +25,9 @@ namespace EpamVTSClient.DAL.Services.OfflineService
                             .Where(r => r.Password == password && r.Email == username)
                             .FirstOrDefaultAsync();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                //LOGGING should be added here
+                await Application.Current.MainPage.DisplayAlert("Error", e.Message, "OK");
             }
             return personDto;
         }
@@ -69,9 +70,9 @@ namespace EpamVTSClient.DAL.Services.OfflineService
                     await _connection.InsertAsync(newPersonDto);
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                //LOGGING should be added here
+                await Application.Current.MainPage.DisplayAlert("Error", e.Message, "OK");
             }
         }
     }
