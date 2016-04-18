@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using EpamVTSClient.BLL.Services;
 using EpamVTSClient.BLL.ViewModels.Base;
+using EpamVTSClient.Core.Services;
 using EpamVTSClient.Core.Services.Localization;
 using Xamarin.Forms;
 
@@ -11,6 +12,7 @@ namespace EpamVTSClient.BLL.ViewModels
     {
         private readonly ILoginService _loginService;
         private readonly ILocalizationService _localization;
+        private readonly IPlatformSpecificInfoService _platformSpecificInfo;
         private readonly INavigationService _navigationService;
 
         private string _userName;
@@ -66,7 +68,7 @@ namespace EpamVTSClient.BLL.ViewModels
             }
         }
 
-        public string Copyright => $"{Device.OS} {DateTime.Now.ToString("d")}";
+        public string Copyright => $"{_platformSpecificInfo.DeviceOs} {DateTime.Now.ToString("d")}";
 
         public bool IsBusy
         {
@@ -85,10 +87,11 @@ namespace EpamVTSClient.BLL.ViewModels
 
         public Command SignIn { get; }
 
-        public LoginPageViewModel(INavigationService navigation, ILoginService loginService, ILocalizationService localization)
+        public LoginPageViewModel(INavigationService navigation, ILoginService loginService, ILocalizationService localization, IPlatformSpecificInfoService platformSpecificInfo)
         {
             _loginService = loginService;
             _localization = localization;
+            _platformSpecificInfo = platformSpecificInfo;
             _navigationService = navigation;
 
             SignIn = new Command(async () => { await LoginAsync(); }, () => !IsBusy);

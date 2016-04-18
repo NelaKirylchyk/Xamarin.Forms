@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Threading.Tasks;
+using EpamVTSClient.Core.Services;
 using EpamVTSClient.DAL.Models;
 using EpamVTSClient.DAL.Models.DTOModels;
 using SQLite;
-using Xamarin.Forms;
 
 namespace EpamVTSClient.DAL.Services.OfflineService
 {
     public class LoginOfflineDbService : ILoginOfflineDBService
     {
         private readonly SQLiteAsyncConnection _connection;
+        private readonly IMessageDialogService _messageDialogService;
 
-        public LoginOfflineDbService(SQLiteAsyncConnection connection)
+        public LoginOfflineDbService(SQLiteAsyncConnection connection, IMessageDialogService messageDialogService)
         {
             _connection = connection;
+            _messageDialogService = messageDialogService;
         }
 
         private async Task<PersonDTO> GetUserOffline(string username, string password)
@@ -27,7 +29,7 @@ namespace EpamVTSClient.DAL.Services.OfflineService
             }
             catch (Exception e)
             {
-                await Application.Current.MainPage.DisplayAlert("Error", e.Message, "OK");
+                await _messageDialogService.ShowMessageDialogAsync(e.Message);
             }
             return personDto;
         }
@@ -72,7 +74,7 @@ namespace EpamVTSClient.DAL.Services.OfflineService
             }
             catch (Exception e)
             {
-                await Application.Current.MainPage.DisplayAlert("Error", e.Message, "OK");
+                await _messageDialogService.ShowMessageDialogAsync(e.Message);
             }
         }
     }

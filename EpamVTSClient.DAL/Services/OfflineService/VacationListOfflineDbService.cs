@@ -2,20 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EpamVTSClient.Core.Services;
 using EpamVTSClient.DAL.Models;
 using EpamVTSClient.DAL.Models.DTOModels;
 using SQLite;
-using Xamarin.Forms;
 
 namespace EpamVTSClient.DAL.Services.OfflineService
 {
     public class VacationListOfflineDBService : IVacationListOfflineDBService
     {
         private readonly SQLiteAsyncConnection _connection;
+        private readonly IMessageDialogService _messageDialogService;
 
-        public VacationListOfflineDBService(SQLiteAsyncConnection connection)
+        public VacationListOfflineDBService(SQLiteAsyncConnection connection, IMessageDialogService messageDialogService)
         {
             _connection = connection;
+            _messageDialogService = messageDialogService;
         }
 
         public async Task<List<VacationDTO>> GetVacationListAsync(int userId)
@@ -26,7 +28,7 @@ namespace EpamVTSClient.DAL.Services.OfflineService
             }
             catch (Exception e)
             {
-                await Application.Current.MainPage.DisplayAlert("Error", e.Message, "OK");
+                await _messageDialogService.ShowMessageDialogAsync(e.Message);
             }
             return null;
         }
@@ -57,7 +59,7 @@ namespace EpamVTSClient.DAL.Services.OfflineService
             }
             catch (Exception e)
             {
-                await Application.Current.MainPage.DisplayAlert("Error", e.Message, "OK");
+                await _messageDialogService.ShowMessageDialogAsync(e.Message);
             }
         }
     }

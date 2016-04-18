@@ -9,6 +9,7 @@ namespace XamarinEpamVTSClient
     {
         public void Register(IUnityContainer unityContainer)
         {
+            unityContainer.RegisterType<IPlatformSpecificInfoService, PlatformSpecificInfoService>(new ContainerControlledLifetimeManager());
             unityContainer.RegisterType<INavigationService, NavigationService>();
             unityContainer.RegisterInstance(unityContainer);
             unityContainer.RegisterInstance(Application.Current.MainPage.Navigation);
