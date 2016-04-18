@@ -13,6 +13,7 @@ namespace XamarinEpamVTSClient
             unityContainer.RegisterType<INavigationService, NavigationService>();
             unityContainer.RegisterInstance(unityContainer);
             unityContainer.RegisterInstance(Application.Current.MainPage.Navigation);
+            unityContainer.RegisterType<IMessageDialogService, MessageDialogService>();
         }
     }
 }

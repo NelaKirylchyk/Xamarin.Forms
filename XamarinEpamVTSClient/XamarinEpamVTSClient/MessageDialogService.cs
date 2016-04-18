@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using EpamVTSClient.Core.Services;
 using Application = Xamarin.Forms.Application;
 
-namespace XamarinEpamVTSClient.Droid
+namespace XamarinEpamVTSClient
 {
     public class MessageDialogService : IMessageDialogService
     {
