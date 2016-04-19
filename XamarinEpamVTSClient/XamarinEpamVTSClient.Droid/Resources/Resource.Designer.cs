@@ -26,6 +26,8 @@ namespace XamarinEpamVTSClient.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::EpamVTSCLient.Platform_Specific.Android.Resource.String.ApplicationName = global::XamarinEpamVTSClient.Droid.Resource.String.ApplicationName;
+			global::EpamVTSCLient.Platform_Specific.Android.Resource.String.Hello = global::XamarinEpamVTSClient.Droid.Resource.String.Hello;
 			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.ApplicationName = global::XamarinEpamVTSClient.Droid.Resource.String.ApplicationName;
 			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.Hello = global::XamarinEpamVTSClient.Droid.Resource.String.Hello;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_fade_in = global::XamarinEpamVTSClient.Droid.Resource.Animation.abc_fade_in;

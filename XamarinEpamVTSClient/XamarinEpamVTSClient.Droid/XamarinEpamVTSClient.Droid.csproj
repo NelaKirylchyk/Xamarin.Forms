@@ -126,11 +126,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AndroidRegistry.cs" />
-    <Compile Include="Localize.cs" />
     <Compile Include="MainActivity.cs" />
-    <Compile Include="MessageDialogService.cs" />
-    <Compile Include="PlatformSpecificInfoService.cs" />
+    <Compile Include="DeviceInfoService.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -161,6 +158,10 @@
     <ProjectReference Include="..\..\EpamVTSClient.DAL\EpamVTSClient.DAL.csproj">
       <Project>{8946d6ca-ddfb-4aec-8060-37857f55bf64}</Project>
       <Name>EpamVTSClient.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EpamVTSCLient.Platform-Specific.Android\EpamVTSCLient.Platform-Specific.Android.csproj">
+      <Project>{7cf8a624-1f70-4136-a732-52a554aaf905}</Project>
+      <Name>EpamVTSCLient.Platform-Specific.Android</Name>
     </ProjectReference>
     <ProjectReference Include="..\XamarinEpamVTSClient\XamarinEpamVTSClient.csproj">
       <Name>XamarinEpamVTSClient</Name>

@@ -3,7 +3,7 @@ using Xamarin.Forms;
 
 namespace XamarinEpamVTSClient
 {
-    public class PlatformSpecificInfoService : IPlatformSpecificInfoService
+    public class DeviceInfoService : IDeviceInfoService
     {
         public string DeviceOs => Device.OS.ToString();
     }

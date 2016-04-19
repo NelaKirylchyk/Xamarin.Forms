@@ -12,7 +12,7 @@ namespace EpamVTSClient.BLL.ViewModels
     {
         private readonly ILoginService _loginService;
         private readonly ILocalizationService _localization;
-        private readonly IPlatformSpecificInfoService _platformSpecificInfo;
+        private readonly IDeviceInfoService _deviceInfo;
         private readonly INavigationService _navigationService;
 
         private string _userName;
@@ -68,7 +68,7 @@ namespace EpamVTSClient.BLL.ViewModels
             }
         }
 
-        public string Copyright => $"{_platformSpecificInfo.DeviceOs} {DateTime.Now.ToString("d")}";
+        public string Copyright => $"{_deviceInfo.DeviceOs} {DateTime.Now.ToString("d")}";
 
         public bool IsBusy
         {
@@ -87,11 +87,11 @@ namespace EpamVTSClient.BLL.ViewModels
 
         public Command SignIn { get; }
 
-        public LoginPageViewModel(INavigationService navigation, ILoginService loginService, ILocalizationService localization, IPlatformSpecificInfoService platformSpecificInfo)
+        public LoginPageViewModel(INavigationService navigation, ILoginService loginService, ILocalizationService localization, IDeviceInfoService deviceInfo)
         {
             _loginService = loginService;
             _localization = localization;
-            _platformSpecificInfo = platformSpecificInfo;
+            _deviceInfo = deviceInfo;
             _navigationService = navigation;
 
             SignIn = new Command(async () => { await LoginAsync(); }, () => !IsBusy);

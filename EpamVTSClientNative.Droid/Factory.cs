@@ -9,12 +9,13 @@ namespace EpamVTSClientNative.Droid
     {
         public static readonly IUnityContainer UnityContainer = new UnityContainer();
 
-        public static void Init(IUnityContainerRegistry[] registries)
+        public static void Init()
         {
-            foreach (IUnityContainerRegistry registry in registries)
-            {
-                registry.Register(UnityContainer);
-            }
+            //if (registries != null)
+            //    foreach (IUnityContainerRegistry registry in registries)
+            //    {
+            //        registry.Register(UnityContainer);
+            //    }
             new UIRegistry().Register(UnityContainer);
             new DALRegistry().Register(UnityContainer);
             new BLLRegistry().Register(UnityContainer);

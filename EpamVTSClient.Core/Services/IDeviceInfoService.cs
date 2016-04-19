@@ -1,6 +1,6 @@
 ﻿namespace EpamVTSClient.Core.Services
 {
-    public interface IPlatformSpecificInfoService
+    public interface IDeviceInfoService
     {
         string DeviceOs { get; }
     }

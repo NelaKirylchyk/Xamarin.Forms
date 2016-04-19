@@ -40,7 +40,7 @@
     <Compile Include="Enums\VacationType.cs" />
     <Compile Include="Helpers\EnumExtensions.cs" />
     <Compile Include="Services\IMessageDialogService.cs" />
-    <Compile Include="Services\IPlatformSpecificInfoService.cs" />
+    <Compile Include="Services\IDeviceInfoService.cs" />
     <Compile Include="Services\Localization\ILocalizationService.cs" />
     <Compile Include="Services\Localization\ILocalize.cs" />
     <Compile Include="Services\IUnityContainerRegistry.cs" />
