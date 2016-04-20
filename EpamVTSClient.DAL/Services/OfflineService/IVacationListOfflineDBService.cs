@@ -9,5 +9,7 @@ namespace EpamVTSClient.DAL.Services.OfflineService
     {
         Task<List<VacationDTO>> GetVacationListAsync(int userId);
         Task AddOrUpdateVacationListAsync(int userId, IEnumerable<ShortVacationInfo> vacationList);
+        Task<FullVacationDTO> GetFullVacationAsync(int vacationId);
+        Task AddUpdateFullVacationInfoAsync(VacationInfo vacationInfo);
     }
 }

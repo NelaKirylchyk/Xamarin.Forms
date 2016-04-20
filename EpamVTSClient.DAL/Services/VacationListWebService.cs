@@ -29,5 +29,33 @@ namespace EpamVTSClient.DAL.Services
                 return Enumerable.Empty<ShortVacationInfo>();
             }
         }
+
+        public async Task<VacationInfo> GetFullVacationInfoAsync(int vacationId)
+        {
+            try
+            {
+                var vacationResponse = await _client.GetAsync<VacationInfo>($"vacation/get/get?id={vacationId}");
+                return vacationResponse;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public async Task<bool> AddUpdateVacationAsync(VacationInfo vacationInfo)
+        {
+            try
+            {
+                int newVacationId = await _client.PostAsync<VacationInfo, int>(vacationInfo, "vacation/update");
+                if (newVacationId > 0)
+                    return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return false;
+        }
     }
 }

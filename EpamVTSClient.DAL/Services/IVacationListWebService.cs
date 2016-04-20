@@ -7,5 +7,7 @@ namespace EpamVTSClient.DAL.Services
     public interface IVacationListWebService
     {
         Task<IEnumerable<ShortVacationInfo>> GetShortVacationsAsync(int userId);
+        Task<bool> AddUpdateVacationAsync(VacationInfo vacationInfo);
+        Task<VacationInfo> GetFullVacationInfoAsync(int vacationId);
     }
 }

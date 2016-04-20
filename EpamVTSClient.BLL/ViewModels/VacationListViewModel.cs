@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using EpamVTSClient.BLL.Services;
 using EpamVTSClient.BLL.ViewModels.Base;
 using EpamVTSClient.Core.Services.Localization;
@@ -37,22 +39,29 @@ namespace EpamVTSClient.BLL.ViewModels
             LoadData.Execute(null);
         }
 
-        public Command LoadData { get; set; }
+        public ICommand LoadData { get; set; }
 
         public async Task LoadDataAsync()
         {
-            IEnumerable<ShortVacationInfo> result = await _vacationListService.GetVacationsAsync();
-            IEnumerable<VacationViewModel> vacationViewModels = result.Select(x => new VacationViewModel(_localizationService)
+            try
             {
-                Type = _localizationService.Localize(x.Type.ToString()),
-                Id = x.Id,
-                ApproverFullName = x.ApproverFullName,
-                EndDate = x.EndDate,
-                StartDate = x.StartDate,
-                Status = x.Status,
-                VacationStatusToDisplay = x.Status.ToString()
-            });
-            VacationList = new ObservableCollection<VacationViewModel>(vacationViewModels);
+                IEnumerable<ShortVacationInfo> result = await _vacationListService.GetVacationsAsync();
+                IEnumerable<VacationViewModel> vacationViewModels = result.Select(x => new VacationViewModel(_localizationService)
+                {
+                    Type = _localizationService.Localize(x.Type.ToString()),
+                    Id = x.Id,
+                    ApproverFullName = x.ApproverFullName,
+                    EndDate = x.EndDate,
+                    StartDate = x.StartDate,
+                    Status = x.Status,
+                    VacationStatusToDisplay = x.Status.ToString()
+                });
+                VacationList = new ObservableCollection<VacationViewModel>(vacationViewModels);
+            }
+            catch (Exception e)
+            {
+                
+            }
         }
     }
 }

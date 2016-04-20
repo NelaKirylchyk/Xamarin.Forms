@@ -17,7 +17,7 @@ namespace EpamVTSClient.BLL
 
             var asyncConnection = unityContainer.Resolve<SQLiteAsyncConnection>();
             CreateTablesResult createTablesResult = 
-                Task.Run(() => asyncConnection.CreateTablesAsync<PersonDTO, VacationDTO>()).Result;
+                Task.Run(() => asyncConnection.CreateTablesAsync<PersonDTO, VacationDTO, FullVacationDTO>()).Result;
         }
     }
 }

@@ -6,6 +6,7 @@ using EpamVTSClient.BLL.Services;
 using EpamVTSClient.BLL.ViewModels;
 using EpamVTSClient.BLL.ViewModels.Base;
 using EpamVTSClientNative.Droid.Activities;
+using Microsoft.Practices.Unity;
 using Plugin.CurrentActivity;
 
 namespace EpamVTSClientNative.Droid.Services
@@ -25,6 +26,7 @@ namespace EpamVTSClientNative.Droid.Services
             Type viewType;
             if (ViewModelPageContainer.TryGetValue(typeof(TViewModelTo), out viewType))
             {
+                Factory.UnityContainer.Resolve<TViewModelTo>();
                 var currentActivity = CrossCurrentActivity.Current.Activity;
 
                 var intent = new Intent(currentActivity, viewType);

@@ -3,10 +3,13 @@ using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
+using EpamVTSCLient.Platform_Specific.Android;
+using Java.IO;
+using Java.Lang;
 
 namespace XamarinEpamVTSClient.Droid
 {
-    [Activity(Label = "XamarinEpamVTSClient", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
     {
         protected override void OnCreate(Bundle bundle)
@@ -28,9 +31,9 @@ namespace XamarinEpamVTSClient.Droid
 
         private void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs unhandledExceptionEventArgs)
         {
-            Exception e = (Exception)unhandledExceptionEventArgs.ExceptionObject;
-            Console.WriteLine("Exception was thrown: " + e.Message);
-            ShowAlertMessage();
+            //Exception e = (Exception)unhandledExceptionEventArgs.ExceptionObject;
+            //Console.WriteLine("Exception was thrown: " + e.Message);
+            //ShowAlertMessage();
         }
 
         private void ShowAlertMessage()

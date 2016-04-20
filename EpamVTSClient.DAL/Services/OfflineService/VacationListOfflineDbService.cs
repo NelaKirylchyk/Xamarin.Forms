@@ -53,9 +53,40 @@ namespace EpamVTSClient.DAL.Services.OfflineService
                 List<VacationDTO> vacationListToBeRemoved = await _connection.Table<VacationDTO>().Where(r => r.EmployeeId == userId).ToListAsync();
                 foreach (VacationDTO vacation in vacationListToBeRemoved)
                 {
-                    await _connection.DeleteAsync(vacation);
+                    await _connection.DeleteAsync(vacation).ConfigureAwait(false);
                 }
                 await _connection.InsertAllAsync(listOfVacationsDto);
+            }
+            catch (Exception e)
+            {
+                await _messageDialogService.ShowMessageDialogAsync(e.Message);
+            }
+        }
+
+        public async Task<FullVacationDTO> GetFullVacationAsync(int vacationId)
+        {
+            try
+            {
+                return await _connection.Table<FullVacationDTO>().Where(r => r.Id == vacationId).FirstOrDefaultAsync();
+            }
+            catch (Exception e)
+            {
+                await _messageDialogService.ShowMessageDialogAsync(e.Message);
+            }
+            return null;
+        }
+
+        public async Task AddUpdateFullVacationInfoAsync(VacationInfo vacationInfo)
+        {
+            try
+            {
+                FullVacationDTO oldFullVacationDto = await _connection.Table<FullVacationDTO>().Where(r => r.Id == vacationInfo.Id).FirstOrDefaultAsync();
+
+                FullVacationDTO newFullVacationDto = new FullVacationDTO();
+                newFullVacationDto.Update(vacationInfo);
+
+                await _connection.DeleteAsync(oldFullVacationDto);
+                await _connection.InsertAsync(newFullVacationDto);
             }
             catch (Exception e)
             {

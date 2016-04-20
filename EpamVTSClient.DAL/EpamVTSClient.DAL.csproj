@@ -37,6 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DALRegistry.cs" />
+    <Compile Include="Models\DTOModels\FullVacationDTO.cs" />
     <Compile Include="Models\DTOModels\VacationDTO.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\PersonCredentials.cs" />
