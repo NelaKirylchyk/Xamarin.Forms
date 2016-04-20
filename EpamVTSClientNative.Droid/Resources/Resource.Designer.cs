@@ -26,6 +26,8 @@ namespace EpamVTSClientNative.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::EpamVTSCLient.Platform_Specific.Android.Resource.String.ApplicationName = global::EpamVTSClientNative.Droid.Resource.String.ApplicationName;
+			global::EpamVTSCLient.Platform_Specific.Android.Resource.String.Hello = global::EpamVTSClientNative.Droid.Resource.String.Hello;
 		}
 		
 		public partial class Attribute
@@ -61,7 +63,13 @@ namespace EpamVTSClientNative.Droid
 		{
 			
 			// aapt resource value: 0x7f050000
-			public const int textView1 = 2131034112;
+			public const int emailText = 2131034112;
+			
+			// aapt resource value: 0x7f050002
+			public const int loginBtn = 2131034114;
+			
+			// aapt resource value: 0x7f050001
+			public const int passwordText = 2131034113;
 			
 			static Id()
 			{

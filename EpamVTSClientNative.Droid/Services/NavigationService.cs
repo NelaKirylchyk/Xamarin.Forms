@@ -5,13 +5,13 @@ using Android.Content;
 using EpamVTSClient.BLL.Services;
 using EpamVTSClient.BLL.ViewModels;
 using EpamVTSClient.BLL.ViewModels.Base;
-using Microsoft.Practices.Unity;
+using EpamVTSClientNative.Droid.Activities;
+using Plugin.CurrentActivity;
 
 namespace EpamVTSClientNative.Droid.Services
 {
     public class NavigationService : INavigationService
     {
-        private readonly IUnityContainer _unityContainer;
 
         public static readonly IReadOnlyDictionary<Type, Type> ViewModelPageContainer =
             new Dictionary<Type, Type>()
@@ -20,30 +20,21 @@ namespace EpamVTSClientNative.Droid.Services
                 typeof(VacationListViewModel), typeof(VacationListActivity)
             }
         };
-
-        public NavigationService(IUnityContainer unityContainer)
+        public void NavigateTo<TViewModelTo>() where TViewModelTo : ViewModelBase
         {
-            _unityContainer = unityContainer;
+            Type viewType;
+            if (ViewModelPageContainer.TryGetValue(typeof(TViewModelTo), out viewType))
+            {
+                var currentActivity = CrossCurrentActivity.Current.Activity;
+
+                var intent = new Intent(currentActivity, viewType);
+                currentActivity.StartActivity(intent);
+            }
         }
 
         public Task NavigateToAsync<TViewModelTo>() where TViewModelTo : ViewModelBase
         {
-            Type viewType;
-            if (ViewModelPageContainer.TryGetValue(typeof (TViewModelTo), out viewType))
-            {
-                // var resolvedView = (Page)Activator.CreateInstance(viewType);
-
-               // var resolvedViewModel = _unityContainer.Resolve<TViewModelTo>();
-
-                var currentActivity = App.CurrentActivity;
-                var intent = new Intent(currentActivity, viewType);
-                currentActivity.StartActivity(intent);
-
-                
-                //resolvedView.BindingContext = viewModelForResolvedView;
-                //return _navigation.PushAsync(resolvedView);
-            }
-            throw new ArgumentException($"Activity for ViewModel of type '{typeof (TViewModelTo)}' is not defined");
+            return null;
         }
     }
 }

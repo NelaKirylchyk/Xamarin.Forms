@@ -1,6 +1,6 @@
 ﻿using EpamVTSClient.BLL;
-using EpamVTSClient.Core.Services;
 using EpamVTSClient.DAL;
+using EpamVTSCLient.Platform_Specific.Android;
 using Microsoft.Practices.Unity;
 
 namespace EpamVTSClientNative.Droid
@@ -11,11 +11,7 @@ namespace EpamVTSClientNative.Droid
 
         public static void Init()
         {
-            //if (registries != null)
-            //    foreach (IUnityContainerRegistry registry in registries)
-            //    {
-            //        registry.Register(UnityContainer);
-            //    }
+            new AndroidRegistry().Register(UnityContainer);
             new UIRegistry().Register(UnityContainer);
             new DALRegistry().Register(UnityContainer);
             new BLLRegistry().Register(UnityContainer);

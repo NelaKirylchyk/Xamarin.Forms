@@ -479,3 +479,10 @@ Thumbs.db
 /XamarinEpamVTSClient/XamarinEpamVTSClient.iOS/obj/iPhone/Release/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs
 /XamarinEpamVTSClient/XamarinEpamVTSClient.iOS/obj/iPhone/Release/build.force
 /EpamVTSClientNative.iOS/obj/iPhone/Debug
+
+/EpamVTSCLient.Platform-Specific.Android/bin/Debug/EpamVTSCLient.Platform-Specific.Android.dll.mdb
+/EpamVTSCLient.Platform-Specific.Android/obj/Debug/EpamVTSCLient.Platform-Specific.Android.csproj.FileListAbsolute.txt
+/EpamVTSCLient.Platform-Specific.Android/obj/Debug/__AndroidLibraryProjects__.zip
+
+/EpamVTSCLient.Platform-Specific.Android/obj
+/EpamVTSCLient.Platform-Specific.Android/bin

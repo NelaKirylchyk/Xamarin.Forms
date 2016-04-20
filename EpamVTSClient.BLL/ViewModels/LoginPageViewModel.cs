@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using EpamVTSClient.BLL.Services;
 using EpamVTSClient.BLL.ViewModels.Base;
 using EpamVTSClient.Core.Services;
@@ -79,13 +80,13 @@ namespace EpamVTSClient.BLL.ViewModels
                 {
                     _isBusy = value;
                     OnPropertyChanged();
-                    SignIn.ChangeCanExecute();
+                   // SignIn.ChangeCanExecute();
                 }
                 _isBusy = value;
             }
         }
 
-        public Command SignIn { get; }
+        public ICommand SignIn { get; }
 
         public LoginPageViewModel(INavigationService navigation, ILoginService loginService, ILocalizationService localization, IDeviceInfoService deviceInfo)
         {
@@ -103,16 +104,17 @@ namespace EpamVTSClient.BLL.ViewModels
             {
                 if (string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(Password))
                 {
-                    ErrorMessage = _localization.Localize("EmptyUserNameOrPasswordErrorMsg");
+               //     ErrorMessage = _localization.Localize("EmptyUserNameOrPasswordErrorMsg");
                     return;
                 }
                 IsBusy = true;
                 var isLoggedIn = await _loginService.LogInAsync(UserName, Password);
                 if (isLoggedIn)
                 {
-                    await _navigationService.NavigateToAsync<VacationListViewModel>();
+                    //await _navigationService.NavigateToAsync<VacationListViewModel>();
+                    _navigationService.NavigateTo<VacationListViewModel>();
                 }
-                ErrorMessage = _localization.Localize("IncorrectUserNameOrPasswordErrorMsg");
+               // ErrorMessage = _localization.Localize("IncorrectUserNameOrPasswordErrorMsg");
             }
             finally
             {

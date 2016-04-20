@@ -2,6 +2,7 @@ using System;
 using Android.App;
 using Android.OS;
 using Android.Runtime;
+using EpamVTSClient.BLL;
 using Plugin.CurrentActivity;
 
 namespace EpamVTSClientNative.Droid
@@ -9,17 +10,19 @@ namespace EpamVTSClientNative.Droid
     [Application]
     public class App : Application, Application.IActivityLifecycleCallbacks
     {
-        public static Activity CurrentActivity { get; set; }
+        public static Activity CurrentActivity { get; private set; }
         public App(IntPtr handle, JniHandleOwnership ownerShip) : base(handle, ownerShip)
         {
+            RegisterActivityLifecycleCallbacks(this);
         }
 
         public override void OnCreate()
         {
             // If OnCreate is overridden, the overridden c'tor will also be called.
             base.OnCreate();
-            RegisterActivityLifecycleCallbacks(this);
+
             Factory.Init();
+            DatabaseInitializer.Initialize(Factory.UnityContainer);
         }
 
         public override void OnTerminate()
