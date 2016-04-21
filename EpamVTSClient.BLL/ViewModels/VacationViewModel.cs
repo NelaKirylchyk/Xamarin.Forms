@@ -53,9 +53,10 @@ namespace EpamVTSClient.BLL.ViewModels
         {
             var vacationInfo = await _vacationListService.GetFullVacationInfoAsync(parse);
             Status = vacationInfo.Status;
-            Type = vacationInfo.Type.ToString();
+            Type = _localizationService.Localize(vacationInfo.Type.ToString());
             StartDate = vacationInfo.StartDate;
             EndDate = vacationInfo.EndDate;
+            VacationStatusToDisplay = vacationInfo.Status.ToString();
         }
     }
 }

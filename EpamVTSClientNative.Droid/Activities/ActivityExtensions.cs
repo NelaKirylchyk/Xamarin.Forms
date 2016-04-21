@@ -39,6 +39,12 @@ namespace EpamVTSClientNative.Droid.Activities
             };
         }
 
+        public static void BindLabel(this Activity activity, int textViewId, string label)
+        {
+            var view = activity.FindViewById<TextView>(textViewId);
+            view.Text = label;
+        }
+
         public static void BindText<TViewModel, TProperty>(this Activity activity, int textViewId, TViewModel viewModel,
             Expression<Func<TViewModel, TProperty>> propertyExpression)
             where TViewModel : INotifyPropertyChanged
@@ -51,14 +57,18 @@ namespace EpamVTSClientNative.Droid.Activities
             string propertyName = propertyExpression.GetPropertyName();
             Func<TViewModel, TProperty> propertyGetter = propertyExpression.Compile();
 
+            TProperty propertyValue = propertyGetter(viewModel);
+            //TProperty propertyValue2 = (TProperty) viewModel.GetType().GetProperty(propertyName).GetValue(viewModel);
+            view.Text = propertyValue?.ToString();
+
             //viewModel to view
             viewModel.PropertyChanged += (sender, args) =>
             {
                 if (args.PropertyName == propertyName)
                 {
-                    TProperty propertyValue = propertyGetter(viewModel);
+                    TProperty propertyValue2 = propertyGetter(viewModel);
                     //TProperty propertyValue2 = (TProperty) viewModel.GetType().GetProperty(propertyName).GetValue(viewModel);
-                    view.Text = propertyValue?.ToString();
+                    view.Text = propertyValue2?.ToString();
                 }
             };
             //view to viewModel

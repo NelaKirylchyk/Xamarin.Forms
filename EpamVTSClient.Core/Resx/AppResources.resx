@@ -168,6 +168,18 @@
   <data name="UserName" xml:space="preserve">
     <value>User name</value>
   </data>
+  <data name="vacationEndDateLabel" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="vacationStartDateLabel" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="vacationStatusInfoLabel" xml:space="preserve">
+    <value>Vacation Status</value>
+  </data>
+  <data name="vacationTypeInfoLabel" xml:space="preserve">
+    <value>Vacation Type</value>
+  </data>
   <data name="WaitingForApproval" xml:space="preserve">
     <value>need approval</value>
   </data>

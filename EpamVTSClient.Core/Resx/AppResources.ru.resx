@@ -165,6 +165,18 @@
   <data name="UserName" xml:space="preserve">
     <value>Имя пользователя</value>
   </data>
+  <data name="vacationEndDateLabel" xml:space="preserve">
+    <value>Дата окончания</value>
+  </data>
+  <data name="vacationStartDateLabel" xml:space="preserve">
+    <value>Дата начала</value>
+  </data>
+  <data name="vacationStatusInfoLabel" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="vacationTypeInfoLabel" xml:space="preserve">
+    <value>Тип</value>
+  </data>
   <data name="WaitingForApproval" xml:space="preserve">
     <value>ожидает подтверждение</value>
   </data>

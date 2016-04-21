@@ -104,7 +104,7 @@ namespace EpamVTSClient.BLL.ViewModels
             {
                 if (string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(Password))
                 {
-               //     ErrorMessage = _localization.Localize("EmptyUserNameOrPasswordErrorMsg");
+                    //     ErrorMessage = _localization.Localize("EmptyUserNameOrPasswordErrorMsg");
                     return;
                 }
                 IsBusy = true;
@@ -114,7 +114,11 @@ namespace EpamVTSClient.BLL.ViewModels
                     //await _navigationService.NavigateToAsync<VacationListViewModel>();
                     await Task.Run(() => _navigationService.NavigateTo<VacationListViewModel>(null));
                 }
-               // ErrorMessage = _localization.Localize("IncorrectUserNameOrPasswordErrorMsg");
+                // ErrorMessage = _localization.Localize("IncorrectUserNameOrPasswordErrorMsg");
+            }
+            catch (Exception e)
+            {
+                
             }
             finally
             {

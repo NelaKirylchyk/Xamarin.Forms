@@ -215,6 +215,42 @@ namespace EpamVTSClient.Core.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to End Date.
+        /// </summary>
+        public static string vacationEndDateLabel {
+            get {
+                return ResourceManager.GetString("vacationEndDateLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Date.
+        /// </summary>
+        public static string vacationStartDateLabel {
+            get {
+                return ResourceManager.GetString("vacationStartDateLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vacation Status.
+        /// </summary>
+        public static string vacationStatusInfoLabel {
+            get {
+                return ResourceManager.GetString("vacationStatusInfoLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vacation Type.
+        /// </summary>
+        public static string vacationTypeInfoLabel {
+            get {
+                return ResourceManager.GetString("vacationTypeInfoLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to need approval.
         /// </summary>
         public static string WaitingForApproval {
