@@ -2,4 +2,7 @@
 <resources>
     <string name="Hello">Hello World, Click Me!</string>
     <string name="ApplicationName">EpamVTSClientNative.Droid</string>
+  <string name="app_name">DrawerLayout_V7_Tutorial</string>
+  <string name="open_drawer">Open drawer</string>
+  <string name="close_drawer">Close drawer</string>
 </resources>

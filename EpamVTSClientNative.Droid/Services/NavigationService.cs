@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Android.Content;
+using Android.OS;
 using EpamVTSClient.BLL.Services;
 using EpamVTSClient.BLL.ViewModels;
 using EpamVTSClient.BLL.ViewModels.Base;
@@ -19,9 +20,12 @@ namespace EpamVTSClientNative.Droid.Services
         {
             {
                 typeof(VacationListViewModel), typeof(VacationListActivity)
+            },
+            {
+                      typeof(VacationViewModel), typeof(VacationActivity)
             }
         };
-        public void NavigateTo<TViewModelTo>() where TViewModelTo : ViewModelBase
+        public void NavigateTo<TViewModelTo>(string args) where TViewModelTo : ViewModelBase
         {
             Type viewType;
             if (ViewModelPageContainer.TryGetValue(typeof(TViewModelTo), out viewType))
@@ -30,6 +34,7 @@ namespace EpamVTSClientNative.Droid.Services
                 var currentActivity = CrossCurrentActivity.Current.Activity;
 
                 var intent = new Intent(currentActivity, viewType);
+                intent.PutExtra("args", args);
                 currentActivity.StartActivity(intent);
             }
         }

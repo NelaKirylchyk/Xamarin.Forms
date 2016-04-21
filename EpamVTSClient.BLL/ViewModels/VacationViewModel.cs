@@ -1,16 +1,24 @@
 ﻿using System;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using EpamVTSClient.BLL.Services;
+using EpamVTSClient.BLL.ViewModels.Base;
 using EpamVTSClient.Core.Enums;
 using EpamVTSClient.Core.Services.Localization;
+using Xamarin.Forms;
 
 namespace EpamVTSClient.BLL.ViewModels
 {
-    public class VacationViewModel
+    public class VacationViewModel : ViewModelBase
     {
         private readonly ILocalizationService _localizationService;
+        private readonly IVacationListService _vacationListService;
         private string _vacationStatusToDisplay;
-        public VacationViewModel(ILocalizationService localizationService)
+        public VacationViewModel(ILocalizationService localizationService, INavigationService navigationService, IVacationListService vacationListService)
         {
             _localizationService = localizationService;
+            _vacationListService = vacationListService;
+            ViewDetails = new Command(() => navigationService.NavigateTo<VacationViewModel>(Id.ToString()));
         }
 
         public int Id { get; set; }
@@ -39,5 +47,15 @@ namespace EpamVTSClient.BLL.ViewModels
         }
 
         public string Type { get; set; }
+        public ICommand ViewDetails { get; set; }
+
+        public async Task LoadDataFrom(int parse)
+        {
+            var vacationInfo = await _vacationListService.GetFullVacationInfoAsync(parse);
+            Status = vacationInfo.Status;
+            Type = vacationInfo.Type.ToString();
+            StartDate = vacationInfo.StartDate;
+            EndDate = vacationInfo.EndDate;
+        }
     }
 }

@@ -43,7 +43,7 @@ namespace XamarinEpamVTSClient
             throw new ArgumentException($"Page for ViewModel of type '{typeof (TViewModelTo)}' is not defined");
         }
 
-        public void NavigateTo<TViewModelTo>() where TViewModelTo : ViewModelBase
+        public void NavigateTo<TViewModelTo>(string args) where TViewModelTo : ViewModelBase
         {
             
         }

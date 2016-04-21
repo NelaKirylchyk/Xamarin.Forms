@@ -37,7 +37,7 @@ namespace EpamVTSClient.DAL.Services
                 var vacationResponse = await _client.GetAsync<VacationInfo>($"vacation/get/get?id={vacationId}");
                 return vacationResponse;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return null;
             }

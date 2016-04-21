@@ -17,6 +17,7 @@ namespace EpamVTSClient.BLL.ViewModels
         private readonly IVacationListService _vacationListService;
         private readonly ILocalizationService _localizationService;
         private ObservableCollection<VacationViewModel> _vacationViewModel;
+        private INavigationService _navigationService;
 
         public ObservableCollection<VacationViewModel> VacationList
         {
@@ -31,11 +32,12 @@ namespace EpamVTSClient.BLL.ViewModels
             }
         }
 
-        public VacationListViewModel(IVacationListService vacationListService, ILocalizationService localizationService)
+        public VacationListViewModel(IVacationListService vacationListService, ILocalizationService localizationService, INavigationService navigationService)
         {
             _vacationListService = vacationListService;
             _localizationService = localizationService;
-            LoadData = new Command(async () => await LoadDataAsync());
+            _navigationService = navigationService;
+            LoadData = new Command(() => Task.Run(LoadDataAsync).Wait());
             LoadData.Execute(null);
         }
 
@@ -46,7 +48,7 @@ namespace EpamVTSClient.BLL.ViewModels
             try
             {
                 IEnumerable<ShortVacationInfo> result = await _vacationListService.GetVacationsAsync();
-                IEnumerable<VacationViewModel> vacationViewModels = result.Select(x => new VacationViewModel(_localizationService)
+                IEnumerable<VacationViewModel> vacationViewModels = result.Select(x => new VacationViewModel(_localizationService, _navigationService, _vacationListService)
                 {
                     Type = _localizationService.Localize(x.Type.ToString()),
                     Id = x.Id,

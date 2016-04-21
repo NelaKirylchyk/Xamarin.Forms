@@ -82,10 +82,12 @@ namespace EpamVTSClient.DAL.Services.OfflineService
             {
                 FullVacationDTO oldFullVacationDto = await _connection.Table<FullVacationDTO>().Where(r => r.Id == vacationInfo.Id).FirstOrDefaultAsync();
 
+                if (oldFullVacationDto != null)
+                {
+                    await _connection.DeleteAsync(oldFullVacationDto);
+                }
                 FullVacationDTO newFullVacationDto = new FullVacationDTO();
                 newFullVacationDto.Update(vacationInfo);
-
-                await _connection.DeleteAsync(oldFullVacationDto);
                 await _connection.InsertAsync(newFullVacationDto);
             }
             catch (Exception e)

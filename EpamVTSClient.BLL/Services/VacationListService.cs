@@ -74,7 +74,7 @@ namespace EpamVTSClient.BLL.Services
 
                 return fullVacationInfo;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return null;
             }
