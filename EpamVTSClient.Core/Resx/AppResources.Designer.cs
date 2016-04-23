@@ -71,6 +71,15 @@ namespace EpamVTSClient.Core.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string CancelEditVacationBtn {
+            get {
+                return ResourceManager.GetString("CancelEditVacationBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to cancelled.
         /// </summary>
         public static string Cancelled {
@@ -89,11 +98,38 @@ namespace EpamVTSClient.Core.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove Vacation.
+        /// </summary>
+        public static string DeleteVacationBtn {
+            get {
+                return ResourceManager.GetString("DeleteVacationBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to draft.
         /// </summary>
         public static string Draft {
             get {
                 return ResourceManager.GetString("Draft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Vacation.
+        /// </summary>
+        public static string EditVacationBtn {
+            get {
+                return ResourceManager.GetString("EditVacationBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Vacation.
+        /// </summary>
+        public static string EditVacationTitle {
+            get {
+                return ResourceManager.GetString("EditVacationTitle", resourceCulture);
             }
         }
         
@@ -197,6 +233,15 @@ namespace EpamVTSClient.Core.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string SaveEditVacationBtn {
+            get {
+                return ResourceManager.GetString("SaveEditVacationBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sick Leave.
         /// </summary>
         public static string Sick {
@@ -215,11 +260,47 @@ namespace EpamVTSClient.Core.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Vacation.
+        /// </summary>
+        public static string VacationAddVacTitle {
+            get {
+                return ResourceManager.GetString("VacationAddVacTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Vacation.
+        /// </summary>
+        public static string VacationEditInfoTitle {
+            get {
+                return ResourceManager.GetString("VacationEditInfoTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to End Date.
         /// </summary>
         public static string vacationEndDateLabel {
             get {
                 return ResourceManager.GetString("vacationEndDateLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vacation Info.
+        /// </summary>
+        public static string VacationInfoTitle {
+            get {
+                return ResourceManager.GetString("VacationInfoTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vacation List.
+        /// </summary>
+        public static string VacationListTitle {
+            get {
+                return ResourceManager.GetString("VacationListTitle", resourceCulture);
             }
         }
         

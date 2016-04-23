@@ -183,4 +183,31 @@
   <data name="WaitingForApproval" xml:space="preserve">
     <value>need approval</value>
   </data>
+  <data name="DeleteVacationBtn" xml:space="preserve">
+    <value>Remove Vacation</value>
+  </data>
+  <data name="EditVacationBtn" xml:space="preserve">
+    <value>Edit Vacation</value>
+  </data>
+  <data name="EditVacationTitle" xml:space="preserve">
+    <value>Edit Vacation</value>
+  </data>
+  <data name="VacationInfoTitle" xml:space="preserve">
+    <value>Vacation Info</value>
+  </data>
+  <data name="VacationListTitle" xml:space="preserve">
+    <value>Vacation List</value>
+  </data>
+  <data name="CancelEditVacationBtn" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="SaveEditVacationBtn" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="VacationAddVacTitle" xml:space="preserve">
+    <value>Add Vacation</value>
+  </data>
+  <data name="VacationEditInfoTitle" xml:space="preserve">
+    <value>Edit Vacation</value>
+  </data>
 </root>

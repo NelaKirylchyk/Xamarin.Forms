@@ -11,5 +11,6 @@ namespace EpamVTSClient.DAL.Services.OfflineService
         Task AddOrUpdateVacationListAsync(int userId, IEnumerable<ShortVacationInfo> vacationList);
         Task<FullVacationDTO> GetFullVacationAsync(int vacationId);
         Task AddUpdateFullVacationInfoAsync(VacationInfo vacationInfo);
+        Task<bool> DeleteVacationAsync(int id);
     }
 }

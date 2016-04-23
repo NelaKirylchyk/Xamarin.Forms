@@ -132,6 +132,9 @@
   <ItemGroup>
     <Compile Include="Activities\ActivityBase.cs" />
     <Compile Include="Activities\ActivityExtensions.cs" />
+    <Compile Include="Activities\DateChangedListener.cs" />
+    <Compile Include="Activities\AddVacationActivity.cs" />
+    <Compile Include="Activities\EditVacationActivity.cs" />
     <Compile Include="Activities\VacationListActivity.cs" />
     <Compile Include="Activities\VacationListViewAdapter.cs" />
     <Compile Include="App.cs" />
@@ -161,7 +164,7 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\AddUpdateVacationInfo.axml">
-      <SubType>AndroidResource</SubType>
+      <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\Header.axml">
       <SubType>AndroidResource</SubType>

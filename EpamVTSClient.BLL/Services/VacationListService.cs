@@ -86,18 +86,42 @@ namespace EpamVTSClient.BLL.Services
             {
                 if (IsConnected)
                 {
-                    var isUpdated = await _vacationListWebService.AddUpdateVacationAsync(vacationInfo);
-                    if (isUpdated)
+                    var id = await _vacationListWebService.AddUpdateVacationAsync(vacationInfo);
+                    if (id > 0)
                     {
+                        vacationInfo.Id = id;
                         await _vacationListOfflineDbService.AddUpdateFullVacationInfoAsync(vacationInfo);
                     }
                 }
-                await _vacationListOfflineDbService.AddUpdateFullVacationInfoAsync(vacationInfo);
+                //если нет интернета, добавить вак с новый айдишником
+             //   await _vacationListOfflineDbService.AddUpdateFullVacationInfoAsync(vacationInfo);
             }
             catch (Exception e)
             {
                 await _messageDialogService.ShowMessageDialogAsync(e.Message);
             }
+        }
+
+        public async Task<bool> DeleteVacationAsync(int id)
+        {
+            try
+            {
+                if (IsConnected)
+                {
+                    var isRemoved = await _vacationListWebService.DeleteVacationAsync(id);
+                    if (isRemoved)
+                    {
+                        await _vacationListOfflineDbService.DeleteVacationAsync(id);
+                    }
+                    return true;
+                }
+                return await _vacationListOfflineDbService.DeleteVacationAsync(id);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
         }
     }
 
@@ -107,5 +131,7 @@ namespace EpamVTSClient.BLL.Services
         Task<VacationInfo> GetFullVacationInfoAsync(int vacationId);
 
         Task AddUpdateVacationInfoAsync(VacationInfo vacationInfo);
+
+        Task<bool> DeleteVacationAsync(int id);
     }
 }

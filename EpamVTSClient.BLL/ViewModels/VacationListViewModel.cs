@@ -17,7 +17,8 @@ namespace EpamVTSClient.BLL.ViewModels
         private readonly IVacationListService _vacationListService;
         private readonly ILocalizationService _localizationService;
         private ObservableCollection<VacationViewModel> _vacationViewModel;
-        private INavigationService _navigationService;
+        private readonly INavigationService _navigationService;
+        private readonly ILoginService _loginService;
 
         public ObservableCollection<VacationViewModel> VacationList
         {
@@ -32,11 +33,12 @@ namespace EpamVTSClient.BLL.ViewModels
             }
         }
 
-        public VacationListViewModel(IVacationListService vacationListService, ILocalizationService localizationService, INavigationService navigationService)
+        public VacationListViewModel(IVacationListService vacationListService, ILocalizationService localizationService, INavigationService navigationService, ILoginService loginService)
         {
             _vacationListService = vacationListService;
             _localizationService = localizationService;
             _navigationService = navigationService;
+            _loginService = loginService;
             LoadData = new Command(() => Task.Run(LoadDataAsync).Wait());
             LoadData.Execute(null);
         }
@@ -48,15 +50,16 @@ namespace EpamVTSClient.BLL.ViewModels
             try
             {
                 IEnumerable<ShortVacationInfo> result = await _vacationListService.GetVacationsAsync();
-                IEnumerable<VacationViewModel> vacationViewModels = result.Select(x => new VacationViewModel(_localizationService, _navigationService, _vacationListService)
+                IEnumerable<VacationViewModel> vacationViewModels = result.Select(x => new VacationViewModel(_localizationService, _navigationService, _vacationListService, _loginService)
                 {
                     Type = _localizationService.Localize(x.Type.ToString()),
                     Id = x.Id,
                     ApproverFullName = x.ApproverFullName,
                     EndDate = x.EndDate,
                     StartDate = x.StartDate,
-                    Status = x.Status,
+                    VacationStatus = x.Status,
                     VacationStatusToDisplay = x.Status.ToString()
+
                 });
                 VacationList = new ObservableCollection<VacationViewModel>(vacationViewModels);
             }

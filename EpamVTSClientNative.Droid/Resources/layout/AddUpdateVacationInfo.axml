@@ -1,57 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:stretchColumns="0,1">
-        <TableRow>
-            <TextView
-                android:text="Vacation Status:"
-                android:layout_column="0"
-                android:gravity="right" />
-            <EditText
-                android:id="@+id/VacationStatus"
-                android:hint="vacation status"
-                android:gravity="left"
-                android:inputType="numberDecimal"
-                android:maxLines="1"
-                android:numeric="decimal" />
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:text="Vacation Type:"
-                android:layout_column="0"
-                android:gravity="right" />
-            <EditText
-                android:id="@+id/VacationType"
-                android:hint="vacation type"
-                android:gravity="left"
-                android:inputType="numberDecimal"
-                android:maxLines="1"
-                android:numeric="decimal" />
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:text="Start date:"
-                android:layout_column="0"
-                android:gravity="right" />
-            <DatePicker
-                android:id="@+id/EndDate"
-                android:gravity="left"
-                android:layout_marginBottom="0.0dp"
-                android:layout_marginRight="0.0dp" />
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:text="End date:"
-                android:layout_column="0"
-                android:gravity="right" />
-            <DatePicker
-                android:id="@+id/StartDate"
-                android:gravity="left" />
-        </TableRow>
-    </TableLayout>
-</LinearLayout>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/drawer_layout"
+    android:fitsSystemWindows="true">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar">
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:stretchColumns="0,1">
+                <TableRow>
+                    <TextView
+                        android:id="@+id/VacEditTypeInfo"
+                        android:layout_column="0"
+                        android:gravity="right" />
+                      <Spinner 
+                          android:id="@+id/VacTypeSpinner"
+                          android:layout_width="fill_parent"
+                          android:layout_height="wrap_content"/>
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:id="@+id/VacEditStatusInfo"
+                        android:layout_column="0"
+                        android:gravity="right" />
+                    <Spinner
+                        android:id="@+id/VacStatusSpinner"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"/>
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:id="@+id/VacEditStartDateInfo"
+                        android:layout_column="0"
+                        android:gravity="right" />
+                    <TextView
+                        android:id="@+id/StartDateEditInfo"
+                        android:gravity="left" />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:id="@+id/VacEditEndDateInfo"
+                        android:layout_column="0"
+                        android:gravity="right" />
+                    <DatePicker
+                        android:id="@+id/EndDatePicker"
+                        android:gravity="left"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:calendarViewShown="true"
+                        android:spinnersShown="false"
+                        android:layout_marginBottom="0.0dp"
+                        android:layout_marginRight="0.0dp" />
+                </TableRow>
+                <TableRow>
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/SaveEditVacationBtn" />
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/CancelEditVacationBtn" />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <android.support.design.widget.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:id="@+id/nav_view"
+        app:menu="@menu/navmenu"
+        app:headerLayout="@layout/header" />
+</android.support.v4.widget.DrawerLayout>

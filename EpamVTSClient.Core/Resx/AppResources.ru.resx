@@ -180,4 +180,34 @@
   <data name="WaitingForApproval" xml:space="preserve">
     <value>ожидает подтверждение</value>
   </data>
+  <data name="DeleteVacationBtn" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="EditVacationBtn" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="str" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EditVacationTitle" xml:space="preserve">
+    <value>Редактирование отпуска</value>
+  </data>
+  <data name="VacationInfoTitle" xml:space="preserve">
+    <value>Детали отпуска</value>
+  </data>
+  <data name="VacationListTitle" xml:space="preserve">
+    <value>Список отпусков</value>
+  </data>
+  <data name="CancelEditVacationBtn" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="SaveEditVacationBtn" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="VacationAddVacTitle" xml:space="preserve">
+    <value>Страница добавления</value>
+  </data>
+  <data name="VacationEditInfoTitle" xml:space="preserve">
+    <value>Страница редактирования</value>
+  </data>
 </root>

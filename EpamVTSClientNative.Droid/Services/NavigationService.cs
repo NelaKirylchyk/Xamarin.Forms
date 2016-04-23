@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Android.Content;
-using Android.OS;
 using EpamVTSClient.BLL.Services;
 using EpamVTSClient.BLL.ViewModels;
 using EpamVTSClient.BLL.ViewModels.Base;
@@ -19,13 +18,17 @@ namespace EpamVTSClientNative.Droid.Services
             new Dictionary<Type, Type>()
         {
             {
-                typeof(VacationListViewModel), typeof(VacationListActivity)
+                    typeof(VacationListViewModel), typeof(VacationListActivity)
             },
             {
-                      typeof(VacationViewModel), typeof(VacationActivity)
+                    typeof(VacationViewModel), typeof(VacationActivity)
+            },
+            {
+                    typeof(EditVacationViewModel), typeof(EditVacationActivity)
             }
         };
-        public void NavigateTo<TViewModelTo>(string args) where TViewModelTo : ViewModelBase
+
+        public Task NavigateToAsync<TViewModelTo>(string args) where TViewModelTo : ViewModelBase
         {
             Type viewType;
             if (ViewModelPageContainer.TryGetValue(typeof(TViewModelTo), out viewType))
@@ -37,11 +40,7 @@ namespace EpamVTSClientNative.Droid.Services
                 intent.PutExtra("args", args);
                 currentActivity.StartActivity(intent);
             }
-        }
-
-        public Task NavigateToAsync<TViewModelTo>() where TViewModelTo : ViewModelBase
-        {
-            return null;
+            return Task.FromResult(true);
         }
     }
 }

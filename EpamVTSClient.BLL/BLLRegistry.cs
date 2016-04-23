@@ -15,12 +15,13 @@ namespace EpamVTSClient.BLL
             unityContainer.RegisterType<LoginPageViewModel>();
             unityContainer.RegisterType<VacationListViewModel>();
             unityContainer.RegisterType<VacationViewModel>();
+            unityContainer.RegisterType<EditVacationViewModel>();
 
             unityContainer.RegisterType<ILoginService, LogInService>(new ContainerControlledLifetimeManager());
             unityContainer.RegisterType<IVacationListService, VacationListService>();
             unityContainer.RegisterInstance(new HttpClient(new HttpClientHandler()));
 
-            unityContainer.RegisterType<ILocalizationService, LocalizationService>();
+            unityContainer.RegisterType<ILocalizationService, LocalizationService>(new ContainerControlledLifetimeManager());
         }
     }
 }

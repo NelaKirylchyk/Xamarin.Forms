@@ -12,25 +12,29 @@ namespace EpamVTSClientNative.Droid.Activities
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            string text = Intent.GetStringExtra("args");
+            string parsedText = Intent.GetStringExtra("args");
             SetContentView(Resource.Layout.VacationInfo);
 
-            await ViewModel.LoadDataFrom(int.Parse(text));
+            await ViewModel.LoadDataFrom(int.Parse(parsedText));
             //Task.Run(() => ViewModel.LoadDataFrom(int.Parse(text))).Wait();
 
-            var localizationService = Factory.UnityContainer.Resolve<ILocalizationService>();
+            this.BindLabel(Resource.Id.VacationInfoEndDateLabel, LocalizationService.Localize("vacationEndDateLabel"));
+            this.BindLabel(Resource.Id.VacationInfoStartDateLabel, LocalizationService.Localize("vacationStartDateLabel"));
+            this.BindLabel(Resource.Id.VacationInfoStatusLabel, LocalizationService.Localize("vacationStatusInfoLabel"));
+            this.BindLabel(Resource.Id.VacationInfoTypeLabel, LocalizationService.Localize("vacationTypeInfoLabel"));
 
-            this.BindLabel(Resource.Id.VacationInfoEndDateLabel, localizationService.Localize("vacationEndDateLabel"));
-            this.BindLabel(Resource.Id.VacationInfoStartDateLabel, localizationService.Localize("vacationStartDateLabel"));
-            this.BindLabel(Resource.Id.VacationInfoStatusLabel, localizationService.Localize("vacationStatusInfoLabel"));
-            this.BindLabel(Resource.Id.VacationInfoTypeLabel, localizationService.Localize("vacationTypeInfoLabel"));
+            this.BindLabel(Resource.Id.DeleteVacationBtn, LocalizationService.Localize("DeleteVacationBtn"));
+            this.BindLabel(Resource.Id.EditVacationBtn, LocalizationService.Localize("EditVacationBtn"));
 
             this.BindText(Resource.Id.VacationInfoEndDate, ViewModel, vm => vm.EndDate);
             this.BindText(Resource.Id.VacationInfoStartDate, ViewModel, vm => vm.StartDate);
             this.BindText(Resource.Id.VacationInfoStatus, ViewModel, vm => vm.VacationStatusToDisplay);
             this.BindText(Resource.Id.VacationInfoType, ViewModel, vm => vm.Type);
 
-            InitSideMenu();
+            this.BindCommand(Resource.Id.DeleteVacationBtn, ViewModel.DeleteVacationCommand);
+            this.BindCommand(Resource.Id.EditVacationBtn, ViewModel.NavigateToEditViewCommand);
+
+            InitSideMenu(LocalizationService.Localize("VacationInfoTitle"));
         }
     }
 }

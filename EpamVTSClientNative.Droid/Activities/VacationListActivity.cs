@@ -23,7 +23,7 @@ namespace EpamVTSClientNative.Droid.Activities
             _listView.Adapter = _listViewAdapter;
             _listView.ItemClick += OnListItemClick;
 
-            InitSideMenu();
+            InitSideMenu(LocalizationService.Localize("VacationListTitle"));
         }
 
         void OnListItemClick(object sender, AdapterView.ItemClickEventArgs e)

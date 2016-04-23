@@ -62,6 +62,18 @@
                         android:id="@+id/VacationInfoEndDate"
                         android:gravity="left" />
                 </TableRow>
+                <TableRow>
+                </TableRow>
+                <TableRow>
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/EditVacationBtn" />
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/DeleteVacationBtn" />
+                </TableRow>
             </TableLayout>
         </LinearLayout>
 

@@ -16,6 +16,8 @@ namespace EpamVTSClientNative.Droid.Activities
             this.BindText(Resource.Id.emailText, ViewModel, vm => vm.UserName);
             this.BindText(Resource.Id.passwordText, ViewModel, vm => vm.Password);
 
+            this.BindLabel(Resource.Id.loginBtn, LocalizationService.Localize("LoginBtn"));
+
             ViewModel.UserName = "dz@epam.com";
             ViewModel.Password = "test1";
         }

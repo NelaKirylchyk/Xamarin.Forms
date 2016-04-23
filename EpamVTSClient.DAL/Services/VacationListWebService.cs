@@ -43,19 +43,31 @@ namespace EpamVTSClient.DAL.Services
             }
         }
 
-        public async Task<bool> AddUpdateVacationAsync(VacationInfo vacationInfo)
+        public async Task<bool> DeleteVacationAsync(int id)
+        {
+            try
+            {
+                return await _client.DeleteItemAsync($"vacation/delete?id={id}");
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public async Task<int> AddUpdateVacationAsync(VacationInfo vacationInfo)
         {
             try
             {
                 int newVacationId = await _client.PostAsync<VacationInfo, int>(vacationInfo, "vacation/update");
                 if (newVacationId > 0)
-                    return true;
+                    return newVacationId;
             }
             catch (Exception)
             {
-                return false;
+                return -1;
             }
-            return false;
+            return -1;
         }
     }
 }

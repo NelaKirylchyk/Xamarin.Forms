@@ -8,6 +8,7 @@ using Android.Support.V4.Widget;
 using Android.Support.Design.Widget;
 using EpamVTSClient.BLL.Services;
 using EpamVTSClient.BLL.ViewModels;
+using EpamVTSClient.Core.Services.Localization;
 
 namespace EpamVTSClientNative.Droid.Activities
 {
@@ -16,18 +17,23 @@ namespace EpamVTSClientNative.Droid.Activities
     {
         private DrawerLayout _drawerLayout;
 
+        protected ILocalizationService LocalizationService { get; private set; }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+
+            LocalizationService = Factory.UnityContainer.Resolve<ILocalizationService>();
             ViewModel = Factory.UnityContainer.Resolve<TViewModel>();
         }
 
-        protected void InitSideMenu()
+        protected void InitSideMenu(string title)
         {
             _drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
 
             // Init toolbar
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            toolbar.Title = title;
             SetSupportActionBar(toolbar);
 
             // Attach item selected handler to navigation view
@@ -41,16 +47,16 @@ namespace EpamVTSClientNative.Droid.Activities
             drawerToggle.SyncState();
         }
 
-        void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
+        async void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
         {
             var navigationService = Factory.UnityContainer.Resolve<INavigationService>();
             switch (e.MenuItem.ItemId)
             {
                 case (Resource.Id.nav_vacList):
-                    navigationService.NavigateTo<VacationListViewModel>(null);
+                    await navigationService.NavigateToAsync<VacationListViewModel>(null);
                     break;
                 case (Resource.Id.nav_addVac):
-                    // React on 'Messages' selection
+                    await navigationService.NavigateToAsync<EditVacationViewModel>("add");
                     break;
             }
 

@@ -29,7 +29,7 @@ namespace XamarinEpamVTSClient
             _unityContainer = unityContainer;
         }
 
-        public Task NavigateToAsync<TViewModelTo>() where TViewModelTo : ViewModelBase
+        public Task NavigateToAsync<TViewModelTo>(string args = null) where TViewModelTo : ViewModelBase
         {
             Type viewType;
             if (ViewModelPageContainer.TryGetValue(typeof (TViewModelTo), out viewType))

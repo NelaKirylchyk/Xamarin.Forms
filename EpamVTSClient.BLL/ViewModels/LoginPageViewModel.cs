@@ -111,8 +111,7 @@ namespace EpamVTSClient.BLL.ViewModels
                 var isLoggedIn = await _loginService.LogInAsync(UserName, Password);
                 if (isLoggedIn)
                 {
-                    //await _navigationService.NavigateToAsync<VacationListViewModel>();
-                    await Task.Run(() => _navigationService.NavigateTo<VacationListViewModel>(null));
+                    await _navigationService.NavigateToAsync<VacationListViewModel>(null);
                 }
                 // ErrorMessage = _localization.Localize("IncorrectUserNameOrPasswordErrorMsg");
             }

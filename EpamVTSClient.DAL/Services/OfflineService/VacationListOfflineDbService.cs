@@ -95,5 +95,22 @@ namespace EpamVTSClient.DAL.Services.OfflineService
                 await _messageDialogService.ShowMessageDialogAsync(e.Message);
             }
         }
+
+        public async Task<bool> DeleteVacationAsync(int id)
+        {
+            try
+            {
+                var vacationToBeRemoved = await _connection.Table<VacationDTO>().Where(r => r.Id == id).FirstOrDefaultAsync();
+                if (vacationToBeRemoved != null)
+                {
+                    await _connection.DeleteAsync(vacationToBeRemoved);
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
     }
 }

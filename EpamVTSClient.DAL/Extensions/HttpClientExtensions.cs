@@ -18,6 +18,12 @@ namespace EpamVTSClient.DAL.Extensions
             return await DeserializeResponseAsJsonOrThrow<TResult>(httpResponseMessage);
         }
 
+        public static async Task<bool> DeleteItemAsync(this HttpClient client, string urlWithParameters)
+        {
+            HttpResponseMessage httpResponseMessage = await client.DeleteAsync($"{DefaultUrl}{urlWithParameters}");
+            return httpResponseMessage.IsSuccessStatusCode;
+        }
+
         public static async Task<TResult> PostAsync<T, TResult>(this HttpClient client, T model, string apiController)
         {
             var serializeObject = JsonConvert.SerializeObject(model);
