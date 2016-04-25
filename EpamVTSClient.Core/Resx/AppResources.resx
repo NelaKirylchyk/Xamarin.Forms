@@ -219,4 +219,13 @@
   <data name="openCameraBtn" xml:space="preserve">
     <value>Upload with Camera</value>
   </data>
+  <data name="addVacation" xml:space="preserve">
+    <value>Add Vacation</value>
+  </data>
+  <data name="vacationList" xml:space="preserve">
+    <value>Vacation List</value>
+  </data>
+  <data name="menu" xml:space="preserve">
+    <value>Navigation menu</value>
+  </data>
 </root>

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using Android.App;
 using Android.Content;
@@ -12,6 +11,7 @@ using Android.Widget;
 using EpamVTSClient.BLL.ViewModels;
 using EpamVTSClient.Core.Enums;
 using EpamVTSClient.Core.Helpers;
+using EpamVTSClientNative.Droid.Activities.Extensions;
 using Uri = Android.Net.Uri;
 using Environment = Android.OS.Environment;
 using File = Java.IO.File;

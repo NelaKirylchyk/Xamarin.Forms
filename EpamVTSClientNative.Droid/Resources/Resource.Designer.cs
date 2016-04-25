@@ -3345,14 +3345,17 @@ namespace EpamVTSClientNative.Droid
 			// aapt resource value: 0x7f0b0072
 			public const int CancelEditVacationBtn = 2131427442;
 			
-			// aapt resource value: 0x7f0b009e
-			public const int DeleteVacationBtn = 2131427486;
+			// aapt resource value: 0x7f0b00a1
+			public const int DeleteVacationBtn = 2131427489;
 			
-			// aapt resource value: 0x7f0b009d
-			public const int EditVacationBtn = 2131427485;
+			// aapt resource value: 0x7f0b00a0
+			public const int EditVacationBtn = 2131427488;
 			
 			// aapt resource value: 0x7f0b006d
 			public const int EndDatePicker = 2131427437;
+			
+			// aapt resource value: 0x7f0b0076
+			public const int NavMenuTitle = 2131427446;
 			
 			// aapt resource value: 0x7f0b0071
 			public const int SaveEditVacationBtn = 2131427441;
@@ -3378,38 +3381,38 @@ namespace EpamVTSClientNative.Droid
 			// aapt resource value: 0x7f0b0067
 			public const int VacTypeSpinner = 2131427431;
 			
-			// aapt resource value: 0x7f0b009b
-			public const int VacationInfoEndDate = 2131427483;
+			// aapt resource value: 0x7f0b009e
+			public const int VacationInfoEndDate = 2131427486;
 			
-			// aapt resource value: 0x7f0b009a
-			public const int VacationInfoEndDateLabel = 2131427482;
+			// aapt resource value: 0x7f0b009d
+			public const int VacationInfoEndDateLabel = 2131427485;
+			
+			// aapt resource value: 0x7f0b009f
+			public const int VacationInfoPageImageView = 2131427487;
 			
 			// aapt resource value: 0x7f0b009c
-			public const int VacationInfoPageImageView = 2131427484;
+			public const int VacationInfoStartDate = 2131427484;
+			
+			// aapt resource value: 0x7f0b009b
+			public const int VacationInfoStartDateLabel = 2131427483;
+			
+			// aapt resource value: 0x7f0b009a
+			public const int VacationInfoStatus = 2131427482;
 			
 			// aapt resource value: 0x7f0b0099
-			public const int VacationInfoStartDate = 2131427481;
+			public const int VacationInfoStatusLabel = 2131427481;
 			
 			// aapt resource value: 0x7f0b0098
-			public const int VacationInfoStartDateLabel = 2131427480;
+			public const int VacationInfoType = 2131427480;
 			
 			// aapt resource value: 0x7f0b0097
-			public const int VacationInfoStatus = 2131427479;
+			public const int VacationInfoTypeLabel = 2131427479;
 			
-			// aapt resource value: 0x7f0b0096
-			public const int VacationInfoStatusLabel = 2131427478;
+			// aapt resource value: 0x7f0b00a4
+			public const int VacationListView = 2131427492;
 			
-			// aapt resource value: 0x7f0b0095
-			public const int VacationInfoType = 2131427477;
-			
-			// aapt resource value: 0x7f0b0094
-			public const int VacationInfoTypeLabel = 2131427476;
-			
-			// aapt resource value: 0x7f0b00a1
-			public const int VacationListView = 2131427489;
-			
-			// aapt resource value: 0x7f0b0087
-			public const int action0 = 2131427463;
+			// aapt resource value: 0x7f0b008a
+			public const int action0 = 2131427466;
 			
 			// aapt resource value: 0x7f0b0055
 			public const int action_bar = 2131427413;
@@ -3435,8 +3438,8 @@ namespace EpamVTSClientNative.Droid
 			// aapt resource value: 0x7f0b0056
 			public const int action_context_bar = 2131427414;
 			
-			// aapt resource value: 0x7f0b008b
-			public const int action_divider = 2131427467;
+			// aapt resource value: 0x7f0b008e
+			public const int action_divider = 2131427470;
 			
 			// aapt resource value: 0x7f0b0002
 			public const int action_menu_divider = 2131427330;
@@ -3462,8 +3465,8 @@ namespace EpamVTSClientNative.Droid
 			// aapt resource value: 0x7f0b001c
 			public const int always = 2131427356;
 			
-			// aapt resource value: 0x7f0b007f
-			public const int art = 2131427455;
+			// aapt resource value: 0x7f0b0082
+			public const int art = 2131427458;
 			
 			// aapt resource value: 0x7f0b0019
 			public const int beginning = 2131427353;
@@ -3474,11 +3477,11 @@ namespace EpamVTSClientNative.Droid
 			// aapt resource value: 0x7f0b004b
 			public const int buttonPanel = 2131427403;
 			
-			// aapt resource value: 0x7f0b0084
-			public const int buttons = 2131427460;
+			// aapt resource value: 0x7f0b0087
+			public const int buttons = 2131427463;
 			
-			// aapt resource value: 0x7f0b0088
-			public const int cancel_action = 2131427464;
+			// aapt resource value: 0x7f0b008b
+			public const int cancel_action = 2131427467;
 			
 			// aapt resource value: 0x7f0b0029
 			public const int center = 2131427369;
@@ -3492,8 +3495,8 @@ namespace EpamVTSClientNative.Droid
 			// aapt resource value: 0x7f0b004d
 			public const int checkbox = 2131427405;
 			
-			// aapt resource value: 0x7f0b008e
-			public const int chronometer = 2131427470;
+			// aapt resource value: 0x7f0b0091
+			public const int chronometer = 2131427473;
 			
 			// aapt resource value: 0x7f0b0031
 			public const int clip_horizontal = 2131427377;
@@ -3507,14 +3510,17 @@ namespace EpamVTSClientNative.Droid
 			// aapt resource value: 0x7f0b0046
 			public const int contentPanel = 2131427398;
 			
+			// aapt resource value: 0x7f0b007b
+			public const int copyright = 2131427451;
+			
 			// aapt resource value: 0x7f0b004a
 			public const int custom = 2131427402;
 			
 			// aapt resource value: 0x7f0b0049
 			public const int customPanel = 2131427401;
 			
-			// aapt resource value: 0x7f0b00a5
-			public const int dateTimeTextView = 2131427493;
+			// aapt resource value: 0x7f0b00a8
+			public const int dateTimeTextView = 2131427496;
 			
 			// aapt resource value: 0x7f0b0053
 			public const int decor_content_parent = 2131427411;
@@ -3522,14 +3528,14 @@ namespace EpamVTSClientNative.Droid
 			// aapt resource value: 0x7f0b003e
 			public const int default_activity_button = 2131427390;
 			
-			// aapt resource value: 0x7f0b007e
-			public const int default_control_frame = 2131427454;
+			// aapt resource value: 0x7f0b0081
+			public const int default_control_frame = 2131427457;
 			
 			// aapt resource value: 0x7f0b000d
 			public const int disableHome = 2131427341;
 			
-			// aapt resource value: 0x7f0b0085
-			public const int disconnect = 2131427461;
+			// aapt resource value: 0x7f0b0088
+			public const int disconnect = 2131427464;
 			
 			// aapt resource value: 0x7f0b0064
 			public const int drawer_layout = 2131427428;
@@ -3540,20 +3546,23 @@ namespace EpamVTSClientNative.Droid
 			// aapt resource value: 0x7f0b0057
 			public const int edit_query = 2131427415;
 			
-			// aapt resource value: 0x7f0b0076
-			public const int emailText = 2131427446;
+			// aapt resource value: 0x7f0b0077
+			public const int emailText = 2131427447;
 			
 			// aapt resource value: 0x7f0b001a
 			public const int end = 2131427354;
 			
-			// aapt resource value: 0x7f0b0093
-			public const int end_padder = 2131427475;
+			// aapt resource value: 0x7f0b0096
+			public const int end_padder = 2131427478;
 			
 			// aapt resource value: 0x7f0b0022
 			public const int enterAlways = 2131427362;
 			
 			// aapt resource value: 0x7f0b0023
 			public const int enterAlwaysCollapsed = 2131427363;
+			
+			// aapt resource value: 0x7f0b007a
+			public const int errorMessageTextView = 2131427450;
 			
 			// aapt resource value: 0x7f0b0024
 			public const int exitUntilCollapsed = 2131427364;
@@ -3591,20 +3600,20 @@ namespace EpamVTSClientNative.Droid
 			// aapt resource value: 0x7f0b003d
 			public const int image = 2131427389;
 			
-			// aapt resource value: 0x7f0b0092
-			public const int info = 2131427474;
+			// aapt resource value: 0x7f0b0095
+			public const int info = 2131427477;
 			
 			// aapt resource value: 0x7f0b002d
 			public const int left = 2131427373;
 			
-			// aapt resource value: 0x7f0b008c
-			public const int line1 = 2131427468;
+			// aapt resource value: 0x7f0b008f
+			public const int line1 = 2131427471;
 			
-			// aapt resource value: 0x7f0b0090
-			public const int line3 = 2131427472;
+			// aapt resource value: 0x7f0b0093
+			public const int line3 = 2131427475;
 			
-			// aapt resource value: 0x7f0b00a3
-			public const int linearLayout1 = 2131427491;
+			// aapt resource value: 0x7f0b00a6
+			public const int linearLayout1 = 2131427494;
 			
 			// aapt resource value: 0x7f0b000a
 			public const int listMode = 2131427338;
@@ -3612,26 +3621,26 @@ namespace EpamVTSClientNative.Droid
 			// aapt resource value: 0x7f0b003f
 			public const int list_item = 2131427391;
 			
-			// aapt resource value: 0x7f0b0078
-			public const int loginBtn = 2131427448;
-			
-			// aapt resource value: 0x7f0b00a0
-			public const int main_content = 2131427488;
-			
-			// aapt resource value: 0x7f0b008a
-			public const int media_actions = 2131427466;
-			
-			// aapt resource value: 0x7f0b007d
-			public const int media_route_control_frame = 2131427453;
-			
 			// aapt resource value: 0x7f0b0079
-			public const int media_route_list = 2131427449;
+			public const int loginBtn = 2131427449;
 			
-			// aapt resource value: 0x7f0b0082
-			public const int media_route_volume_layout = 2131427458;
+			// aapt resource value: 0x7f0b00a3
+			public const int main_content = 2131427491;
 			
-			// aapt resource value: 0x7f0b0083
-			public const int media_route_volume_slider = 2131427459;
+			// aapt resource value: 0x7f0b008d
+			public const int media_actions = 2131427469;
+			
+			// aapt resource value: 0x7f0b0080
+			public const int media_route_control_frame = 2131427456;
+			
+			// aapt resource value: 0x7f0b007c
+			public const int media_route_list = 2131427452;
+			
+			// aapt resource value: 0x7f0b0085
+			public const int media_route_volume_layout = 2131427461;
+			
+			// aapt resource value: 0x7f0b0086
+			public const int media_route_volume_slider = 2131427462;
 			
 			// aapt resource value: 0x7f0b001b
 			public const int middle = 2131427355;
@@ -3642,11 +3651,11 @@ namespace EpamVTSClientNative.Droid
 			// aapt resource value: 0x7f0b0014
 			public const int multiply = 2131427348;
 			
-			// aapt resource value: 0x7f0b00a8
-			public const int nav_addVac = 2131427496;
+			// aapt resource value: 0x7f0b00ab
+			public const int nav_addVac = 2131427499;
 			
-			// aapt resource value: 0x7f0b00a7
-			public const int nav_vacList = 2131427495;
+			// aapt resource value: 0x7f0b00aa
+			public const int nav_vacList = 2131427498;
 			
 			// aapt resource value: 0x7f0b0073
 			public const int nav_view = 2131427443;
@@ -3669,14 +3678,14 @@ namespace EpamVTSClientNative.Droid
 			// aapt resource value: 0x7f0b0042
 			public const int parentPanel = 2131427394;
 			
-			// aapt resource value: 0x7f0b0077
-			public const int passwordText = 2131427447;
+			// aapt resource value: 0x7f0b0078
+			public const int passwordText = 2131427448;
 			
 			// aapt resource value: 0x7f0b0027
 			public const int pin = 2131427367;
 			
-			// aapt resource value: 0x7f0b0080
-			public const int play_pause = 2131427456;
+			// aapt resource value: 0x7f0b0083
+			public const int play_pause = 2131427459;
 			
 			// aapt resource value: 0x7f0b0005
 			public const int progress_circular = 2131427333;
@@ -3687,14 +3696,14 @@ namespace EpamVTSClientNative.Droid
 			// aapt resource value: 0x7f0b004f
 			public const int radio = 2131427407;
 			
-			// aapt resource value: 0x7f0b00a2
-			public const int relativeLayout1 = 2131427490;
+			// aapt resource value: 0x7f0b00a5
+			public const int relativeLayout1 = 2131427493;
 			
 			// aapt resource value: 0x7f0b002e
 			public const int right = 2131427374;
 			
-			// aapt resource value: 0x7f0b007b
-			public const int route_name = 2131427451;
+			// aapt resource value: 0x7f0b007e
+			public const int route_name = 2131427454;
 			
 			// aapt resource value: 0x7f0b0015
 			public const int screen = 2131427349;
@@ -3741,8 +3750,8 @@ namespace EpamVTSClientNative.Droid
 			// aapt resource value: 0x7f0b0063
 			public const int select_dialog_listview = 2131427427;
 			
-			// aapt resource value: 0x7f0b007c
-			public const int settings = 2131427452;
+			// aapt resource value: 0x7f0b007f
+			public const int settings = 2131427455;
 			
 			// aapt resource value: 0x7f0b004e
 			public const int shortcut = 2131427406;
@@ -3777,38 +3786,38 @@ namespace EpamVTSClientNative.Droid
 			// aapt resource value: 0x7f0b002f
 			public const int start = 2131427375;
 			
-			// aapt resource value: 0x7f0b0089
-			public const int status_bar_latest_event_content = 2131427465;
+			// aapt resource value: 0x7f0b008c
+			public const int status_bar_latest_event_content = 2131427468;
 			
-			// aapt resource value: 0x7f0b0086
-			public const int stop = 2131427462;
+			// aapt resource value: 0x7f0b0089
+			public const int stop = 2131427465;
 			
 			// aapt resource value: 0x7f0b0060
 			public const int submit_area = 2131427424;
 			
-			// aapt resource value: 0x7f0b0081
-			public const int subtitle = 2131427457;
+			// aapt resource value: 0x7f0b0084
+			public const int subtitle = 2131427460;
 			
 			// aapt resource value: 0x7f0b000c
 			public const int tabMode = 2131427340;
 			
-			// aapt resource value: 0x7f0b0091
-			public const int text = 2131427473;
+			// aapt resource value: 0x7f0b0094
+			public const int text = 2131427476;
 			
-			// aapt resource value: 0x7f0b008f
-			public const int text2 = 2131427471;
+			// aapt resource value: 0x7f0b0092
+			public const int text2 = 2131427474;
 			
 			// aapt resource value: 0x7f0b0048
 			public const int textSpacerNoButtons = 2131427400;
 			
-			// aapt resource value: 0x7f0b008d
-			public const int time = 2131427469;
+			// aapt resource value: 0x7f0b0090
+			public const int time = 2131427472;
 			
 			// aapt resource value: 0x7f0b0041
 			public const int title = 2131427393;
 			
-			// aapt resource value: 0x7f0b007a
-			public const int title_bar = 2131427450;
+			// aapt resource value: 0x7f0b007d
+			public const int title_bar = 2131427453;
 			
 			// aapt resource value: 0x7f0b0044
 			public const int title_template = 2131427396;
@@ -3828,14 +3837,14 @@ namespace EpamVTSClientNative.Droid
 			// aapt resource value: 0x7f0b0013
 			public const int useLogo = 2131427347;
 			
-			// aapt resource value: 0x7f0b009f
-			public const int vacationListLayout = 2131427487;
+			// aapt resource value: 0x7f0b00a2
+			public const int vacationListLayout = 2131427490;
 			
-			// aapt resource value: 0x7f0b00a6
-			public const int vacationStatusTextView = 2131427494;
+			// aapt resource value: 0x7f0b00a9
+			public const int vacationStatusTextView = 2131427497;
 			
-			// aapt resource value: 0x7f0b00a4
-			public const int vacationTypeTextView = 2131427492;
+			// aapt resource value: 0x7f0b00a7
+			public const int vacationTypeTextView = 2131427495;
 			
 			// aapt resource value: 0x7f0b0009
 			public const int view_offset_helper = 2131427337;

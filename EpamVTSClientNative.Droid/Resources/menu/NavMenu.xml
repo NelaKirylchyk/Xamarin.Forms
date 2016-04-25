@@ -2,10 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
   <group android:checkableBehavior="single">
     <item
-      android:id="@+id/nav_vacList"
-      android:title="Vacation List" />
+      android:id="@+id/nav_vacList" />
     <item
-      android:id="@+id/nav_addVac"
-      android:title="Add Vacation" />
+      android:id="@+id/nav_addVac"/>
   </group>
 </menu>

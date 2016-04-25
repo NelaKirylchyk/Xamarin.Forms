@@ -9,6 +9,7 @@ using Android.Support.Design.Widget;
 using EpamVTSClient.BLL.Services;
 using EpamVTSClient.BLL.ViewModels;
 using EpamVTSClient.Core.Services.Localization;
+using EpamVTSClientNative.Droid.Activities.Extensions;
 
 namespace EpamVTSClientNative.Droid.Activities
 {
@@ -45,6 +46,11 @@ namespace EpamVTSClientNative.Droid.Activities
                 Resource.String.close_drawer);
             _drawerLayout.SetDrawerListener(drawerToggle);
             drawerToggle.SyncState();
+
+            this.BindNavMenu(Resource.Id.nav_vacList, LocalizationService.Localize("vacationList"));
+            this.BindNavMenu(Resource.Id.nav_addVac, LocalizationService.Localize("addVacation"));
+            this.BindLabel(Resource.Id.NavMenuTitle, LocalizationService.Localize("menu"));
+
         }
 
         async void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)

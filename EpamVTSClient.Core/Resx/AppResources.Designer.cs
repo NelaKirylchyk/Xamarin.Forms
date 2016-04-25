@@ -62,6 +62,15 @@ namespace EpamVTSClient.Core.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Vacation.
+        /// </summary>
+        public static string addVacation {
+            get {
+                return ResourceManager.GetString("addVacation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to approved.
         /// </summary>
         public static string Approved {
@@ -197,6 +206,15 @@ namespace EpamVTSClient.Core.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Navigation menu.
+        /// </summary>
+        public static string menu {
+            get {
+                return ResourceManager.GetString("menu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to none.
         /// </summary>
         public static string None {
@@ -319,6 +337,15 @@ namespace EpamVTSClient.Core.Resx {
         public static string VacationInfoTitle {
             get {
                 return ResourceManager.GetString("VacationInfoTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vacation List.
+        /// </summary>
+        public static string vacationList {
+            get {
+                return ResourceManager.GetString("vacationList", resourceCulture);
             }
         }
         

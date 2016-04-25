@@ -19,6 +19,7 @@
 
     <LinearLayout
         android:orientation="vertical"
+        android:background="@drawable/illustration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbar">
@@ -98,8 +99,9 @@
             android:layout_column="0"/>
           <ImageView
             android:gravity="left"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="fill_parent"
+            android:layout_height="150.0dp"
+            android:adjustViewBounds="true"
             android:id="@+id/editPageImageView" />
         </TableRow>
         <TableRow>

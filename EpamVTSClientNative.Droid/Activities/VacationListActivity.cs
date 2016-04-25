@@ -3,7 +3,7 @@ using Android.App;
 using Android.OS;
 using Android.Widget;
 using EpamVTSClient.BLL.ViewModels;
-using Toolbar = Android.Support.V7.Widget.Toolbar;
+using EpamVTSClientNative.Droid.Activities.Extensions;
 
 namespace EpamVTSClientNative.Droid.Activities
 {

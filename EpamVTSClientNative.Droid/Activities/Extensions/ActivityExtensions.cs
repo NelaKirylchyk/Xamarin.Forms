@@ -8,12 +8,16 @@ using System.Reflection;
 using System.Windows.Input;
 using Android.App;
 using Android.Graphics.Drawables;
+using Android.Support.Design.Widget;
 using Android.Views;
 using Android.Widget;
 using EpamVTSClient.Core.Services.Localization;
 using Microsoft.Practices.Unity;
+using Xamarin.Forms;
+using DatePicker = Android.Widget.DatePicker;
+using View = Android.Views.View;
 
-namespace EpamVTSClientNative.Droid.Activities
+namespace EpamVTSClientNative.Droid.Activities.Extensions
 {
     public static class ActivityExtensions
     {
@@ -76,6 +80,19 @@ namespace EpamVTSClientNative.Droid.Activities
             view.Text = label;
         }
 
+        public static void BindNavMenu(this Activity activity, int menuItemId, string label)
+        {
+            var navigationView = activity.FindViewById<NavigationView>(Resource.Id.nav_view);
+            var menu = navigationView.Menu.FindItem(menuItemId);
+            menu.SetTitle(label);
+        }
+
+        public static void BindHint(this Activity activity, int editTextViewId, string label)
+        {
+            var view = activity.FindViewById<EditText>(editTextViewId);
+            view.Hint = label;
+        }
+
         public static void BindSpinner<TViewModel, TProperty>(this Activity activity, int textViewId, TViewModel viewModel, Expression<Func<TViewModel, TProperty>> propertyExpression, List<TProperty> getValues)
             where TViewModel : INotifyPropertyChanged
         {
@@ -117,7 +134,6 @@ namespace EpamVTSClientNative.Droid.Activities
                 }
             };
         }
-
 
         public static void BindImageView<TViewModel, TProperty>(this Activity activity, int imageViewId, TViewModel viewModel,
     Expression<Func<TViewModel, TProperty>> propertyExpression)
@@ -161,35 +177,43 @@ namespace EpamVTSClientNative.Droid.Activities
             Expression<Func<TViewModel, TProperty>> propertyExpression)
             where TViewModel : INotifyPropertyChanged
         {
-            var view = activity.FindViewById<TextView>(textViewId);
-            if (view == null)
+            TextView textView = activity.FindViewById<TextView>(textViewId);
+            if (textView == null)
             {
                 throw new ArgumentException(nameof(textViewId));
             }
             string propertyName = propertyExpression.GetPropertyName();
             Func<TViewModel, TProperty> propertyGetter = propertyExpression.Compile();
 
-            TProperty propertyValue = propertyGetter(viewModel);
-            //TProperty propertyValue2 = (TProperty) viewModel.GetType().GetProperty(propertyName).GetValue(viewModel);
-            view.Text = propertyValue?.ToString();
+            textView.Text = GetPropertyValue(viewModel, propertyGetter);
 
             //viewModel to view
             viewModel.PropertyChanged += (sender, args) =>
             {
                 if (args.PropertyName == propertyName)
                 {
-                    TProperty propertyValue2 = propertyGetter(viewModel);
-                    //TProperty propertyValue2 = (TProperty) viewModel.GetType().GetProperty(propertyName).GetValue(viewModel);
-                    view.Text = propertyValue2?.ToString();
+                    string value = GetPropertyValue(viewModel, propertyGetter);
+                    if (value != textView.Text)
+                    {
+                        textView.Text = value;
+                    }
                 }
             };
             //view to viewModel
-            view.TextChanged += (sender, args) =>
+            textView.TextChanged += (sender, args) =>
             {
                 //todo: try catch ignore?
-                object convertedValue = Convert.ChangeType(view.Text, typeof(TProperty));
+                object convertedValue = Convert.ChangeType(textView.Text, typeof(TProperty));
                 viewModel.GetType().GetProperty(propertyName).SetValue(viewModel, convertedValue);
             };
+        }
+
+        private static string GetPropertyValue<TViewModel, TProperty>(TViewModel viewModel, Func<TViewModel, TProperty> propertyGetter)
+            where TViewModel : INotifyPropertyChanged
+        {
+            TProperty propertyValue = propertyGetter(viewModel);
+            var value = propertyValue?.ToString();
+            return value;
         }
 
         public static void BindVisibility<TViewModel>(this Activity activity, int textViewId, TViewModel viewModel,
@@ -210,7 +234,6 @@ namespace EpamVTSClientNative.Droid.Activities
                 if (args.PropertyName == propertyName)
                 {
                     bool propertyValue = propertyGetter(viewModel);
-                    //TProperty propertyValue2 = (TProperty) viewModel.GetType().GetProperty(propertyName).GetValue(viewModel);
                     view.Visibility = propertyValue ? ViewStates.Visible : ViewStates.Gone;
                 }
             };
@@ -234,7 +257,5 @@ namespace EpamVTSClientNative.Droid.Activities
 
             return property.Name;
         }
-
-
     }
 }

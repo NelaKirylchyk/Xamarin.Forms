@@ -2,6 +2,7 @@
 using Android.OS;
 using EpamVTSClient.BLL.ViewModels;
 using EpamVTSClient.Core.Services.Localization;
+using EpamVTSClientNative.Droid.Activities.Extensions;
 using Microsoft.Practices.Unity;
 
 namespace EpamVTSClientNative.Droid.Activities
@@ -16,13 +17,11 @@ namespace EpamVTSClientNative.Droid.Activities
             SetContentView(Resource.Layout.VacationInfo);
 
             await ViewModel.LoadDataFrom(int.Parse(parsedText));
-            //Task.Run(() => ViewModel.LoadDataFrom(int.Parse(text))).Wait();
 
             this.BindLabel(Resource.Id.VacationInfoEndDateLabel, LocalizationService.Localize("vacationEndDateLabel"));
             this.BindLabel(Resource.Id.VacationInfoStartDateLabel, LocalizationService.Localize("vacationStartDateLabel"));
             this.BindLabel(Resource.Id.VacationInfoStatusLabel, LocalizationService.Localize("vacationStatusInfoLabel"));
             this.BindLabel(Resource.Id.VacationInfoTypeLabel, LocalizationService.Localize("vacationTypeInfoLabel"));
-            //this.BindLabel(Resource.Id.VacationInfoImageLabel, LocalizationService.Localize("vacationImageLabel"));
             this.BindLabel(Resource.Id.DeleteVacationBtn, LocalizationService.Localize("DeleteVacationBtn"));
             this.BindLabel(Resource.Id.EditVacationBtn, LocalizationService.Localize("EditVacationBtn"));
 

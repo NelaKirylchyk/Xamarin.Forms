@@ -216,4 +216,13 @@
   <data name="openCameraBtn" xml:space="preserve">
     <value>Фото с камеры</value>
   </data>
+  <data name="addVacation" xml:space="preserve">
+    <value>Добавить отпуск</value>
+  </data>
+  <data name="vacationList" xml:space="preserve">
+    <value>Список отпусков</value>
+  </data>
+  <data name="menu" xml:space="preserve">
+    <value>Меню навигации</value>
+  </data>
 </root>

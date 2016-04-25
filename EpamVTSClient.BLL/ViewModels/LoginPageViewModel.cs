@@ -80,7 +80,7 @@ namespace EpamVTSClient.BLL.ViewModels
                 {
                     _isBusy = value;
                     OnPropertyChanged();
-                   // SignIn.ChangeCanExecute();
+                    ((Command)SignIn).ChangeCanExecute();
                 }
                 _isBusy = value;
             }
@@ -104,7 +104,7 @@ namespace EpamVTSClient.BLL.ViewModels
             {
                 if (string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(Password))
                 {
-                    //     ErrorMessage = _localization.Localize("EmptyUserNameOrPasswordErrorMsg");
+                    ErrorMessage = _localization.Localize("EmptyUserNameOrPasswordErrorMsg");
                     return;
                 }
                 IsBusy = true;
@@ -113,10 +113,10 @@ namespace EpamVTSClient.BLL.ViewModels
                 {
                     await _navigationService.NavigateToAsync<VacationListViewModel>(null);
                 }
-                // ErrorMessage = _localization.Localize("IncorrectUserNameOrPasswordErrorMsg");
-            }
-            catch (Exception e)
-            {
+                else
+                {
+                    ErrorMessage = _localization.Localize("IncorrectUserNameOrPasswordErrorMsg");
+                }
                 
             }
             finally
