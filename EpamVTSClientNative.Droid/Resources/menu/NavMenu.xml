@@ -7,20 +7,5 @@
     <item
       android:id="@+id/nav_addVac"
       android:title="Add Vacation" />
-    <!--<item
-      android:id="@+id/nav_friends"
-      android:title="Friends" />
-    <item
-      android:id="@+id/nav_discussion"
-      android:title="Devices" />-->
   </group>
-
-  <!--<item android:title="Sub items">
-    <menu>
-      <item
-        android:title="Sub item 1" />
-      <item
-        android:title="Sub item 2" />
-    </menu>
-  </item>-->
 </menu>

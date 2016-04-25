@@ -16,15 +16,19 @@
             p1:layout_width="match_parent"
             p1:layout_height="wrap_content"
             p1:id="@+id/vacationTypeTextView "
-            p1:textSize="15sp" />
+            p1:textColor="#ffffff"
+            p1:textSize="20sp" />
         <TextView
             p1:layout_width="match_parent"
             p1:layout_height="wrap_content"
+            p1:textColor="#ffffff"
             p1:id="@+id/dateTimeTextView "
-            p1:textSize="12sp" />
+            p1:textSize="18sp" />
     </LinearLayout>
     <TextView
         p1:layout_width="wrap_content"
+        p1:textSize="18sp"
+        p1:textColor="#ffffff"
         p1:layout_height="wrap_content"
         p1:id="@+id/vacationStatusTextView"
         p1:layout_centerVertical="true"
