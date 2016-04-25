@@ -30,21 +30,21 @@ namespace EpamVTSClient.DAL.Models
 
         public VacationType Type { get; set; }
 
-        public string VacationForm { get; set; }
+        public object VacationForm { get; set; }
 
         public void Update(FullVacationDTO newFullVacationDto)
         {
-            this.StartDate = newFullVacationDto.StartDate;
-            this.EndDate = newFullVacationDto.EndDate;
-            this.EmployeeId = newFullVacationDto.EmployeeId;
-            this.ApproverId = newFullVacationDto.ApproverId;
-            this.NoProjectManagerObjections = newFullVacationDto.NoProjectManagerObjections;
-            this.Comment = newFullVacationDto.Comment;
-            this.ConfirmationDocumentAvailable = newFullVacationDto.ConfirmationDocumentAvailable;
-            this.ProcessInstanceId = newFullVacationDto.ProcessInstanceId;
-            this.Status = newFullVacationDto.Status;
-            this.Type = newFullVacationDto.Type;
-            this.VacationForm = newFullVacationDto.VacationForm;
+            StartDate = newFullVacationDto.StartDate;
+            EndDate = newFullVacationDto.EndDate;
+            EmployeeId = newFullVacationDto.EmployeeId;
+            ApproverId = newFullVacationDto.ApproverId;
+            NoProjectManagerObjections = newFullVacationDto.NoProjectManagerObjections;
+            Comment = newFullVacationDto.Comment;
+            ConfirmationDocumentAvailable = newFullVacationDto.ConfirmationDocumentAvailable;
+            ProcessInstanceId = newFullVacationDto.ProcessInstanceId;
+            Status = newFullVacationDto.Status;
+            Type = newFullVacationDto.Type;
+            VacationForm = newFullVacationDto.VacationForm;
         }
     }
 }

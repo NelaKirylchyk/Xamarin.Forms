@@ -41,7 +41,7 @@ namespace EpamVTSClient.DAL.Models.DTOModels
             this.ProcessInstanceId = vacationNewInfo.ProcessInstanceId;
             this.Status = vacationNewInfo.Status;
             this.Type = vacationNewInfo.Type;
-            this.VacationForm = vacationNewInfo.VacationForm;
+            this.VacationForm = (string) vacationNewInfo.VacationForm;
         }
     }
 }

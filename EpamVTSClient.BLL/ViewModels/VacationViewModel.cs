@@ -4,9 +4,8 @@ using System.Windows.Input;
 using EpamVTSClient.BLL.Services;
 using EpamVTSClient.BLL.ViewModels.Base;
 using EpamVTSClient.Core.Enums;
+using EpamVTSClient.Core.Services;
 using EpamVTSClient.Core.Services.Localization;
-using EpamVTSClient.DAL.Models;
-using Plugin.Connectivity;
 using Xamarin.Forms;
 
 namespace EpamVTSClient.BLL.ViewModels
@@ -17,13 +16,15 @@ namespace EpamVTSClient.BLL.ViewModels
         private readonly INavigationService _navigationService;
         protected readonly IVacationListService VacationListService;
         private readonly ILoginService _loginService;
+        private readonly IMessageDialogService _messageDialogService;
         private string _vacationStatusToDisplay;
-        public VacationViewModel(ILocalizationService localizationService, INavigationService navigationService, IVacationListService vacationListService, ILoginService loginService)
+        public VacationViewModel(ILocalizationService localizationService, INavigationService navigationService, IVacationListService vacationListService, ILoginService loginService, IMessageDialogService messageDialogService)
         {
             _localizationService = localizationService;
             _navigationService = navigationService;
             VacationListService = vacationListService;
             _loginService = loginService;
+            _messageDialogService = messageDialogService;
             ViewDetails = new Command(() => navigationService.NavigateToAsync<VacationViewModel>(Id.ToString()));
             DeleteVacationCommand = new Command(async () => { await DeleteAsync(); });
             NavigateToEditViewCommand = new Command(() => navigationService.NavigateToAsync<EditVacationViewModel>(Id.ToString()));
@@ -34,7 +35,10 @@ namespace EpamVTSClient.BLL.ViewModels
             var isRemoved = await VacationListService.DeleteVacationAsync(Id);
             if(isRemoved)
                 await _navigationService.NavigateToAsync<VacationListViewModel>(null);
-            //else message dialog
+            else
+            {
+                await _messageDialogService.ShowMessageDialogAsync(_localizationService.Localize("errorMessage"));
+            }
         }
 
         public int Id { get; set; }
@@ -50,6 +54,8 @@ namespace EpamVTSClient.BLL.ViewModels
         public int ApproverId { get; set; }
 
         public VacationStatus VacationStatus { get; set; }
+
+        public string VacationForm { get; set; }
 
         public VacationType VacationType { get; set; }
 
@@ -88,6 +94,7 @@ namespace EpamVTSClient.BLL.ViewModels
             VacationStatusToDisplay = vacationInfo.Status.ToString();
             EmployeeId = vacationInfo.EmployeeId;
             ApproverId = vacationInfo.ApproverId;
+            VacationForm = vacationInfo.VacationForm as string;
         }
 
         public void SetDefaultData()

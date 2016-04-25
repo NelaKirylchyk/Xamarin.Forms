@@ -22,7 +22,7 @@ namespace EpamVTSClientNative.Droid.Activities
             this.BindLabel(Resource.Id.VacationInfoStartDateLabel, LocalizationService.Localize("vacationStartDateLabel"));
             this.BindLabel(Resource.Id.VacationInfoStatusLabel, LocalizationService.Localize("vacationStatusInfoLabel"));
             this.BindLabel(Resource.Id.VacationInfoTypeLabel, LocalizationService.Localize("vacationTypeInfoLabel"));
-
+            this.BindLabel(Resource.Id.VacationInfoImageLabel, LocalizationService.Localize("vacationImageLabel"));
             this.BindLabel(Resource.Id.DeleteVacationBtn, LocalizationService.Localize("DeleteVacationBtn"));
             this.BindLabel(Resource.Id.EditVacationBtn, LocalizationService.Localize("EditVacationBtn"));
 
@@ -33,6 +33,8 @@ namespace EpamVTSClientNative.Droid.Activities
 
             this.BindCommand(Resource.Id.DeleteVacationBtn, ViewModel.DeleteVacationCommand);
             this.BindCommand(Resource.Id.EditVacationBtn, ViewModel.NavigateToEditViewCommand);
+
+            this.BindImageView(Resource.Id.VacationInfoPageImageView, ViewModel, vm => vm.VacationForm);
 
             InitSideMenu(LocalizationService.Localize("VacationInfoTitle"));
         }

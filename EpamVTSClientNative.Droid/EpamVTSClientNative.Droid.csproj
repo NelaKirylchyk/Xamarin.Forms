@@ -130,13 +130,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Activities\ActivityBase.cs" />
-    <Compile Include="Activities\ActivityExtensions.cs" />
-    <Compile Include="Activities\DateChangedListener.cs" />
-    <Compile Include="Activities\AddVacationActivity.cs" />
+    <Compile Include="Activities\Base\ActivityBase.cs" />
+    <Compile Include="Activities\Extensions\ActivityExtensions.cs" />
+    <Compile Include="Helpers\BitmapHelper.cs" />
+    <Compile Include="Helpers\CameraHelper.cs" />
+    <Compile Include="Helpers\DateChangedListener.cs" />
     <Compile Include="Activities\EditVacationActivity.cs" />
     <Compile Include="Activities\VacationListActivity.cs" />
-    <Compile Include="Activities\VacationListViewAdapter.cs" />
+    <Compile Include="Activities\Extensions\VacationListViewAdapter.cs" />
     <Compile Include="App.cs" />
     <Compile Include="Factory.cs" />
     <Compile Include="Activities\LoginActivity.cs" />
@@ -208,6 +209,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\menu\NavMenu.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\SQLitePCL.raw.0.8.6\build\MonoAndroid\SQLitePCL.raw.targets" Condition="Exists('..\packages\SQLitePCL.raw.0.8.6\build\MonoAndroid\SQLitePCL.raw.targets')" />

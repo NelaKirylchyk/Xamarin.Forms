@@ -143,6 +143,15 @@ namespace EpamVTSClient.Core.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Something went wrong. Please, try again..
+        /// </summary>
+        public static string errorMessage {
+            get {
+                return ResourceManager.GetString("errorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to EXC.
         /// </summary>
         public static string ExceptionalLeave {
@@ -193,6 +202,15 @@ namespace EpamVTSClient.Core.Resx {
         public static string None {
             get {
                 return ResourceManager.GetString("None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload with Camera.
+        /// </summary>
+        public static string openCameraBtn {
+            get {
+                return ResourceManager.GetString("openCameraBtn", resourceCulture);
             }
         }
         
@@ -251,7 +269,7 @@ namespace EpamVTSClient.Core.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User name.
+        ///   Looks up a localized string similar to User name .
         /// </summary>
         public static string UserName {
             get {
@@ -278,7 +296,7 @@ namespace EpamVTSClient.Core.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to End Date.
+        ///   Looks up a localized string similar to End Date : .
         /// </summary>
         public static string vacationEndDateLabel {
             get {
@@ -287,7 +305,16 @@ namespace EpamVTSClient.Core.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vacation Info.
+        ///   Looks up a localized string similar to Attach File.
+        /// </summary>
+        public static string vacationImageLabel {
+            get {
+                return ResourceManager.GetString("vacationImageLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vacation Info : .
         /// </summary>
         public static string VacationInfoTitle {
             get {
@@ -296,7 +323,7 @@ namespace EpamVTSClient.Core.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vacation List.
+        ///   Looks up a localized string similar to Vacation List : .
         /// </summary>
         public static string VacationListTitle {
             get {
@@ -305,7 +332,7 @@ namespace EpamVTSClient.Core.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Start Date.
+        ///   Looks up a localized string similar to Start Date : .
         /// </summary>
         public static string vacationStartDateLabel {
             get {
@@ -314,7 +341,7 @@ namespace EpamVTSClient.Core.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vacation Status.
+        ///   Looks up a localized string similar to Vacation Status : .
         /// </summary>
         public static string vacationStatusInfoLabel {
             get {
@@ -323,7 +350,7 @@ namespace EpamVTSClient.Core.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vacation Type.
+        ///   Looks up a localized string similar to Vacation Type : .
         /// </summary>
         public static string vacationTypeInfoLabel {
             get {

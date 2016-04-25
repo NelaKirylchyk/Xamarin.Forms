@@ -166,16 +166,16 @@
     <value>Имя пользователя</value>
   </data>
   <data name="vacationEndDateLabel" xml:space="preserve">
-    <value>Дата окончания</value>
+    <value>Дата окончания : </value>
   </data>
   <data name="vacationStartDateLabel" xml:space="preserve">
-    <value>Дата начала</value>
+    <value>Дата начала : </value>
   </data>
   <data name="vacationStatusInfoLabel" xml:space="preserve">
-    <value>Статус</value>
+    <value>Статус : </value>
   </data>
   <data name="vacationTypeInfoLabel" xml:space="preserve">
-    <value>Тип</value>
+    <value>Тип : </value>
   </data>
   <data name="WaitingForApproval" xml:space="preserve">
     <value>ожидает подтверждение</value>
@@ -186,8 +186,8 @@
   <data name="EditVacationBtn" xml:space="preserve">
     <value>Редактировать</value>
   </data>
-  <data name="str" xml:space="preserve">
-    <value />
+  <data name="vacationImageLabel" xml:space="preserve">
+    <value>Загрузить фото</value>
   </data>
   <data name="EditVacationTitle" xml:space="preserve">
     <value>Редактирование отпуска</value>
@@ -209,5 +209,11 @@
   </data>
   <data name="VacationEditInfoTitle" xml:space="preserve">
     <value>Страница редактирования</value>
+  </data>
+  <data name="errorMessage" xml:space="preserve">
+    <value>Что-то пошло не так. Попробуйте ещё раз.</value>
+  </data>
+  <data name="openCameraBtn" xml:space="preserve">
+    <value>Фото с камеры</value>
   </data>
 </root>

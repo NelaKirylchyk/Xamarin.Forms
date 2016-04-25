@@ -107,7 +107,7 @@ namespace EpamVTSClient.DAL.Services.OfflineService
                 }
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }

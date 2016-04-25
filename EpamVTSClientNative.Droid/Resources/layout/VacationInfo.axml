@@ -5,85 +5,107 @@
     android:layout_height="fill_parent"
     android:id="@+id/drawer_layout"
     android:fitsSystemWindows="true">
-    <RelativeLayout
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/toolbar">
-            <TableLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:stretchColumns="0,1">
-                <TableRow>
-                    <TextView
-                        android:id="@+id/VacationInfoTypeLabel"
-                        android:layout_column="0"
-                        android:gravity="right" />
-                    <TextView
-                        android:id="@+id/VacationInfoType"
-                        android:gravity="left" />
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:id="@+id/VacationInfoStatusLabel"
-                        android:layout_column="0"
-                        android:gravity="right" />
-                    <TextView
-                        android:id="@+id/VacationInfoStatus"
-                        android:gravity="left" />
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:id="@+id/VacationInfoStartDateLabel"
-                        android:layout_column="0"
-                        android:gravity="right" />
-                    <TextView
-                        android:id="@+id/VacationInfoStartDate"
-                        android:gravity="left" />
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:id="@+id/VacationInfoEndDateLabel"
-                        android:layout_column="0"
-                        android:gravity="right" />
-                    <TextView
-                        android:id="@+id/VacationInfoEndDate"
-                        android:gravity="left" />
-                </TableRow>
-                <TableRow>
-                </TableRow>
-                <TableRow>
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/EditVacationBtn" />
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/DeleteVacationBtn" />
-                </TableRow>
-            </TableLayout>
-        </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@id/toolbar">
+      <TableLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:padding="10dp"
+          android:stretchColumns="0,1">
+        <TableRow>
+          <TextView
+              android:id="@+id/VacationInfoTypeLabel"
+              android:layout_column="0"
+              android:textSize="20sp"
+              android:textStyle="bold"
+              android:gravity="right" />
+          <TextView
+              android:id="@+id/VacationInfoType"
+              android:textSize="18sp"
+              android:gravity="left" />
+        </TableRow>
+        <TableRow>
+          <TextView
+              android:id="@+id/VacationInfoStatusLabel"
+              android:textSize="20sp"
+              android:layout_column="0"
+              android:textStyle="bold"
+              android:gravity="right" />
+          <TextView
+              android:id="@+id/VacationInfoStatus"
+              android:textSize="18sp"
+              android:gravity="left" />
+        </TableRow>
+        <TableRow>
+          <TextView
+              android:id="@+id/VacationInfoStartDateLabel"
+              android:layout_column="0"
+              android:textSize="20sp"
+              android:textStyle="bold"
+              android:gravity="right" />
+          <TextView
+              android:id="@+id/VacationInfoStartDate"
+              android:textSize="18sp"
+              android:gravity="left" />
+        </TableRow>
+        <TableRow>
+          <TextView
+              android:id="@+id/VacationInfoEndDateLabel"
+              android:layout_column="0"
+              android:textSize="20sp"
+              android:textStyle="bold"
+              android:gravity="right" />
+          <TextView
+              android:id="@+id/VacationInfoEndDate"
+              android:textSize="18sp"
+              android:gravity="left" />
+        </TableRow>
+        <TableRow>
+          <ImageView
+            android:gravity="left"
+            android:layout_width="fill_parent"
+            android:layout_height="150.0dp"
+            android:adjustViewBounds="true"
+            android:id="@+id/VacationInfoPageImageView" />
+        </TableRow>
+        <TableRow>
+          <Button
+              android:layout_width="match_parent"
+              android:textSize="16sp"
+              android:layout_height="wrap_content"
+              android:id="@+id/EditVacationBtn" />
+          <Button
+              android:layout_width="match_parent"
+              android:textSize="16sp"
+              android:layout_height="wrap_content"
+              android:id="@+id/DeleteVacationBtn" />
+        </TableRow>
+      </TableLayout>
+    </LinearLayout>
 
-    </RelativeLayout>
+  </RelativeLayout>
 
-    <android.support.design.widget.NavigationView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:id="@+id/nav_view"
-        app:menu="@menu/navmenu"
-        app:headerLayout="@layout/header" />
+  <android.support.design.widget.NavigationView
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:layout_gravity="start"
+      android:id="@+id/nav_view"
+      app:menu="@menu/navmenu"
+      app:headerLayout="@layout/header" />
 </android.support.v4.widget.DrawerLayout>

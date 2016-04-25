@@ -1,8 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Windows.Input;
 using EpamVTSClient.BLL.Services;
-using EpamVTSClient.Core.Enums;
-using EpamVTSClient.Core.Helpers;
+using EpamVTSClient.Core.Services;
 using EpamVTSClient.Core.Services.Localization;
 using EpamVTSClient.DAL.Models;
 using Xamarin.Forms;
@@ -16,7 +15,7 @@ namespace EpamVTSClient.BLL.ViewModels
 
         public ICommand CancelEditVacationCommand { get; set; }
 
-        public EditVacationViewModel(ILocalizationService localizationService, INavigationService navigationService, IVacationListService vacationListService, ILoginService loginService) : base(localizationService, navigationService, vacationListService, loginService)
+        public EditVacationViewModel(ILocalizationService localizationService, INavigationService navigationService, IVacationListService vacationListService, ILoginService loginService, IMessageDialogService messageDialogService) : base(localizationService, navigationService, vacationListService, loginService, messageDialogService)
         {
             _navigationService = navigationService;
             EditVacationCommand = new Command(async () => { await EditAsync(); });
@@ -39,7 +38,6 @@ namespace EpamVTSClient.BLL.ViewModels
             await _navigationService.NavigateToAsync<VacationListViewModel>(null);
         }
 
-        public string VacationForm { get; set; }
 
     }
 }
