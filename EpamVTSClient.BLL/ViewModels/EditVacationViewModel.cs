@@ -19,7 +19,17 @@ namespace EpamVTSClient.BLL.ViewModels
         {
             _navigationService = navigationService;
             EditVacationCommand = new Command(async () => { await EditAsync(); });
-            CancelEditVacationCommand = new Command(() => { _navigationService.NavigateToAsync<VacationViewModel>(Id.ToString()); });
+            CancelEditVacationCommand = new Command(async () =>
+            {
+                if (Id == 0)
+                {
+                    await _navigationService.NavigateToAsync<VacationListViewModel>(null);
+                }
+                else
+                {
+                    await _navigationService.NavigateToAsync<VacationViewModel>(Id.ToString());
+                }
+            });
         }
 
         private async Task EditAsync()

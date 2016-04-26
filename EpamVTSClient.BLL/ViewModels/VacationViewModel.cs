@@ -30,9 +30,9 @@ namespace EpamVTSClient.BLL.ViewModels
             VacationListService = vacationListService;
             _loginService = loginService;
             _messageDialogService = messageDialogService;
-            ViewDetails = new Command(() => navigationService.NavigateToAsync<VacationViewModel>(Id.ToString()));
+            ViewDetails = new Command(async () => await navigationService.NavigateToAsync<VacationViewModel>(Id.ToString()));
             DeleteVacationCommand = new Command(async () => { await DeleteAsync(); });
-            NavigateToEditViewCommand = new Command(() => navigationService.NavigateToAsync<EditVacationViewModel>(Id.ToString()));
+            NavigateToEditViewCommand = new Command(async () => await navigationService.NavigateToAsync<EditVacationViewModel>(Id.ToString()));
         }
 
         private async Task DeleteAsync()
