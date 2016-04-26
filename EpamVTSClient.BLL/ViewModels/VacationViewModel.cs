@@ -14,20 +14,20 @@ namespace EpamVTSClient.BLL.ViewModels
     {
         private readonly ILocalizationService _localizationService;
         private readonly INavigationService _navigationService;
-        protected readonly IVacationListService VacationListService;
+        protected readonly IVacationsService VacationsService;
         private readonly ILoginService _loginService;
         private readonly IMessageDialogService _messageDialogService;
         private string _vacationStatusToDisplay;
         public VacationViewModel(
             ILocalizationService localizationService,
             INavigationService navigationService,
-            IVacationListService vacationListService,
+            IVacationsService vacationsService,
             ILoginService loginService,
             IMessageDialogService messageDialogService)
         {
             _localizationService = localizationService;
             _navigationService = navigationService;
-            VacationListService = vacationListService;
+            VacationsService = vacationsService;
             _loginService = loginService;
             _messageDialogService = messageDialogService;
             ViewDetails = new Command(async () => await navigationService.NavigateToAsync<VacationViewModel>(Id.ToString()));
@@ -37,7 +37,7 @@ namespace EpamVTSClient.BLL.ViewModels
 
         private async Task DeleteAsync()
         {
-            var isRemoved = await VacationListService.DeleteVacationAsync(Id);
+            var isRemoved = await VacationsService.DeleteVacationAsync(Id);
             if (isRemoved)
             {
                 await _navigationService.NavigateToAsync<VacationListViewModel>(null);
@@ -88,7 +88,7 @@ namespace EpamVTSClient.BLL.ViewModels
 
         public async Task LoadDataFrom(int vacationId)
         {
-            var vacationInfo = await VacationListService.GetFullVacationInfoAsync(vacationId);
+            var vacationInfo = await VacationsService.GetFullVacationInfoAsync(vacationId);
 
             Id = vacationInfo.Id;
             VacationStatus = vacationInfo.Status;

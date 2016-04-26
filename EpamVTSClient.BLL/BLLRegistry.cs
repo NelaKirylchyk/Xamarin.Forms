@@ -18,7 +18,7 @@ namespace EpamVTSClient.BLL
             unityContainer.RegisterType<EditVacationViewModel>();
 
             unityContainer.RegisterType<ILoginService, LogInService>(new ContainerControlledLifetimeManager());
-            unityContainer.RegisterType<IVacationListService, VacationListService>();
+            unityContainer.RegisterType<IVacationsService, VacationsService>();
             unityContainer.RegisterInstance(new HttpClient(new HttpClientHandler()));
 
             unityContainer.RegisterType<ILocalizationService, LocalizationService>(new ContainerControlledLifetimeManager());

@@ -12,10 +12,9 @@ namespace EpamVTSClient.BLL.ViewModels
     {
         private readonly INavigationService _navigationService;
         public ICommand EditVacationCommand { get; set; }
-
         public ICommand CancelEditVacationCommand { get; set; }
 
-        public EditVacationViewModel(ILocalizationService localizationService, INavigationService navigationService, IVacationListService vacationListService, ILoginService loginService, IMessageDialogService messageDialogService) : base(localizationService, navigationService, vacationListService, loginService, messageDialogService)
+        public EditVacationViewModel(ILocalizationService localizationService, INavigationService navigationService, IVacationsService vacationsService, ILoginService loginService, IMessageDialogService messageDialogService) : base(localizationService, navigationService, vacationsService, loginService, messageDialogService)
         {
             _navigationService = navigationService;
             EditVacationCommand = new Command(async () => { await EditAsync(); });
@@ -34,7 +33,7 @@ namespace EpamVTSClient.BLL.ViewModels
 
         private async Task EditAsync()
         {
-            await VacationListService.AddUpdateVacationInfoAsync(new VacationInfo()
+            await VacationsService.AddUpdateVacationInfoAsync(new VacationInfo()
             {
                 StartDate = StartDate,
                 EndDate = EndDate,

@@ -11,7 +11,7 @@ using Plugin.Connectivity;
 
 namespace EpamVTSClient.BLL.Services
 {
-    public class VacationListService : IVacationListService
+    public class VacationsService : IVacationsService
     {
         private readonly IVacationsWebService _vacationsWebService;
         private readonly ILoginService _loginService;
@@ -20,7 +20,7 @@ namespace EpamVTSClient.BLL.Services
 
         public bool IsConnected => CrossConnectivity.Current.IsConnected;
 
-        public VacationListService(
+        public VacationsService(
             IVacationsWebService vacationsWebService,
             ILoginService loginService,
             IVacationListOfflineDBService vacationListOfflineDbService,
@@ -74,7 +74,7 @@ namespace EpamVTSClient.BLL.Services
 
                 return fullVacationInfo;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
@@ -127,7 +127,6 @@ namespace EpamVTSClient.BLL.Services
             {
                 return false;
             }
-
         }
     }
 }
