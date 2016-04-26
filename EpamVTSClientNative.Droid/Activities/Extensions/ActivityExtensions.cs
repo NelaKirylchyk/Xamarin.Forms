@@ -11,6 +11,7 @@ using Android.Graphics.Drawables;
 using Android.Support.Design.Widget;
 using Android.Views;
 using Android.Widget;
+using EpamVTSClient.BLL.ViewModels;
 using EpamVTSClient.Core.Services.Localization;
 using EpamVTSClientNative.Droid.Helpers;
 using Microsoft.Practices.Unity;
@@ -127,8 +128,8 @@ namespace EpamVTSClientNative.Droid.Activities.Extensions
             {
                 if (args.PropertyName == propertyName)
                 {
-                    TProperty propertyValue2 = propertyGetter(viewModel);
-                    string value = dictionary[propertyValue2];
+                    TProperty propValue = propertyGetter(viewModel);
+                    string value = dictionary[propValue];
                     var position = adapter.GetPosition(value);
                     spinner.SetSelection(position);
                 }
@@ -205,6 +206,21 @@ namespace EpamVTSClientNative.Droid.Activities.Extensions
                 object convertedValue = Convert.ChangeType(textView.Text, typeof(TProperty));
                 viewModel.GetType().GetProperty(propertyName).SetValue(viewModel, convertedValue);
             };
+        }
+
+        public static void BindListView<TViewModel>(this Activity activity, int textViewId, TViewModel viewModel, List<VacationViewModel> vacationList)
+    where TViewModel : INotifyPropertyChanged
+        {
+            var listView = activity.FindViewById<ListView>(Resource.Id.VacationListView);
+            _listViewAdapter = new VacationListViewAdapter(activity, vacationList);
+            listView.Adapter = _listViewAdapter;
+            listView.ItemClick += OnListItemClick;
+        }
+        private static VacationListViewAdapter _listViewAdapter;
+        static void OnListItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            VacationViewModel item = _listViewAdapter[e.Position];
+            item.ViewDetails.Execute(null);
         }
 
         private static string GetPropertyValue<TViewModel, TProperty>(TViewModel viewModel, Func<TViewModel, TProperty> propertyGetter)
