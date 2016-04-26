@@ -12,7 +12,7 @@ namespace EpamVTSClient.DAL
         {
             _unityContainer = unityContainer;
             unityContainer.RegisterType<ILoginWebService, LoginWebService>();
-            unityContainer.RegisterType<IVacationListWebService, VacationListWebService>();
+            unityContainer.RegisterType<IVacationsWebService, VacationsWebService>();
 
             unityContainer.RegisterType<ILoginOfflineDBService, LoginOfflineDbService>();
             unityContainer.RegisterType<IVacationListOfflineDBService, VacationListOfflineDBService>();

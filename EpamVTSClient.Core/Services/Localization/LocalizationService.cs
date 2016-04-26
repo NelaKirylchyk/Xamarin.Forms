@@ -1,9 +1,8 @@
 ﻿using System.Globalization;
 using System.Reflection;
 using System.Resources;
-using EpamVTSClient.Core.Services.Localization;
 
-namespace EpamVTSClient.Core
+namespace EpamVTSClient.Core.Services.Localization
 {
     public class LocalizationService : ILocalizationService
     {

@@ -37,7 +37,5 @@ namespace EpamVTSClient.BLL.ViewModels
             });
             await _navigationService.NavigateToAsync<VacationListViewModel>(null);
         }
-
-
     }
 }

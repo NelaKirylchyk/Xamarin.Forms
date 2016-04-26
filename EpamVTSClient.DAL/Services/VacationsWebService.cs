@@ -8,11 +8,11 @@ using EpamVTSClient.DAL.Models;
 
 namespace EpamVTSClient.DAL.Services
 {
-    public class VacationListWebService : IVacationListWebService
+    public class VacationsWebService : IVacationsWebService
     {
         private readonly HttpClient _client;
 
-        public VacationListWebService(HttpClient client)
+        public VacationsWebService(HttpClient client)
         {
             _client = client;
         }
@@ -37,7 +37,7 @@ namespace EpamVTSClient.DAL.Services
                 var vacationResponse = await _client.GetAsync<VacationInfo>($"vacation/get/get?id={vacationId}");
                 return vacationResponse;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
@@ -49,7 +49,7 @@ namespace EpamVTSClient.DAL.Services
             {
                 return await _client.DeleteItemAsync($"vacation/delete?id={id}");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -61,7 +61,9 @@ namespace EpamVTSClient.DAL.Services
             {
                 int newVacationId = await _client.PostAsync<VacationInfo, int>(vacationInfo, "vacation/update");
                 if (newVacationId > 0)
+                {
                     return newVacationId;
+                }
             }
             catch (Exception)
             {

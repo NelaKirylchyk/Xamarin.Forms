@@ -2,25 +2,23 @@ using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using EpamVTSClient.Core;
 using Newtonsoft.Json;
 
 namespace EpamVTSClient.DAL.Extensions
 {
     public static class HttpClientExtensions
     {
-        //private static readonly string DefaultUrl = "http://epbyminw3859.minsk.epam.com/api/";
-        private static readonly string DefaultUrl = "http://169.254.80.80/api/";
-
         public static async Task<TResult> GetAsync<TResult>(this HttpClient client, string urlWithParameters)
         {
-            HttpResponseMessage httpResponseMessage = await client.GetAsync($"{DefaultUrl}{urlWithParameters}");
+            HttpResponseMessage httpResponseMessage = await client.GetAsync($"{Configurations.DefaultUrl}{urlWithParameters}");
 
             return await DeserializeResponseAsJsonOrThrow<TResult>(httpResponseMessage);
         }
 
         public static async Task<bool> DeleteItemAsync(this HttpClient client, string urlWithParameters)
         {
-            HttpResponseMessage httpResponseMessage = await client.DeleteAsync($"{DefaultUrl}{urlWithParameters}");
+            HttpResponseMessage httpResponseMessage = await client.DeleteAsync($"{Configurations.DefaultUrl}{urlWithParameters}");
             return httpResponseMessage.IsSuccessStatusCode;
         }
 
@@ -29,7 +27,7 @@ namespace EpamVTSClient.DAL.Extensions
             var serializeObject = JsonConvert.SerializeObject(model);
 
             HttpResponseMessage httpResponseMessage =
-                await client.PostAsync($"{DefaultUrl}{apiController}",
+                await client.PostAsync($"{Configurations.DefaultUrl}{apiController}",
                     new StringContent(serializeObject, Encoding.UTF8, "application/json"));
 
             return await DeserializeResponseAsJsonOrThrow<TResult>(httpResponseMessage);

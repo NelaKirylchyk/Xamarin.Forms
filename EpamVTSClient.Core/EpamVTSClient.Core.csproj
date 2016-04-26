@@ -36,6 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Configurations.cs" />
     <Compile Include="Enums\VacationStatus.cs" />
     <Compile Include="Enums\VacationType.cs" />
     <Compile Include="Helpers\EnumExtensions.cs" />

@@ -4,7 +4,7 @@ using EpamVTSClient.DAL.Models;
 
 namespace EpamVTSClient.DAL.Services
 {
-    public interface IVacationListWebService
+    public interface IVacationsWebService
     {
         Task<IEnumerable<ShortVacationInfo>> GetShortVacationsAsync(int userId);
         Task<int> AddUpdateVacationAsync(VacationInfo vacationInfo);

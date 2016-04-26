@@ -13,7 +13,7 @@ namespace EpamVTSClient.BLL.Services
 {
     public class VacationListService : IVacationListService
     {
-        private readonly IVacationListWebService _vacationListWebService;
+        private readonly IVacationsWebService _vacationsWebService;
         private readonly ILoginService _loginService;
         private readonly IVacationListOfflineDBService _vacationListOfflineDbService;
         private readonly IMessageDialogService _messageDialogService;
@@ -21,12 +21,12 @@ namespace EpamVTSClient.BLL.Services
         public bool IsConnected => CrossConnectivity.Current.IsConnected;
 
         public VacationListService(
-            IVacationListWebService vacationListWebService,
+            IVacationsWebService vacationsWebService,
             ILoginService loginService,
             IVacationListOfflineDBService vacationListOfflineDbService,
             IMessageDialogService messageDialogService)
         {
-            _vacationListWebService = vacationListWebService;
+            _vacationsWebService = vacationsWebService;
             _loginService = loginService;
             _vacationListOfflineDbService = vacationListOfflineDbService;
             _messageDialogService = messageDialogService;
@@ -37,7 +37,7 @@ namespace EpamVTSClient.BLL.Services
             int userId = _loginService.User.Id;
             if (IsConnected)
             {
-                IEnumerable<ShortVacationInfo> vacationList = await _vacationListWebService.GetShortVacationsAsync(userId);
+                IEnumerable<ShortVacationInfo> vacationList = await _vacationsWebService.GetShortVacationsAsync(userId);
                 await _vacationListOfflineDbService.AddOrUpdateVacationListAsync(userId, vacationList);
                 return vacationList;
             }
@@ -61,7 +61,7 @@ namespace EpamVTSClient.BLL.Services
             {
                 if (IsConnected)
                 {
-                    var vacationInfo = await _vacationListWebService.GetFullVacationInfoAsync(vacationId);
+                    var vacationInfo = await _vacationsWebService.GetFullVacationInfoAsync(vacationId);
                     if (vacationInfo != null)
                     {
                         await _vacationListOfflineDbService.AddUpdateFullVacationInfoAsync(vacationInfo);
@@ -86,15 +86,21 @@ namespace EpamVTSClient.BLL.Services
             {
                 if (IsConnected)
                 {
-                    var id = await _vacationListWebService.AddUpdateVacationAsync(vacationInfo);
+                    int id = await _vacationsWebService.AddUpdateVacationAsync(vacationInfo);
                     if (id > 0)
                     {
                         vacationInfo.Id = id;
                         await _vacationListOfflineDbService.AddUpdateFullVacationInfoAsync(vacationInfo);
                     }
                 }
-                //если нет интернета, добавить вак с новый айдишником
-             //   await _vacationListOfflineDbService.AddUpdateFullVacationInfoAsync(vacationInfo);
+                else
+                {
+                    List<VacationDTO> vacationDtos = await _vacationListOfflineDbService.GetVacationListAsync(_loginService.User.Id);
+                    var lastVacation = vacationDtos.LastOrDefault();
+                    vacationInfo.Id = lastVacation.Id + 1;
+                    await _vacationListOfflineDbService.AddUpdateFullVacationInfoAsync(vacationInfo);
+                    //todo: add synchronization with database when user is connected to the internet
+                }
             }
             catch (Exception e)
             {
@@ -108,7 +114,7 @@ namespace EpamVTSClient.BLL.Services
             {
                 if (IsConnected)
                 {
-                    var isRemoved = await _vacationListWebService.DeleteVacationAsync(id);
+                    var isRemoved = await _vacationsWebService.DeleteVacationAsync(id);
                     if (isRemoved)
                     {
                         await _vacationListOfflineDbService.DeleteVacationAsync(id);
@@ -117,21 +123,11 @@ namespace EpamVTSClient.BLL.Services
                 }
                 return await _vacationListOfflineDbService.DeleteVacationAsync(id);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
 
         }
-    }
-
-    public interface IVacationListService
-    {
-        Task<IEnumerable<ShortVacationInfo>> GetVacationsAsync();
-        Task<VacationInfo> GetFullVacationInfoAsync(int vacationId);
-
-        Task AddUpdateVacationInfoAsync(VacationInfo vacationInfo);
-
-        Task<bool> DeleteVacationAsync(int id);
     }
 }
