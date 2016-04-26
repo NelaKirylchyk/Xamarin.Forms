@@ -20,7 +20,7 @@ namespace EpamVTSClient.BLL.ViewModels
         private ObservableCollection<VacationViewModel> _vacationViewModel;
         private readonly INavigationService _navigationService;
         private readonly ILoginService _loginService;
-        private IMessageDialogService _messageDialogService;
+        private readonly IMessageDialogService _messageDialogService;
 
         public ObservableCollection<VacationViewModel> VacationList
         {
@@ -35,7 +35,12 @@ namespace EpamVTSClient.BLL.ViewModels
             }
         }
 
-        public VacationListViewModel(IVacationListService vacationListService, ILocalizationService localizationService, INavigationService navigationService, ILoginService loginService, IMessageDialogService messageDialogService)
+        public VacationListViewModel(
+            IVacationListService vacationListService,
+            ILocalizationService localizationService,
+            INavigationService navigationService,
+            ILoginService loginService,
+            IMessageDialogService messageDialogService)
         {
             _vacationListService = vacationListService;
             _localizationService = localizationService;
@@ -52,8 +57,8 @@ namespace EpamVTSClient.BLL.ViewModels
         {
             try
             {
-                IEnumerable<ShortVacationInfo> result = await _vacationListService.GetVacationsAsync();
-                IEnumerable<VacationViewModel> vacationViewModels = result.Select(x => new VacationViewModel(_localizationService, _navigationService, _vacationListService, _loginService, _messageDialogService)
+                IEnumerable<ShortVacationInfo> shortVacations = await _vacationListService.GetVacationsAsync();
+                IEnumerable<VacationViewModel> vacationViewModels = shortVacations.Select(x => new VacationViewModel(_localizationService, _navigationService, _vacationListService, _loginService, _messageDialogService)
                 {
                     Type = _localizationService.Localize(x.Type.ToString()),
                     Id = x.Id,
@@ -62,13 +67,12 @@ namespace EpamVTSClient.BLL.ViewModels
                     StartDate = x.StartDate,
                     VacationStatus = x.Status,
                     VacationStatusToDisplay = x.Status.ToString()
-
                 });
                 VacationList = new ObservableCollection<VacationViewModel>(vacationViewModels);
             }
             catch (Exception e)
             {
-                
+                await _messageDialogService.ShowMessageDialogAsync(e.Message);
             }
         }
     }

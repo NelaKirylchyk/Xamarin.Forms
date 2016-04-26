@@ -18,7 +18,12 @@ namespace EpamVTSClient.BLL.ViewModels
         private readonly ILoginService _loginService;
         private readonly IMessageDialogService _messageDialogService;
         private string _vacationStatusToDisplay;
-        public VacationViewModel(ILocalizationService localizationService, INavigationService navigationService, IVacationListService vacationListService, ILoginService loginService, IMessageDialogService messageDialogService)
+        public VacationViewModel(
+            ILocalizationService localizationService,
+            INavigationService navigationService,
+            IVacationListService vacationListService,
+            ILoginService loginService,
+            IMessageDialogService messageDialogService)
         {
             _localizationService = localizationService;
             _navigationService = navigationService;
@@ -33,8 +38,10 @@ namespace EpamVTSClient.BLL.ViewModels
         private async Task DeleteAsync()
         {
             var isRemoved = await VacationListService.DeleteVacationAsync(Id);
-            if(isRemoved)
+            if (isRemoved)
+            {
                 await _navigationService.NavigateToAsync<VacationListViewModel>(null);
+            }
             else
             {
                 await _messageDialogService.ShowMessageDialogAsync(_localizationService.Localize("errorMessage"));
@@ -75,9 +82,7 @@ namespace EpamVTSClient.BLL.ViewModels
         }
 
         public string Type { get; set; }
-
         public ICommand ViewDetails { get; set; }
-
         public ICommand DeleteVacationCommand { get; set; }
         public ICommand NavigateToEditViewCommand { get; set; }
 

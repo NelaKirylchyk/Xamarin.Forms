@@ -12,7 +12,6 @@ namespace EpamVTSClientNative.Droid
             unityContainer.RegisterType<IDeviceInfoService, DeviceInfoService>(new ContainerControlledLifetimeManager());
             unityContainer.RegisterType<INavigationService, NavigationService>();
             unityContainer.RegisterInstance(unityContainer);
-            //unityContainer.RegisterInstance(Application.Current.MainPage.Navigation);
             unityContainer.RegisterType<IMessageDialogService, MessageDialogService>();
         }
     }

@@ -12,8 +12,8 @@ namespace EpamVTSClient.BLL.ViewModels
     public class LoginPageViewModel : ViewModelBase
     {
         private readonly ILoginService _loginService;
-        private readonly ILocalizationService _localization;
-        private readonly IDeviceInfoService _deviceInfo;
+        private readonly ILocalizationService _localizationService;
+        private readonly IDeviceInfoService _deviceInfoService;
         private readonly INavigationService _navigationService;
 
         private string _userName;
@@ -69,7 +69,7 @@ namespace EpamVTSClient.BLL.ViewModels
             }
         }
 
-        public string Copyright => $"{_deviceInfo.DeviceOs} {DateTime.Now.ToString("d")}";
+        public string Copyright => $"{_deviceInfoService.DeviceOs} {DateTime.Now.ToString("d")}";
 
         public bool IsBusy
         {
@@ -88,11 +88,15 @@ namespace EpamVTSClient.BLL.ViewModels
 
         public ICommand SignIn { get; }
 
-        public LoginPageViewModel(INavigationService navigation, ILoginService loginService, ILocalizationService localization, IDeviceInfoService deviceInfo)
+        public LoginPageViewModel(
+            INavigationService navigation,
+            ILoginService loginService,
+            ILocalizationService localizationService,
+            IDeviceInfoService deviceInfoService)
         {
             _loginService = loginService;
-            _localization = localization;
-            _deviceInfo = deviceInfo;
+            _localizationService = localizationService;
+            _deviceInfoService = deviceInfoService;
             _navigationService = navigation;
 
             SignIn = new Command(async () => { await LoginAsync(); }, () => !IsBusy);
@@ -104,7 +108,7 @@ namespace EpamVTSClient.BLL.ViewModels
             {
                 if (string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(Password))
                 {
-                    ErrorMessage = _localization.Localize("EmptyUserNameOrPasswordErrorMsg");
+                    ErrorMessage = _localizationService.Localize("EmptyUserNameOrPasswordErrorMsg");
                     return;
                 }
                 IsBusy = true;
@@ -115,7 +119,7 @@ namespace EpamVTSClient.BLL.ViewModels
                 }
                 else
                 {
-                    ErrorMessage = _localization.Localize("IncorrectUserNameOrPasswordErrorMsg");
+                    ErrorMessage = _localizationService.Localize("IncorrectUserNameOrPasswordErrorMsg");
                 }
                 
             }
