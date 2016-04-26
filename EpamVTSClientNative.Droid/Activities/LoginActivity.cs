@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.OS;
 using EpamVTSClient.BLL.ViewModels;
+using EpamVTSClientNative.Droid.Activities.Base;
 using EpamVTSClientNative.Droid.Activities.Extensions;
 
 namespace EpamVTSClientNative.Droid.Activities

@@ -12,8 +12,8 @@ using Android.Support.Design.Widget;
 using Android.Views;
 using Android.Widget;
 using EpamVTSClient.Core.Services.Localization;
+using EpamVTSClientNative.Droid.Helpers;
 using Microsoft.Practices.Unity;
-using Xamarin.Forms;
 using DatePicker = Android.Widget.DatePicker;
 using View = Android.Views.View;
 
@@ -147,31 +147,30 @@ namespace EpamVTSClientNative.Droid.Activities.Extensions
             string propertyName = propertyExpression.GetPropertyName();
             Func<TViewModel, TProperty> propertyGetter = propertyExpression.Compile();
 
-            TProperty propertyValue = propertyGetter(viewModel);
-            string base64 = propertyValue?.ToString();
-
-            if (base64 != null)
-            {
-                Stream s = new MemoryStream(Convert.FromBase64String(base64));
-                Drawable img = Drawable.CreateFromStream(s, null);
-                imageView.SetImageDrawable(img);
-            }
+            SetImage(viewModel, propertyGetter, imageView);
 
             //viewModel to view
             viewModel.PropertyChanged += (sender, args) =>
             {
                 if (args.PropertyName == propertyName)
                 {
-                    TProperty propertyValue2 = propertyGetter(viewModel);
-                    string base642 = propertyValue2?.ToString();
-
-                    Stream s2 = new MemoryStream(Convert.FromBase64String(base642));
-                    Drawable img2 = Drawable.CreateFromStream(s2, null);
-                    imageView.SetImageDrawable(img2);
+                    SetImage(viewModel, propertyGetter, imageView);
                 }
             };
         }
 
+        private static void SetImage<TViewModel, TProperty>(TViewModel viewModel, Func<TViewModel, TProperty> propertyGetter, ImageView imageView)
+            where TViewModel : INotifyPropertyChanged
+        {
+            string value = GetPropertyValue(viewModel, propertyGetter);
+
+            if (value != null)
+            {
+                Stream memoryStream = new MemoryStream(Convert.FromBase64String(value));
+                Drawable drawable = Drawable.CreateFromStream(memoryStream, null);
+                imageView.SetImageDrawable(drawable);
+            }
+        }
 
         public static void BindText<TViewModel, TProperty>(this Activity activity, int textViewId, TViewModel viewModel,
             Expression<Func<TViewModel, TProperty>> propertyExpression)

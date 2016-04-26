@@ -11,7 +11,9 @@ using Android.Widget;
 using EpamVTSClient.BLL.ViewModels;
 using EpamVTSClient.Core.Enums;
 using EpamVTSClient.Core.Helpers;
+using EpamVTSClientNative.Droid.Activities.Base;
 using EpamVTSClientNative.Droid.Activities.Extensions;
+using EpamVTSClientNative.Droid.Helpers;
 using Uri = Android.Net.Uri;
 using Environment = Android.OS.Environment;
 using File = Java.IO.File;
@@ -152,12 +154,12 @@ namespace EpamVTSClientNative.Droid.Activities
 
         private void CreateDirectoryForPictures()
         {
-            CameraHelper.Dir = new File(
+            CameraHelper.Directory = new File(
                 Environment.GetExternalStoragePublicDirectory(
                     Environment.DirectoryPictures), "CameraAppDemo");
-            if (!CameraHelper.Dir.Exists())
+            if (!CameraHelper.Directory.Exists())
             {
-                CameraHelper.Dir.Mkdirs();
+                CameraHelper.Directory.Mkdirs();
             }
         }
 
@@ -172,7 +174,7 @@ namespace EpamVTSClientNative.Droid.Activities
         private void OpenCameraButtonOnClick(object sender, EventArgs eventArgs)
         {
             Intent intent = new Intent(MediaStore.ActionImageCapture);
-            CameraHelper.File = new File(CameraHelper.Dir, $"myPhoto_{Guid.NewGuid()}.jpg");
+            CameraHelper.File = new File(CameraHelper.Directory, $"myPhoto_{Guid.NewGuid()}.jpg");
             intent.PutExtra(MediaStore.ExtraOutput, Uri.FromFile(CameraHelper.File));
             StartActivityForResult(intent, 0);
         }

@@ -4,7 +4,6 @@ using EpamVTSClient.Core.Services;
 using EpamVTSClient.Core.Services.Localization;
 using Microsoft.Practices.Unity;
 using SQLite;
-using XamarinEpamVTSClient.Droid;
 
 namespace EpamVTSCLient.Platform_Specific.Android
 {

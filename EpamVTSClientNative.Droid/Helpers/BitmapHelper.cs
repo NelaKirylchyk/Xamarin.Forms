@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using Android.Graphics;
 
-namespace EpamVTSClientNative.Droid.Activities
+namespace EpamVTSClientNative.Droid.Helpers
 {
     public static class BitmapHelper
     {
@@ -42,8 +42,8 @@ namespace EpamVTSClientNative.Droid.Activities
                 bitmapData = stream.ToArray();
             }
             bitmap.Dispose();
-            string s = Convert.ToBase64String(bitmapData);
-            return s;
+            string base64String = Convert.ToBase64String(bitmapData);
+            return base64String;
         }
     }
 }

@@ -2,6 +2,7 @@
 using Android.OS;
 using EpamVTSClient.BLL.ViewModels;
 using EpamVTSClient.Core.Services.Localization;
+using EpamVTSClientNative.Droid.Activities.Base;
 using EpamVTSClientNative.Droid.Activities.Extensions;
 using Microsoft.Practices.Unity;
 

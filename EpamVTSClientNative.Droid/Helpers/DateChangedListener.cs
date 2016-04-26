@@ -1,21 +1,20 @@
 using System;
 using Android.Widget;
 
-namespace EpamVTSClientNative.Droid.Activities
+namespace EpamVTSClientNative.Droid.Helpers
 {
     public class DateChangedListener : Java.Lang.Object, DatePicker.IOnDateChangedListener
     {
-
-        Action<DatePicker, int, int, int> callback;
+        readonly Action<DatePicker, int, int, int> _callback;
 
         public DateChangedListener(Action<DatePicker, int, int, int> callback)
         {
-            this.callback = callback;
+            _callback = callback;
         }
 
         public void OnDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth)
         {
-            callback(view, year, monthOfYear, dayOfMonth);
+            _callback(view, year, monthOfYear, dayOfMonth);
         }
     }
 }

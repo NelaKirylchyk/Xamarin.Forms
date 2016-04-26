@@ -1,17 +1,17 @@
 using Android.App;
 using Android.OS;
-using Android.Support.V7.App;
-using EpamVTSClient.BLL.ViewModels.Base;
-using Microsoft.Practices.Unity;
-using Toolbar = Android.Support.V7.Widget.Toolbar;
-using Android.Support.V4.Widget;
 using Android.Support.Design.Widget;
+using Android.Support.V4.Widget;
+using Android.Support.V7.App;
 using EpamVTSClient.BLL.Services;
 using EpamVTSClient.BLL.ViewModels;
+using EpamVTSClient.BLL.ViewModels.Base;
 using EpamVTSClient.Core.Services.Localization;
 using EpamVTSClientNative.Droid.Activities.Extensions;
+using Microsoft.Practices.Unity;
+using Toolbar = Android.Support.V7.Widget.Toolbar;
 
-namespace EpamVTSClientNative.Droid.Activities
+namespace EpamVTSClientNative.Droid.Activities.Base
 {
     [Activity]
     public class ActivityBase<TViewModel> : ActionBarActivity where TViewModel: ViewModelBase

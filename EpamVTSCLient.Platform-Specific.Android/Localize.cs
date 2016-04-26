@@ -1,7 +1,7 @@
 using System.Threading;
 using EpamVTSClient.Core.Services.Localization;
 
-namespace XamarinEpamVTSClient.Droid
+namespace EpamVTSCLient.Platform_Specific.Android
 {
     public class Localize : ILocalize
     {
