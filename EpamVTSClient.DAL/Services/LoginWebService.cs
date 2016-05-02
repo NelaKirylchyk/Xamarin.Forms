@@ -23,7 +23,7 @@ namespace EpamVTSClient.DAL.Services
                 loginResponse.Response = await _client.PostAsync<PersonCredentials, Person>(model, "login");
                 loginResponse.IsLogedIn = true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 loginResponse.IsLogedIn = false;
             }

@@ -1,4 +1,11 @@
-﻿using Foundation;
+﻿using System.Threading.Tasks;
+using EpamVTSClient.BLL;
+using EpamVTSClient.BLL.Services;
+using EpamVTSClient.BLL.ViewModels;
+using EpamVTSClientNative.iOS.Controllers;
+using EpamVTSClientNative.iOS.Services;
+using Foundation;
+using Microsoft.Practices.Unity;
 using UIKit;
 
 namespace EpamVTSClientNative.iOS
@@ -11,16 +18,23 @@ namespace EpamVTSClientNative.iOS
     {
         // class-level declarations
 
-        public override UIWindow Window
-        {
-            get;
-            set;
-        }
+       // private UIWindow _window;
+        
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
-            // Override point for customization after application launch.
-            // If not required for your application you can safely delete this method
+            //Factory.UnityContainer.RegisterType<UIWindow>();
+            Factory.Init();
+            DatabaseInitializer.Initialize(Factory.UnityContainer);
+            
+
+            WindowHelper.Window = new UIWindow(UIScreen.MainScreen.Bounds);
+            LoginPageViewController loginPageViewController = Factory.UnityContainer.Resolve<LoginPageViewController>();
+            WindowHelper.Window.RootViewController = loginPageViewController;
+            //var navigationService = Factory.UnityContainer.Resolve<INavigationService>();
+            //Task.Run(() => { navigationService.NavigateToAsync<LoginPageViewModel>(null);  });
+            // make the window visible
+            WindowHelper.Window.MakeKeyAndVisible();
 
             return true;
         }
