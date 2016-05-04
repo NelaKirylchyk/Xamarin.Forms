@@ -1,4 +1,5 @@
 ﻿using System;
+using CoreAnimation;
 using Foundation;
 using UIKit;
 
@@ -45,7 +46,7 @@ namespace EpamVTSClientNative.iOS.Controllers
             return button;
         }
 
-        public static UIDatePicker SetDatePicker(DateTime endDate)
+        public static UIDatePicker SetDatePicker(DateTime datetime)
         {
             var uiDatePicker = new UIDatePicker
             {
@@ -53,20 +54,30 @@ namespace EpamVTSClientNative.iOS.Controllers
                 AutoresizingMask =
                     UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleHeight |
                     UIViewAutoresizing.FlexibleWidth,
-                Date = NSDate.Now,
+                Date = ConvertDateTimeToNSDate(datetime)
                 //| UIViewAutoresizing.FlexibleRightMargin
-               
+
             };
             return uiDatePicker;
         }
 
-        public static UIPickerView SetUiPicker(UIPickerViewModel pickerDataModel)
+        public static NSDate ConvertDateTimeToNSDate(DateTime date)
         {
-            return new UIPickerView
+            DateTime newDate = TimeZone.CurrentTimeZone.ToLocalTime(
+                new DateTime(2001, 1, 1, 0, 0, 0));
+            return NSDate.FromTimeIntervalSinceReferenceDate(
+                (date - newDate).TotalSeconds);
+        }
+
+        public static UIPickerView SetUiPicker(UIPickerViewModel pickerDataModel, nint index)
+        {
+            var uiPickerView = new UIPickerView
             {
                 Model = pickerDataModel,
-                ShowSelectionIndicator = false
+                ShowSelectionIndicator = false,
             };
+            uiPickerView.Select(index, 0, true);
+            return uiPickerView;
         }
     }
 }

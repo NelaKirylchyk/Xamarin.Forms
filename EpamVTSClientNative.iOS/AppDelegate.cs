@@ -30,7 +30,7 @@ namespace EpamVTSClientNative.iOS
 
             WindowHelper.Window = new UIWindow(UIScreen.MainScreen.Bounds);
             LoginPageViewController loginPageViewController = Factory.UnityContainer.Resolve<LoginPageViewController>();
-            WindowHelper.Window.RootViewController = loginPageViewController;
+            WindowHelper.Window.RootViewController = new SplitViewContoller();
             //var navigationService = Factory.UnityContainer.Resolve<INavigationService>();
             //Task.Run(() => { navigationService.NavigateToAsync<LoginPageViewModel>(null);  });
             // make the window visible

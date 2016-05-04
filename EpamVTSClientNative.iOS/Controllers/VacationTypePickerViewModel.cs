@@ -14,10 +14,13 @@ namespace EpamVTSClientNative.iOS.Controllers
 
         public string SelectedItem { get; set; }
 
+        public nint SelectedIndex { get; set; }
+
         public VacationTypePickerViewModel(Dictionary<VacationType, string> dictionary, VacationType selectedItem)
         {
             Items = dictionary.Select(r => r.Value).ToList();
             SelectedItem = dictionary[selectedItem];
+            SelectedIndex = Items.IndexOf(SelectedItem);
         }
 
         public override nint GetRowsInComponent(UIPickerView pickerView, nint component)
@@ -37,6 +40,7 @@ namespace EpamVTSClientNative.iOS.Controllers
 
         public override void Selected(UIPickerView picker, nint row, nint component)
         {
+            SelectedIndex = row;
             if (ValueChanged != null)
             {
                 ValueChanged(this, new EventArgs());

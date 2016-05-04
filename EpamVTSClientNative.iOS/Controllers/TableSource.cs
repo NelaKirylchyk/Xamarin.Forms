@@ -38,6 +38,7 @@ namespace EpamVTSClientNative.iOS.Controllers
             _navigationService.NavigateToAsync<EditVacationViewModel>(tableItem.Id.ToString());
 
             tableView.DeselectRow(indexPath, true);
+            owner.DismissModalViewController(true);
         }
 
         public override void AccessoryButtonTapped(UITableView tableView, NSIndexPath indexPath)
@@ -47,6 +48,7 @@ namespace EpamVTSClientNative.iOS.Controllers
             _navigationService.NavigateToAsync<VacationViewModel>(tableItem.Id.ToString());
 
             tableView.DeselectRow(indexPath, true);
+            owner.DismissModalViewController(true);
         }
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)

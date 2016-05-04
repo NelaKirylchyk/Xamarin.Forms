@@ -87,8 +87,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Controllers\BaseViewController.cs" />
+    <Compile Include="Controllers\Camera.cs" />
     <Compile Include="Controllers\ControlsExtensions.cs" />
     <Compile Include="Controllers\LoginPageViewController.cs" />
+    <Compile Include="Controllers\MasterViewController.cs" />
+    <Compile Include="Controllers\SplitViewController.cs" />
     <Compile Include="Controllers\VacationStatusPickerViewModel.cs" />
     <Compile Include="Controllers\TableItem.cs" />
     <Compile Include="Controllers\TableSource.cs" />

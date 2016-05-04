@@ -20,30 +20,30 @@ namespace EpamVTSClient.BLL.ViewModels
             EditVacationCommand = new Command(async () => { await EditAsync(); });
             CancelEditVacationCommand = new Command(async () =>
             {
-                if (Id == 0)
-                {
-                    await _navigationService.NavigateToAsync<VacationListViewModel>(null);
-                }
-                else
-                {
-                    await _navigationService.NavigateToAsync<VacationViewModel>(Id.ToString());
-                }
+                //if (Id == 0)
+                //{
+                await _navigationService.NavigateToAsync<VacationListViewModel>(null);
+                // }
+                //else
+                //{
+                //    await _navigationService.NavigateToAsync<VacationViewModel>(Id.ToString());
+                //}
             });
         }
 
         private async Task EditAsync()
         {
-            await VacationsService.AddUpdateVacationInfoAsync(new VacationInfo()
-            {
-                StartDate = StartDate,
-                EndDate = EndDate,
-                Status = VacationStatus,
-                Id = Id,
-                Type = VacationType,
-                VacationForm = VacationForm,
-                EmployeeId = EmployeeId,
-                ApproverId = ApproverId
-            });
+            //await VacationsService.AddUpdateVacationInfoAsync(new VacationInfo()
+            //{
+            //    StartDate = StartDate,
+            //    EndDate = EndDate,
+            //    Status = VacationStatus,
+            //    Id = Id,
+            //    Type = VacationType,
+            //    VacationForm = VacationForm,
+            //    EmployeeId = EmployeeId,
+            //    ApproverId = ApproverId
+            //});
             await _navigationService.NavigateToAsync<VacationListViewModel>(null);
         }
     }

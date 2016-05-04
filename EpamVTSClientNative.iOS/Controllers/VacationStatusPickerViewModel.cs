@@ -14,10 +14,13 @@ namespace EpamVTSClientNative.iOS.Controllers
 
         public string SelectedItem { get; set; }
 
+        public nint SelectedIndex { get; set; }
+
         public VacationStatusPickerViewModel(Dictionary<VacationStatus, string> dictionary, VacationStatus selectedItem)
         {
             Items = dictionary.Select(r => r.Value).ToList();
             SelectedItem = dictionary[selectedItem];
+            SelectedIndex = Items.IndexOf(SelectedItem);
         }
 
         public override nint GetRowsInComponent(UIPickerView pickerView, nint component)

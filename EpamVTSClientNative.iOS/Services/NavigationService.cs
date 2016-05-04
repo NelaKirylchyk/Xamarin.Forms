@@ -44,7 +44,14 @@ namespace EpamVTSClientNative.iOS.Services
                 {
                     baseViewController.args = args;
                 }
-                vc.PresentViewController(baseViewController ?? uiViewController, false, null);
+                try
+                {
+                    vc.PresentViewController(baseViewController ?? uiViewController, false, null);
+                }
+                catch (Exception e)
+                {
+                    
+                }
             }
             return Task.FromResult(true);
         }
