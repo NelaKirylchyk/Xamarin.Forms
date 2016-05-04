@@ -20,9 +20,10 @@ namespace EpamVTSClientNative.iOS.Services
         public static readonly Dictionary<Type, UIViewController> ViewModelPageContainer =
             new Dictionary<Type, UIViewController>()
         {
-                {typeof(VacationListViewModel), Factory.UnityContainer.Resolve<VacationListViewController>()}
+                {typeof(VacationListViewModel), Factory.UnityContainer.Resolve<VacationListViewController>()},
+                {typeof(EditVacationViewModel), Factory.UnityContainer.Resolve<VacationViewController>()}
         };
-            
+
         private readonly UIWindow _window;
 
         public Task NavigateToAsync<TViewModelTo>(string args) where TViewModelTo : ViewModelBase
@@ -30,7 +31,7 @@ namespace EpamVTSClientNative.iOS.Services
             Type type = typeof(TViewModelTo);
             if (ViewModelPageContainer.ContainsKey(type))
             {
-                var uiViewController = ViewModelPageContainer[type];
+                UIViewController uiViewController = ViewModelPageContainer[type];
                 var baseViewController = uiViewController as BaseViewController<TViewModelTo>;
 
                 UIViewController vc = _window.RootViewController;
@@ -38,14 +39,12 @@ namespace EpamVTSClientNative.iOS.Services
                 {
                     vc = vc.PresentedViewController;
                 }
-                try
+
+                if (args != null && baseViewController != null)
                 {
-                    vc.PresentViewController(baseViewController, false, null);
+                    baseViewController.args = args;
                 }
-                catch (Exception e)
-                {
-                    
-                }
+                vc.PresentViewController(baseViewController ?? uiViewController, false, null);
             }
             return Task.FromResult(true);
         }

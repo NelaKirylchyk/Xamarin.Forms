@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using Foundation;
 using UIKit;
 
 namespace EpamVTSClientNative.iOS.Controllers
@@ -12,7 +11,8 @@ namespace EpamVTSClientNative.iOS.Controllers
             return new UILabel()
             {
                 Text = text,
-                TextColor = UIColor.White
+                TextColor = UIColor.White,
+                TranslatesAutoresizingMaskIntoConstraints = false,
             };
         }
 
@@ -41,8 +41,32 @@ namespace EpamVTSClientNative.iOS.Controllers
             button.BackgroundColor = UIColor.Gray;
             button.SetTitleColor(UIColor.White, UIControlState.Normal);
             button.SetTitle(title, UIControlState.Normal);
-            
+
             return button;
+        }
+
+        public static UIDatePicker SetDatePicker(DateTime endDate)
+        {
+            var uiDatePicker = new UIDatePicker
+            {
+                Mode = UIDatePickerMode.Date,
+                AutoresizingMask =
+                    UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleHeight |
+                    UIViewAutoresizing.FlexibleWidth,
+                Date = NSDate.Now,
+                //| UIViewAutoresizing.FlexibleRightMargin
+               
+            };
+            return uiDatePicker;
+        }
+
+        public static UIPickerView SetUiPicker(UIPickerViewModel pickerDataModel)
+        {
+            return new UIPickerView
+            {
+                Model = pickerDataModel,
+                ShowSelectionIndicator = false
+            };
         }
     }
 }

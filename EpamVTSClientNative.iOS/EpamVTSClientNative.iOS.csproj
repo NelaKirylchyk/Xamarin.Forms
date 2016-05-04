@@ -89,7 +89,12 @@
     <Compile Include="Controllers\BaseViewController.cs" />
     <Compile Include="Controllers\ControlsExtensions.cs" />
     <Compile Include="Controllers\LoginPageViewController.cs" />
+    <Compile Include="Controllers\VacationStatusPickerViewModel.cs" />
+    <Compile Include="Controllers\TableItem.cs" />
+    <Compile Include="Controllers\TableSource.cs" />
     <Compile Include="Controllers\VacationListViewController.cs" />
+    <Compile Include="Controllers\VacationTypePickerViewModel.cs" />
+    <Compile Include="Controllers\VacationViewController.cs" />
     <Compile Include="Services\DeviceInfoService.cs" />
     <Compile Include="Services\IOSRegistry.cs" />
     <Compile Include="Services\Factory.cs" />
@@ -145,6 +150,10 @@
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
+    <Reference Include="Xamarin-Sidebar-Unified, Version=1.0.5954.17706, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SidebarNavigation.1.9.0.2\lib\Xamarin.iOS10\Xamarin-Sidebar-Unified.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>

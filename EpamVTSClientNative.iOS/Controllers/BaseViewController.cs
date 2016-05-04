@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using EpamVTSClient.BLL.Services;
 using EpamVTSClient.BLL.ViewModels.Base;
 using EpamVTSClient.Core.Services.Localization;
 using EpamVTSClientNative.iOS.Services;
@@ -12,12 +10,16 @@ namespace EpamVTSClientNative.iOS.Controllers
     public class BaseViewController<TViewModel> : UIViewController where TViewModel : ViewModelBase
     {
         protected ILocalizationService LocalizationService { get; set; }
-        public TViewModel ViewModel { get; private set; }
+
+        public string args { get; set; }
+        protected INavigationService NavigationService { get; set; }
+        public TViewModel ViewModel { get; set; }
 
         public BaseViewController()
         {
             LocalizationService = Factory.UnityContainer.Resolve<ILocalizationService>();
             ViewModel = Factory.UnityContainer.Resolve<TViewModel>();
+            NavigationService = Factory.UnityContainer.Resolve<INavigationService>();
         }
 
         public override void ViewDidLoad()

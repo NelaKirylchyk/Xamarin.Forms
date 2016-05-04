@@ -16,6 +16,7 @@ namespace EpamVTSClientNative.iOS.Services
 
             unityContainer.RegisterType<LoginPageViewController>();
             unityContainer.RegisterType<VacationListViewController>();
+            unityContainer.RegisterType<VacationViewController>();
         }
     }
 }
