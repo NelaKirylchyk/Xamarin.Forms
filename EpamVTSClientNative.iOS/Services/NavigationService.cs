@@ -17,11 +17,11 @@ namespace EpamVTSClientNative.iOS.Services
             _window = WindowHelper.Window;
         }
 
-        public static readonly Dictionary<Type, UIViewController> ViewModelPageContainer =
-            new Dictionary<Type, UIViewController>()
+        public static readonly Dictionary<Type, Type> ViewModelPageContainer =
+            new Dictionary<Type, Type>()
         {
-                {typeof(VacationListViewModel), Factory.UnityContainer.Resolve<VacationListViewController>()},
-                {typeof(EditVacationViewModel), Factory.UnityContainer.Resolve<VacationViewController>()}
+                {typeof(VacationListViewModel), typeof(VacationListViewController)},
+                {typeof(EditVacationViewModel), typeof(VacationViewController)}
         };
 
         private readonly UIWindow _window;
@@ -31,7 +31,8 @@ namespace EpamVTSClientNative.iOS.Services
             Type type = typeof(TViewModelTo);
             if (ViewModelPageContainer.ContainsKey(type))
             {
-                UIViewController uiViewController = ViewModelPageContainer[type];
+                Type controllerType = ViewModelPageContainer[type];
+                var uiViewController = (UIViewController)Factory.UnityContainer.Resolve(controllerType);
                 var baseViewController = uiViewController as BaseViewController<TViewModelTo>;
 
                 UIViewController vc = _window.RootViewController;
@@ -46,7 +47,9 @@ namespace EpamVTSClientNative.iOS.Services
                 }
                 try
                 {
-                    vc.PresentViewController(baseViewController ?? uiViewController, false, null);
+                   
+                    //vc.PresentViewController(baseViewController, false, null);
+                    baseViewController.SidebarController.ChangeContentView(baseViewController);
                 }
                 catch (Exception e)
                 {

@@ -21,6 +21,8 @@ namespace EpamVTSClientNative.iOS.Controllers
         private UIImagePickerController _imagePicker;
         private UIImageView _imageView;
 
+
+
         protected override async void Initialize()
         {
             base.Initialize();
@@ -83,54 +85,52 @@ namespace EpamVTSClientNative.iOS.Controllers
 
             const int height = 46;
             const int labelMargin = 5;
+            const int rightColumnElementWidth = 210;
             View.AddConstraints(
                 vacationStatusLabel.AtTopOf(View, 10),
-                //vacationStatusLabel.Left().EqualTo().LeftOf(View),
-                //vacationStatusLabel.Right().EqualTo().RightOf(View),
                 vacationStatusLabel.AtLeftOf(View),
                 vacationStatusLabel.Height().EqualTo(height),
-               // vacationStatusLabel.CenterX().EqualTo().CenterXOf(View),
-                // vacationStatusLabel.CenterY().EqualTo().CenterYOf(View),
 
-                //vacationStatusPicker.Below(vacationStatusLabel, labelMargin),
-               // vacationStatusPicker.Height().EqualTo(height),
-               vacationStatusPicker.AtRightOf(View),
-               vacationStatusPicker.AtTopOf(View, 10),
-               vacationStatusPicker.Width().EqualTo(200),
-              // vacationStatusPicker.AtTopOf(View, 10),
+                vacationStatusPicker.AtRightOf(View),
+                vacationStatusPicker.AtTopOf(View, 10),
+                vacationStatusPicker.Width().EqualTo(rightColumnElementWidth),
                 vacationStatusPicker.Height().EqualTo(height),
                 
-
                 vacationTypeLabel.Below(vacationStatusPicker, labelMargin),
-                //vacationTypeLabel.Left().EqualTo().LeftOf(View),
-                //vacationTypeLabel.Right().EqualTo().RightOf(View),
-                vacationTypeLabel.CenterX().EqualTo().CenterXOf(View),
-                //vacationTypeLabel.CenterY().EqualTo().CenterYOf(View),
+                vacationTypeLabel.AtLeftOf(View),
 
-                vacationTypePicker.Below(vacationTypeLabel, labelMargin),
+                vacationTypePicker.Below(vacationStatusPicker, labelMargin),
                 vacationTypePicker.Height().EqualTo(height),
+                vacationTypePicker.AtRightOf(View),
+                vacationTypePicker.Width().EqualTo(rightColumnElementWidth),
 
                 startDateLabel.Below(vacationTypePicker, labelMargin),
-                startDateLabel.CenterX().EqualTo().CenterXOf(View),
+                startDateLabel.AtLeftOf(View),
 
-                startDatePicker.Below(startDateLabel, labelMargin),
+                startDatePicker.Below(vacationTypePicker, labelMargin),
+                startDatePicker.AtRightOf(View),
+                startDatePicker.Width().EqualTo(rightColumnElementWidth),
                 startDatePicker.Height().EqualTo(height),
 
                 endDateLabel.Below(startDatePicker, labelMargin),
-                endDateLabel.CenterX().EqualTo().CenterXOf(View),
+                endDateLabel.AtLeftOf(View),
 
-                endDatePicker.Below(endDateLabel, labelMargin),
+                endDatePicker.Below(startDatePicker, labelMargin),
                 endDatePicker.Height().EqualTo(height),
+                endDatePicker.AtRightOf(View),
+                endDatePicker.Width().EqualTo(rightColumnElementWidth),
 
                 _imageView.Below(endDatePicker, labelMargin),
-                _imageView.Width().EqualTo(50),
-                _imageView.Height().EqualTo(50),
+                _imageView.Width().EqualTo(100),
+                _imageView.Height().EqualTo(100),
 
                 choosePhotoButton.Below(_imageView, labelMargin),
                 choosePhotoButton.AtLeftOf(View, 50),
+                choosePhotoButton.Width().EqualTo(100),
 
                 cameraButton.Below(_imageView, labelMargin),
                 cameraButton.AtRightOf(View, 50),
+                cameraButton.Width().EqualTo(100),
 
                 saveButton.Below(cameraButton, labelMargin),
                 saveButton.AtLeftOf(View, 50),

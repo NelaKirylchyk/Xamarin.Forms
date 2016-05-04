@@ -1,12 +1,17 @@
 ﻿using System;
+using System.Drawing;
 using Cirrious.FluentLayouts.Touch;
 using EpamVTSClient.BLL.ViewModels;
+using EpamVTSClientNative.iOS.Services;
+using SidebarNavigation;
 using UIKit;
 
 namespace EpamVTSClientNative.iOS.Controllers
 {
     public class LoginPageViewController : BaseViewController<LoginPageViewModel>
     {
+        public SidebarController SidebarController { get; private set; }
+
         private UITextField _userNameTextField;
         private UITextField _passwordTextField;
         protected override void Initialize()

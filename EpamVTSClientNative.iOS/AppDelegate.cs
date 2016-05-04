@@ -6,6 +6,7 @@ using EpamVTSClientNative.iOS.Controllers;
 using EpamVTSClientNative.iOS.Services;
 using Foundation;
 using Microsoft.Practices.Unity;
+using SidebarNavigation;
 using UIKit;
 
 namespace EpamVTSClientNative.iOS
@@ -18,8 +19,10 @@ namespace EpamVTSClientNative.iOS
     {
         // class-level declarations
 
-       // private UIWindow _window;
-        
+         private UIWindow _window;
+
+        public LoginPageViewController RootViewController { get { return WindowHelper.Window.RootViewController as LoginPageViewController; } }
+
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
@@ -29,8 +32,12 @@ namespace EpamVTSClientNative.iOS
             
 
             WindowHelper.Window = new UIWindow(UIScreen.MainScreen.Bounds);
-            LoginPageViewController loginPageViewController = Factory.UnityContainer.Resolve<LoginPageViewController>();
-            WindowHelper.Window.RootViewController = new SplitViewContoller();
+           // LoginPageViewController loginPageViewController = Factory.UnityContainer.Resolve<LoginPageViewController>();
+            WindowHelper.Window.RootViewController = new LoginPageViewController();
+            SidebarController = new SidebarController(WindowHelper.Window.RootViewController, new LoginPageViewController(), new SideMenuController());
+            SidebarController.MenuLocation = SidebarController.MenuLocations.Left;
+            SidebarController.HasShadowing = false;
+            SidebarController.MenuWidth = 220;
             //var navigationService = Factory.UnityContainer.Resolve<INavigationService>();
             //Task.Run(() => { navigationService.NavigateToAsync<LoginPageViewModel>(null);  });
             // make the window visible
@@ -38,6 +45,8 @@ namespace EpamVTSClientNative.iOS
 
             return true;
         }
+
+        public SidebarController SidebarController { get; set; }
 
         public override void OnResignActivation(UIApplication application)
         {

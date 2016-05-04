@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using EpamVTSClient.BLL.ViewModels;
 using EpamVTSClientNative.iOS.Services;
@@ -11,6 +12,8 @@ namespace EpamVTSClientNative.iOS.Controllers
     public class VacationListViewController : BaseViewController<VacationListViewModel>
     {
         private UITableView _table;
+
+
 
         protected override void Initialize()
         {
