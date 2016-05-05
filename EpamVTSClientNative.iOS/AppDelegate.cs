@@ -1,54 +1,37 @@
-﻿using System.Threading.Tasks;
-using EpamVTSClient.BLL;
-using EpamVTSClient.BLL.Services;
-using EpamVTSClient.BLL.ViewModels;
+﻿using EpamVTSClient.BLL;
 using EpamVTSClientNative.iOS.Controllers;
 using EpamVTSClientNative.iOS.Helpers;
 using EpamVTSClientNative.iOS.Services;
 using Foundation;
-using Microsoft.Practices.Unity;
 using SidebarNavigation;
 using UIKit;
 
 namespace EpamVTSClientNative.iOS
 {
-    // The UIApplicationDelegate for the application. This class is responsible for launching the 
-    // User Interface of the application, as well as listening (and optionally responding) to 
-    // application events from iOS.
     [Register("AppDelegate")]
     public class AppDelegate : UIApplicationDelegate
     {
-        // class-level declarations
-
-         private UIWindow _window;
-
-        public LoginPageViewController RootViewController { get { return WindowHelper.Window.RootViewController as LoginPageViewController; } }
-
+        public SidebarController SidebarController { get; set; }
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
-            //Factory.UnityContainer.RegisterType<UIWindow>();
             Factory.Init();
             DatabaseInitializer.Initialize(Factory.UnityContainer);
-            
 
             WindowHelper.Window = new UIWindow(UIScreen.MainScreen.Bounds);
-           // LoginPageViewController loginPageViewController = Factory.UnityContainer.Resolve<LoginPageViewController>();
-            WindowHelper.Window.RootViewController = new LoginPageViewController();
-            SidebarController = new SidebarController(WindowHelper.Window.RootViewController, new LoginPageViewController(), new SideMenuController());
-            SidebarController.MenuLocation = SidebarController.MenuLocations.Left;
-            SidebarController.HasShadowing = false;
-            SidebarController.MenuWidth = 220;
-            //var navigationService = Factory.UnityContainer.Resolve<INavigationService>();
-            //Task.Run(() => { navigationService.NavigateToAsync<LoginPageViewModel>(null);  });
-            // make the window visible
-            WindowHelper.Window.MakeKeyAndVisible();
+            var loginPageViewController = new LoginPageViewController();
+            WindowHelper.Window.RootViewController = loginPageViewController;
 
+            SidebarController = new SidebarController(WindowHelper.Window.RootViewController, new LoginPageViewController(), new SideMenuController())
+            {
+                MenuLocation = SidebarController.MenuLocations.Left,
+                HasShadowing = false,
+                MenuWidth = 220,
+                Disabled = true
+            };
+            WindowHelper.Window.MakeKeyAndVisible();
             return true;
         }
-
-        public SidebarController SidebarController { get; set; }
-
         public override void OnResignActivation(UIApplication application)
         {
             // Invoked when the application is about to move from active to inactive state.

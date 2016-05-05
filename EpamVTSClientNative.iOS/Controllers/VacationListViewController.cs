@@ -13,6 +13,8 @@ namespace EpamVTSClientNative.iOS.Controllers
         {
             base.Initialize();
 
+            SidebarController.Disabled = false;
+
             List<TableItem> tableItems = ViewModel.VacationList.Select(vacationViewModel => new TableItem()
             {
                 Id = vacationViewModel.Id,

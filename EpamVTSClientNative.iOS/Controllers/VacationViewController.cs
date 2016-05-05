@@ -36,6 +36,9 @@ namespace EpamVTSClientNative.iOS.Controllers
         protected override async void Initialize()
         {
             base.Initialize();
+
+            SidebarController.Disabled = false;
+
             int id;
             if (int.TryParse(Args, out id))
             {
