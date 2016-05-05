@@ -1,26 +1,26 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using EpamVTSClient.Core.Enums;
 using UIKit;
 
-namespace EpamVTSClientNative.iOS.Controllers
+namespace EpamVTSClientNative.iOS.Controllers.UIPickerViewModels
 {
-    public class VacationStatusPickerViewModel : UIPickerViewModel
+    public class VacationTypePickerViewModel : UIPickerViewModel
     {
         public event EventHandler<EventArgs> ValueChanged;
 
         public List<string> Items { get; }
 
-        public string SelectedItem { get; set; }
+        public int SelectedIndex { get; set; }
 
-        public nint SelectedIndex { get; set; }
+        public string SelectedItem => Items[SelectedIndex];
 
-        public VacationStatusPickerViewModel(Dictionary<VacationStatus, string> dictionary, VacationStatus selectedItem)
+        public VacationTypePickerViewModel(Dictionary<VacationType, string> dictionary, VacationType vacationType)
         {
             Items = dictionary.Select(r => r.Value).ToList();
-            SelectedItem = dictionary[selectedItem];
-            SelectedIndex = Items.IndexOf(SelectedItem);
+            string vacationTypeValue = dictionary[vacationType];
+            SelectedIndex = Items.IndexOf(vacationTypeValue);
         }
 
         public override nint GetRowsInComponent(UIPickerView pickerView, nint component)
@@ -40,10 +40,8 @@ namespace EpamVTSClientNative.iOS.Controllers
 
         public override void Selected(UIPickerView picker, nint row, nint component)
         {
-            if (ValueChanged != null)
-            {
-                ValueChanged(this, new EventArgs());
-            }
+            SelectedIndex = (int) row;
+            ValueChanged?.Invoke(this, new EventArgs());
         }
     }
 }

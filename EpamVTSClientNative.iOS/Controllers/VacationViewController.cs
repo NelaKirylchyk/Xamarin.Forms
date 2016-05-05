@@ -5,6 +5,8 @@ using Cirrious.FluentLayouts.Touch;
 using EpamVTSClient.BLL.ViewModels;
 using EpamVTSClient.Core.Enums;
 using EpamVTSClient.Core.Helpers;
+using EpamVTSClientNative.iOS.Controllers.UIPickerViewModels;
+using EpamVTSClientNative.iOS.Helpers;
 using Foundation;
 using UIKit;
 
@@ -14,20 +16,28 @@ namespace EpamVTSClientNative.iOS.Controllers
     {
         private VacationStatusPickerViewModel _vacationStatusPickerViewModel;
         private VacationTypePickerViewModel _vacationTypePickerViewModel;
-
         private Dictionary<VacationStatus, string> _vacationStatusDictionary;
         private Dictionary<VacationType, string> _vacationTypeDictionary;
-
         private UIImagePickerController _imagePicker;
         private UIImageView _imageView;
-
-
+        UIPickerView _vacationStatusPicker;
+        UIPickerView _vacationTypePicker;
+        UILabel _vacationStatusLabel;
+        UILabel _vacationTypeLabel;
+        UILabel _startDateLabel;
+        UILabel _endDateLabel;
+        UIDatePicker _startDatePicker;
+        UIDatePicker _endDatePicker;
+        UIButton _saveButton;
+        UIButton _cancelButton;
+        UIButton _choosePhotoButton;
+        UIButton _cameraButton;
 
         protected override async void Initialize()
         {
             base.Initialize();
             int id;
-            if (int.TryParse(args, out id))
+            if (int.TryParse(Args, out id))
             {
                 await ViewModel.LoadDataFrom(id);
             }
@@ -37,114 +47,116 @@ namespace EpamVTSClientNative.iOS.Controllers
             }
             SetVacationInfo();
 
-            var vacationStatusPicker = ControlsExtensions.SetUiPicker(_vacationStatusPickerViewModel, _vacationStatusPickerViewModel.SelectedIndex);
-            var vacationTypePicker = ControlsExtensions.SetUiPicker(_vacationTypePickerViewModel, _vacationTypePickerViewModel.SelectedIndex);
-
-            var vacationStatusLabel = ControlsExtensions.SetUiLabel("Status");
-            var vacationTypeLabel = ControlsExtensions.SetUiLabel("Type");
-            var startDateLabel = ControlsExtensions.SetUiLabel("Start Date");
-            var endDateLabel = ControlsExtensions.SetUiLabel("End Date");
-
-            var startDatePicker = ControlsExtensions.SetDatePicker(ViewModel.StartDate);
-            startDatePicker.ValueChanged += StartDatePickerOnValueChanged;
-            var endDatePicker = ControlsExtensions.SetDatePicker(ViewModel.EndDate);
-            endDatePicker.ValueChanged += EndDatePickerOnValueChanged;
-
-            UIButton saveButton = ControlsExtensions.SetButton("Save");
-            saveButton.TouchUpInside += SaveButtonOnTouchUpInside;
-            UIButton cancelButton = ControlsExtensions.SetButton("Cancel");
-            cancelButton.TouchUpInside += CancelButtonOnTouchUpInside;
-            UIButton choosePhotoButton = ControlsExtensions.SetButton("Pick a photo");
-            choosePhotoButton.TouchUpInside += ChoosePhotoButtonOnTouchUpInside;
-            var cameraButton = ControlsExtensions.SetButton("Camera");
-            cameraButton.TouchUpInside += CameraButtonOnTouchUpInside;
-
+            _vacationStatusPicker = ControlsExtensions.SetUiPicker(_vacationStatusPickerViewModel, _vacationStatusPickerViewModel.SelectedIndex);
+            _vacationTypePicker = ControlsExtensions.SetUiPicker(_vacationTypePickerViewModel, _vacationTypePickerViewModel.SelectedIndex);
+            _vacationStatusLabel = ControlsExtensions.SetUiLabel(LocalizationService.Localize("vacationStatusInfoLabel"));
+            _vacationTypeLabel = ControlsExtensions.SetUiLabel(LocalizationService.Localize("vacationTypeInfoLabel"));
+            _startDateLabel = ControlsExtensions.SetUiLabel(LocalizationService.Localize("vacationStartDateLabel"));
+            _endDateLabel = ControlsExtensions.SetUiLabel(LocalizationService.Localize("vacationEndDateLabel"));
+            _startDatePicker = ControlsExtensions.SetDatePicker(ViewModel.StartDate);
+            _startDatePicker.ValueChanged += StartDatePickerOnValueChanged;
+            _endDatePicker = ControlsExtensions.SetDatePicker(ViewModel.EndDate);
+            _endDatePicker.ValueChanged += EndDatePickerOnValueChanged;
+            _saveButton = ControlsExtensions.SetButton(LocalizationService.Localize("SaveEditVacationBtn"));
+            _saveButton.TouchUpInside += SaveButtonOnTouchUpInside;
+            _cancelButton = ControlsExtensions.SetButton(LocalizationService.Localize("CancelEditVacationBtn"));
+            _cancelButton.TouchUpInside += CancelButtonOnTouchUpInside;
+            _choosePhotoButton = ControlsExtensions.SetButton(LocalizationService.Localize("vacationImageLabel"));
+            _choosePhotoButton.TouchUpInside += ChoosePhotoButtonOnTouchUpInside;
+            _cameraButton = ControlsExtensions.SetButton(LocalizationService.Localize("openCameraBtn"));
+            _cameraButton.TouchUpInside += CameraButtonOnTouchUpInside;
             _imageView = new UIImageView();
+
             if (!string.IsNullOrEmpty(ViewModel.VacationForm))
             {
-                Base64ToImage(ViewModel.VacationForm);
+                _imageView.Image = ImageHelper.Base64ToImage(ViewModel.VacationForm);
             }
 
-            Add(vacationStatusLabel);
-            Add(vacationStatusPicker);
-            Add(vacationTypeLabel);
-            Add(vacationTypePicker);
-            Add(startDateLabel);
-            Add(startDatePicker);
-            Add(endDateLabel);
-            Add(endDatePicker);
-            Add(choosePhotoButton);
-            Add(cameraButton);
+            Add(_vacationStatusLabel);
+            Add(_vacationStatusPicker);
+            Add(_vacationTypeLabel);
+            Add(_vacationTypePicker);
+            Add(_startDateLabel);
+            Add(_startDatePicker);
+            Add(_endDateLabel);
+            Add(_endDatePicker);
+            Add(_choosePhotoButton);
+            Add(_cameraButton);
             Add(_imageView);
-            Add(saveButton);
-            Add(cancelButton);
-
+            Add(_saveButton);
+            Add(_cancelButton);
 
             View.SubviewsDoNotTranslateAutoresizingMaskIntoConstraints();
             View.InsertSubview(new UIImageView(UIImage.FromBundle("illustration")), 0);
 
+            AddConstraints();
+        }
+
+        private void AddConstraints()
+        {
             const int height = 46;
-            const int labelMargin = 5;
+            const int labelMargin = 10;
             const int rightColumnElementWidth = 210;
+            const int buttonWidth = 100;
             View.AddConstraints(
-                vacationStatusLabel.AtTopOf(View, 10),
-                vacationStatusLabel.AtLeftOf(View),
-                vacationStatusLabel.Height().EqualTo(height),
+                _vacationStatusLabel.AtTopOf(View, labelMargin),
+                _vacationStatusLabel.AtLeftOf(View),
+                _vacationStatusLabel.Height().EqualTo(height),
 
-                vacationStatusPicker.AtRightOf(View),
-                vacationStatusPicker.AtTopOf(View, 10),
-                vacationStatusPicker.Width().EqualTo(rightColumnElementWidth),
-                vacationStatusPicker.Height().EqualTo(height),
-                
-                vacationTypeLabel.Below(vacationStatusPicker, labelMargin),
-                vacationTypeLabel.AtLeftOf(View),
+                _vacationStatusPicker.AtRightOf(View),
+                _vacationStatusPicker.AtTopOf(View, 10),
+                _vacationStatusPicker.Width().EqualTo(rightColumnElementWidth),
+                _vacationStatusPicker.Height().EqualTo(height),
 
-                vacationTypePicker.Below(vacationStatusPicker, labelMargin),
-                vacationTypePicker.Height().EqualTo(height),
-                vacationTypePicker.AtRightOf(View),
-                vacationTypePicker.Width().EqualTo(rightColumnElementWidth),
+                _vacationTypeLabel.Below(_vacationStatusPicker, labelMargin),
+                _vacationTypeLabel.AtLeftOf(View),
 
-                startDateLabel.Below(vacationTypePicker, labelMargin),
-                startDateLabel.AtLeftOf(View),
+                _vacationTypePicker.Below(_vacationStatusPicker, labelMargin),
+                _vacationTypePicker.Height().EqualTo(height),
+                _vacationTypePicker.AtRightOf(View),
+                _vacationTypePicker.Width().EqualTo(rightColumnElementWidth),
 
-                startDatePicker.Below(vacationTypePicker, labelMargin),
-                startDatePicker.AtRightOf(View),
-                startDatePicker.Width().EqualTo(rightColumnElementWidth),
-                startDatePicker.Height().EqualTo(height),
+                _startDateLabel.Below(_vacationTypePicker, labelMargin),
+                _startDateLabel.AtLeftOf(View),
 
-                endDateLabel.Below(startDatePicker, labelMargin),
-                endDateLabel.AtLeftOf(View),
+                _startDatePicker.Below(_vacationTypePicker, labelMargin),
+                _startDatePicker.AtRightOf(View),
+                _startDatePicker.Width().EqualTo(rightColumnElementWidth),
+                _startDatePicker.Height().EqualTo(height),
 
-                endDatePicker.Below(startDatePicker, labelMargin),
-                endDatePicker.Height().EqualTo(height),
-                endDatePicker.AtRightOf(View),
-                endDatePicker.Width().EqualTo(rightColumnElementWidth),
+                _endDateLabel.Below(_startDatePicker, labelMargin),
+                _endDateLabel.AtLeftOf(View),
 
-                _imageView.Below(endDatePicker, labelMargin),
-                _imageView.Width().EqualTo(100),
-                _imageView.Height().EqualTo(100),
+                _endDatePicker.Below(_startDatePicker, labelMargin),
+                _endDatePicker.Height().EqualTo(height),
+                _endDatePicker.AtRightOf(View),
+                _endDatePicker.Width().EqualTo(rightColumnElementWidth),
 
-                choosePhotoButton.Below(_imageView, labelMargin),
-                choosePhotoButton.AtLeftOf(View, 50),
-                choosePhotoButton.Width().EqualTo(100),
+                _imageView.Below(_endDatePicker, labelMargin),
+                _imageView.Width().EqualTo(buttonWidth),
+                _imageView.Height().EqualTo(buttonWidth),
 
-                cameraButton.Below(_imageView, labelMargin),
-                cameraButton.AtRightOf(View, 50),
-                cameraButton.Width().EqualTo(100),
+                _choosePhotoButton.Below(_imageView, labelMargin),
+                _choosePhotoButton.AtLeftOf(View, labelMargin),
+                _choosePhotoButton.Width().EqualTo(buttonWidth),
 
-                saveButton.Below(cameraButton, labelMargin),
-                saveButton.AtLeftOf(View, 50),
-                saveButton.Width().EqualTo(100),
+                _cameraButton.Below(_imageView, labelMargin),
+                _cameraButton.AtRightOf(View, labelMargin),
+                _cameraButton.Width().EqualTo(buttonWidth),
 
-                cancelButton.Below(cameraButton, labelMargin),
-                cancelButton.Width().EqualTo(100),
-                cancelButton.AtRightOf(View, 50)
+                _saveButton.Below(_cameraButton, labelMargin),
+                _saveButton.AtLeftOf(View, labelMargin),
+                _saveButton.Width().EqualTo(buttonWidth),
+
+                _cancelButton.Below(_cameraButton, labelMargin),
+                _cancelButton.Width().EqualTo(buttonWidth),
+                _cancelButton.AtRightOf(View, labelMargin)
                 );
         }
 
         private void CameraButtonOnTouchUpInside(object sender, EventArgs eventArgs)
         {
-            Camera.TakePicture(this, (obj) =>
+            Camera.Camera.TakePicture(this, (obj) =>
             {
                 var photo = obj.ValueForKey(new NSString("UIImagePickerControllerOriginalImage")) as UIImage;
                 if (photo != null)
@@ -153,14 +165,6 @@ namespace EpamVTSClientNative.iOS.Controllers
                     ViewModel.VacationForm = encodedString;
                 }
             });
-        }
-
-        private void Base64ToImage(string base64)
-        {
-            byte[] encodedDataAsBytes = Convert.FromBase64String(base64);
-            NSData imageData = NSData.FromArray(encodedDataAsBytes);
-            var img = UIImage.LoadFromData(imageData);
-            _imageView.Image = img;
         }
 
         private void ChoosePhotoButtonOnTouchUpInside(object sender, EventArgs eventArgs)
@@ -175,12 +179,12 @@ namespace EpamVTSClientNative.iOS.Controllers
             PresentModalViewController(_imagePicker, true);
         }
 
-        void ImagePickerOnCanceled(object sender, EventArgs e)
+        private void ImagePickerOnCanceled(object sender, EventArgs e)
         {
             _imagePicker.DismissModalViewController(true);
         }
 
-        protected void ImagePickerOnFinishedPickingMedia(object sender, UIImagePickerMediaPickedEventArgs e)
+        private void ImagePickerOnFinishedPickingMedia(object sender, UIImagePickerMediaPickedEventArgs e)
         {
             bool isImage = false;
             switch (e.Info[UIImagePickerController.MediaType].ToString())
@@ -269,9 +273,7 @@ namespace EpamVTSClientNative.iOS.Controllers
             var uiDatePicker = sender as UIDatePicker;
             if (uiDatePicker != null)
             {
-                NSDate nsDate = uiDatePicker.Date;
-                var nsDateToDateTime = NsDateToDateTime(nsDate);
-                ViewModel.EndDate = nsDateToDateTime;
+                ViewModel.EndDate = uiDatePicker.Date.NsDateToDateTime();
             }
         }
 
@@ -280,18 +282,8 @@ namespace EpamVTSClientNative.iOS.Controllers
             var uiDatePicker = sender as UIDatePicker;
             if (uiDatePicker != null)
             {
-                NSDate nsDate = uiDatePicker.Date;
-                var nsDateToDateTime = NsDateToDateTime(nsDate);
-                ViewModel.StartDate = nsDateToDateTime;
+                ViewModel.StartDate = uiDatePicker.Date.NsDateToDateTime();
             }
-        }
-
-        public static DateTime NsDateToDateTime(NSDate date)
-        {
-            DateTime reference = new DateTime(2001, 1, 1, 0, 0, 0);
-            DateTime currentDate = reference.AddSeconds(date.SecondsSinceReferenceDate);
-            DateTime localDate = currentDate.ToLocalTime();
-            return localDate;
         }
     }
 }

@@ -25,7 +25,7 @@ using System;
 using Foundation;
 using UIKit;
 
-namespace EpamVTSClientNative.iOS.Controllers
+namespace EpamVTSClientNative.iOS.Camera
 {
     //
     // A static class that will reuse the UIImagePickerController

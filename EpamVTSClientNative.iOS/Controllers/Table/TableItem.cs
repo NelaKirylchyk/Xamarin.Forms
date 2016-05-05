@@ -1,6 +1,6 @@
 using UIKit;
 
-namespace EpamVTSClientNative.iOS.Controllers
+namespace EpamVTSClientNative.iOS.Controllers.Table
 {
     public class TableItem
     {

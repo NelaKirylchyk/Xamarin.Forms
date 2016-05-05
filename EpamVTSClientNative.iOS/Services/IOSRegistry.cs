@@ -2,11 +2,10 @@
 using System.IO;
 using EpamVTSClient.Core.Services;
 using EpamVTSClient.Core.Services.Localization;
-using EpamVTSClientNative.iOS.Services;
 using Microsoft.Practices.Unity;
 using SQLite;
 
-namespace EpamVTSClientNative.iOS
+namespace EpamVTSClientNative.iOS.Services
 {
     public class IOSRegistry : IUnityContainerRegistry
     {

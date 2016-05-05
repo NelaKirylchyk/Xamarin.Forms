@@ -87,25 +87,25 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Controllers\BaseViewController.cs" />
-    <Compile Include="Controllers\Camera.cs" />
-    <Compile Include="Controllers\ControlsExtensions.cs" />
+    <Compile Include="Camera\Camera.cs" />
+    <Compile Include="Helpers\ControlsExtensions.cs" />
     <Compile Include="Controllers\LoginPageViewController.cs" />
-    <Compile Include="Controllers\MasterViewController.cs" />
     <Compile Include="Controllers\SideMenuController.cs" />
-    <Compile Include="Controllers\SplitViewController.cs" />
-    <Compile Include="Controllers\VacationStatusPickerViewModel.cs" />
-    <Compile Include="Controllers\TableItem.cs" />
-    <Compile Include="Controllers\TableSource.cs" />
+    <Compile Include="Controllers\UIPickerViewModels\VacationStatusPickerViewModel.cs" />
+    <Compile Include="Controllers\Table\TableItem.cs" />
+    <Compile Include="Controllers\Table\TableSource.cs" />
     <Compile Include="Controllers\VacationListViewController.cs" />
-    <Compile Include="Controllers\VacationTypePickerViewModel.cs" />
+    <Compile Include="Controllers\UIPickerViewModels\VacationTypePickerViewModel.cs" />
     <Compile Include="Controllers\VacationViewController.cs" />
+    <Compile Include="Helpers\DateTimeExtension.cs" />
+    <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Services\DeviceInfoService.cs" />
     <Compile Include="Services\IOSRegistry.cs" />
     <Compile Include="Services\Factory.cs" />
     <Compile Include="Services\Localize.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="Services\WindowHelper.cs" />
+    <Compile Include="Helpers\WindowHelper.cs" />
     <None Include="GettingStarted.Xamarin" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />

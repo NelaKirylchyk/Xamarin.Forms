@@ -1,9 +1,12 @@
 ﻿using System;
-using CoreAnimation;
-using Foundation;
+using System.Collections.Generic;
+using CoreGraphics;
+using EpamVTSClient.BLL.ViewModels.Base;
+using EpamVTSClientNative.iOS.Controllers.Table;
+using EpamVTSClientNative.iOS.Services;
 using UIKit;
 
-namespace EpamVTSClientNative.iOS.Controllers
+namespace EpamVTSClientNative.iOS.Helpers
 {
     public static class ControlsExtensions
     {
@@ -51,22 +54,10 @@ namespace EpamVTSClientNative.iOS.Controllers
             var uiDatePicker = new UIDatePicker
             {
                 Mode = UIDatePickerMode.Date,
-                AutoresizingMask =
-                    UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleHeight |
-                    UIViewAutoresizing.FlexibleWidth,
-                Date = ConvertDateTimeToNSDate(datetime)
-                //| UIViewAutoresizing.FlexibleRightMargin
-
+                AutoresizingMask = UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth,
+                Date = datetime.ConvertDateTimeToNsDate()
             };
             return uiDatePicker;
-        }
-
-        public static NSDate ConvertDateTimeToNSDate(DateTime date)
-        {
-            DateTime newDate = TimeZone.CurrentTimeZone.ToLocalTime(
-                new DateTime(2001, 1, 1, 0, 0, 0));
-            return NSDate.FromTimeIntervalSinceReferenceDate(
-                (date - newDate).TotalSeconds);
         }
 
         public static UIPickerView SetUiPicker(UIPickerViewModel pickerDataModel, nint index)
@@ -78,6 +69,20 @@ namespace EpamVTSClientNative.iOS.Controllers
             };
             uiPickerView.Select(index, 0, true);
             return uiPickerView;
+        }
+
+        public static UITableView SetUiTableView(List<TableItem> tableItems, TableSource tableSource, CGRect сgRect)
+        {
+            return new UITableView(сgRect)
+            {
+                AutoresizingMask = UIViewAutoresizing.All,
+                Source = tableSource,
+                SeparatorStyle = UITableViewCellSeparatorStyle.SingleLine,
+                RowHeight = 50,
+                Editing = true,
+                AllowsSelection = true,
+                AllowsSelectionDuringEditing = true
+            };
         }
     }
 }

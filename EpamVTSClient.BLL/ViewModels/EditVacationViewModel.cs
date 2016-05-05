@@ -14,7 +14,12 @@ namespace EpamVTSClient.BLL.ViewModels
         public ICommand EditVacationCommand { get; set; }
         public ICommand CancelEditVacationCommand { get; set; }
 
-        public EditVacationViewModel(ILocalizationService localizationService, INavigationService navigationService, IVacationsService vacationsService, ILoginService loginService, IMessageDialogService messageDialogService) : base(localizationService, navigationService, vacationsService, loginService, messageDialogService)
+        public EditVacationViewModel(
+            ILocalizationService localizationService,
+            INavigationService navigationService,
+            IVacationsService vacationsService,
+            ILoginService loginService,
+            IMessageDialogService messageDialogService) : base(localizationService, navigationService, vacationsService, loginService, messageDialogService)
         {
             _navigationService = navigationService;
             EditVacationCommand = new Command(async () => { await EditAsync(); });
@@ -22,8 +27,8 @@ namespace EpamVTSClient.BLL.ViewModels
             {
                 //if (Id == 0)
                 //{
-                await _navigationService.NavigateToAsync<VacationListViewModel>(null);
-                // }
+                    await _navigationService.NavigateToAsync<VacationListViewModel>(null);
+                //}
                 //else
                 //{
                 //    await _navigationService.NavigateToAsync<VacationViewModel>(Id.ToString());
@@ -33,17 +38,17 @@ namespace EpamVTSClient.BLL.ViewModels
 
         private async Task EditAsync()
         {
-            //await VacationsService.AddUpdateVacationInfoAsync(new VacationInfo()
-            //{
-            //    StartDate = StartDate,
-            //    EndDate = EndDate,
-            //    Status = VacationStatus,
-            //    Id = Id,
-            //    Type = VacationType,
-            //    VacationForm = VacationForm,
-            //    EmployeeId = EmployeeId,
-            //    ApproverId = ApproverId
-            //});
+            await VacationsService.AddUpdateVacationInfoAsync(new VacationInfo()
+            {
+                StartDate = StartDate,
+                EndDate = EndDate,
+                Status = VacationStatus,
+                Id = Id,
+                Type = VacationType,
+                VacationForm = VacationForm,
+                EmployeeId = EmployeeId,
+                ApproverId = ApproverId
+            });
             await _navigationService.NavigateToAsync<VacationListViewModel>(null);
         }
     }

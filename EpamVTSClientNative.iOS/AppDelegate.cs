@@ -3,6 +3,7 @@ using EpamVTSClient.BLL;
 using EpamVTSClient.BLL.Services;
 using EpamVTSClient.BLL.ViewModels;
 using EpamVTSClientNative.iOS.Controllers;
+using EpamVTSClientNative.iOS.Helpers;
 using EpamVTSClientNative.iOS.Services;
 using Foundation;
 using Microsoft.Practices.Unity;

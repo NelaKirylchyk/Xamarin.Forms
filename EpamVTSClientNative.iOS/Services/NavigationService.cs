@@ -5,6 +5,7 @@ using EpamVTSClient.BLL.Services;
 using EpamVTSClient.BLL.ViewModels;
 using EpamVTSClient.BLL.ViewModels.Base;
 using EpamVTSClientNative.iOS.Controllers;
+using EpamVTSClientNative.iOS.Helpers;
 using Microsoft.Practices.Unity;
 using UIKit;
 
@@ -28,10 +29,10 @@ namespace EpamVTSClientNative.iOS.Services
 
         public Task NavigateToAsync<TViewModelTo>(string args) where TViewModelTo : ViewModelBase
         {
-            Type type = typeof(TViewModelTo);
-            if (ViewModelPageContainer.ContainsKey(type))
+            Type viewModelType = typeof(TViewModelTo);
+            if (ViewModelPageContainer.ContainsKey(viewModelType))
             {
-                Type controllerType = ViewModelPageContainer[type];
+                Type controllerType = ViewModelPageContainer[viewModelType];
                 var uiViewController = (UIViewController)Factory.UnityContainer.Resolve(controllerType);
                 var baseViewController = uiViewController as BaseViewController<TViewModelTo>;
 
@@ -43,17 +44,16 @@ namespace EpamVTSClientNative.iOS.Services
 
                 if (args != null && baseViewController != null)
                 {
-                    baseViewController.args = args;
+                    baseViewController.Args = args;
                 }
                 try
                 {
-                   
                     //vc.PresentViewController(baseViewController, false, null);
-                    baseViewController.SidebarController.ChangeContentView(baseViewController);
+                    baseViewController?.SidebarController.ChangeContentView(baseViewController);
                 }
                 catch (Exception e)
                 {
-                    
+                    // ignored
                 }
             }
             return Task.FromResult(true);

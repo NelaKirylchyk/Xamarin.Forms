@@ -2,7 +2,6 @@
 using EpamVTSClient.BLL.ViewModels.Base;
 using EpamVTSClient.Core.Services.Localization;
 using EpamVTSClientNative.iOS.Services;
-using Foundation;
 using Microsoft.Practices.Unity;
 using SidebarNavigation;
 using UIKit;
@@ -19,11 +18,13 @@ namespace EpamVTSClientNative.iOS.Controllers
                 //return (UIApplication.SharedApplication.Delegate as AppDelegate).RooSidebarController;
             }
         }
-        
+
+        public string Args { get; set; }
+
         protected ILocalizationService LocalizationService { get; set; }
 
-        public string args { get; set; }
         protected INavigationService NavigationService { get; set; }
+
         public TViewModel ViewModel { get; set; }
 
         public BaseViewController()
@@ -36,13 +37,10 @@ namespace EpamVTSClientNative.iOS.Controllers
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-
             Initialize();
         }
 
         protected virtual void Initialize()
-        {
-            
-        }
+        {}
     }
 }

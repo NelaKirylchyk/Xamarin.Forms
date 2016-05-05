@@ -7,7 +7,7 @@ using EpamVTSClient.BLL.ViewModels;
 using Foundation;
 using UIKit;
 
-namespace EpamVTSClientNative.iOS.Controllers
+namespace EpamVTSClientNative.iOS.Controllers.Table
 {
     public class TableSource : UITableViewSource
     {
@@ -87,7 +87,7 @@ namespace EpamVTSClientNative.iOS.Controllers
                     _tableItems.RemoveAt(indexPath.Row);
                     tableView.DeleteRows(new[] { indexPath }, UITableViewRowAnimation.Fade);
                     
-                    Task.Run(() => vacationViewModel.DeleteVacationCommand.Execute(null));
+                    vacationViewModel.DeleteVacationCommand.Execute(null);
                 }
             }
         }
