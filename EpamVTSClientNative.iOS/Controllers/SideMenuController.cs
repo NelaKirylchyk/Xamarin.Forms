@@ -24,13 +24,16 @@ namespace EpamVTSClientNative.iOS.Controllers
             introButton.TouchUpInside += (sender, e) =>
             {
                 SidebarController.ChangeContentView(new VacationListViewController());
+                SidebarController.CloseMenu();
             };
 
             var contentButton = new UIButton(UIButtonType.System) {Frame = new RectangleF(0, 220, 260, 20)};
             contentButton.SetTitle(LocalizationService.Localize("VacationAddVacTitle"), UIControlState.Normal);
             contentButton.TouchUpInside += (sender, e) =>
             {
-                SidebarController.ChangeContentView(new VacationViewController());
+                var vacationViewController = new VacationViewController();
+                SidebarController.ChangeContentView(vacationViewController);
+                SidebarController.CloseMenu();
             };
 
             View.Add(title);

@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CoreGraphics;
-using EpamVTSClient.BLL.ViewModels.Base;
 using EpamVTSClientNative.iOS.Controllers.Table;
-using EpamVTSClientNative.iOS.Services;
 using UIKit;
 
 namespace EpamVTSClientNative.iOS.Helpers
@@ -15,6 +13,7 @@ namespace EpamVTSClientNative.iOS.Helpers
             return new UILabel()
             {
                 Text = text,
+                MinimumFontSize = 17,
                 TextColor = UIColor.White,
                 TranslatesAutoresizingMaskIntoConstraints = false,
             };
@@ -42,7 +41,8 @@ namespace EpamVTSClientNative.iOS.Helpers
         public static UIButton SetButton(string title)
         {
             var button = UIButton.FromType(UIButtonType.RoundedRect);
-            button.BackgroundColor = UIColor.Gray;
+            button.BackgroundColor = UIColor.LightGray;
+            button.Font = UIFont.PreferredBody;
             button.SetTitleColor(UIColor.White, UIControlState.Normal);
             button.SetTitle(title, UIControlState.Normal);
 
@@ -66,20 +66,23 @@ namespace EpamVTSClientNative.iOS.Helpers
             {
                 Model = pickerDataModel,
                 ShowSelectionIndicator = false,
-            };
+                TintColor = UIColor.White
+        };
             uiPickerView.Select(index, 0, true);
             return uiPickerView;
         }
 
+
         public static UITableView SetUiTableView(List<TableItem> tableItems, TableSource tableSource, CGRect сgRect)
         {
-            return new UITableView(сgRect)
+            return new UITableView()
             {
-                AutoresizingMask = UIViewAutoresizing.All,
+                AutoresizingMask = UIViewAutoresizing.None,
                 Source = tableSource,
-                SeparatorStyle = UITableViewCellSeparatorStyle.SingleLine,
+                SeparatorStyle = UITableViewCellSeparatorStyle.None,
                 RowHeight = 50,
                 Editing = true,
+                BackgroundColor = UIColor.Clear,
                 AllowsSelection = true,
                 AllowsSelectionDuringEditing = true
             };

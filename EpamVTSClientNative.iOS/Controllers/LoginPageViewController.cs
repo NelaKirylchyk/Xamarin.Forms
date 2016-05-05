@@ -43,14 +43,10 @@ namespace EpamVTSClientNative.iOS.Controllers
 
             _userNameTextField.Text = "dz@epam.com";
             _passwordTextField.Text = "test1";
-
-            if (SidebarController != null)
-            {
-                SidebarController.Disabled = true;
-            }
         }
+        
 
-        protected void AddConstraints()
+        private void AddConstraints()
         {
             const int margin = 20;
             View.AddConstraints(

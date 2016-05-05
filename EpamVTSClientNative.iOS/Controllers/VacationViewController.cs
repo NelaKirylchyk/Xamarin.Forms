@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using Cirrious.FluentLayouts.Touch;
+using CoreAnimation;
 using EpamVTSClient.BLL.ViewModels;
 using EpamVTSClient.Core.Enums;
 using EpamVTSClient.Core.Helpers;
@@ -32,25 +34,40 @@ namespace EpamVTSClientNative.iOS.Controllers
         UIButton _cancelButton;
         UIButton _choosePhotoButton;
         UIButton _cameraButton;
+        private UILabel _title;
 
         protected override async void Initialize()
         {
             base.Initialize();
-
-            SidebarController.Disabled = false;
+            
+            string pageTitle;
 
             int id;
             if (int.TryParse(Args, out id))
             {
+                pageTitle = "VacationEditInfoTitle";
                 await ViewModel.LoadDataFrom(id);
+
             }
             else
             {
+                pageTitle = "VacationAddVacTitle";
                 ViewModel.SetDefaultData();
             }
             SetVacationInfo();
 
+            _title = ControlsExtensions.SetUiLabel(LocalizationService.Localize(pageTitle));
+            _title.Font = UIFont.PreferredHeadline;
+
             _vacationStatusPicker = ControlsExtensions.SetUiPicker(_vacationStatusPickerViewModel, _vacationStatusPickerViewModel.SelectedIndex);
+            var layer = new CALayer();
+            layer.Frame = new RectangleF(15, 15, (float) (_vacationStatusPicker.Frame.Width - 30),
+                (float) (_vacationStatusPicker.Frame.Height - 30));
+            layer.CornerRadius = 10;
+            layer.BackgroundColor = UIColor.White.CGColor;
+
+            _vacationStatusPicker.Layer.Mask = layer;
+
             _vacationTypePicker = ControlsExtensions.SetUiPicker(_vacationTypePickerViewModel, _vacationTypePickerViewModel.SelectedIndex);
             _vacationStatusLabel = ControlsExtensions.SetUiLabel(LocalizationService.Localize("vacationStatusInfoLabel"));
             _vacationTypeLabel = ControlsExtensions.SetUiLabel(LocalizationService.Localize("vacationTypeInfoLabel"));
@@ -75,6 +92,7 @@ namespace EpamVTSClientNative.iOS.Controllers
                 _imageView.Image = ImageHelper.Base64ToImage(ViewModel.VacationForm);
             }
 
+            Add(_title);
             Add(_vacationStatusLabel);
             Add(_vacationStatusPicker);
             Add(_vacationTypeLabel);
@@ -99,20 +117,23 @@ namespace EpamVTSClientNative.iOS.Controllers
         {
             const int height = 46;
             const int labelMargin = 10;
-            const int rightColumnElementWidth = 210;
-            const int buttonWidth = 100;
+            const int rightColumnElementWidth = 220;
+            const int imageHeight = 100;
             View.AddConstraints(
-                _vacationStatusLabel.AtTopOf(View, labelMargin),
-                _vacationStatusLabel.AtLeftOf(View),
+                _title.AtTopOf(View, 20),
+                _title.CenterX().EqualTo().CenterXOf(View),
+
+                _vacationStatusLabel.Below(_title, labelMargin),
+                _vacationStatusLabel.AtLeftOf(View, labelMargin),
                 _vacationStatusLabel.Height().EqualTo(height),
 
                 _vacationStatusPicker.AtRightOf(View),
-                _vacationStatusPicker.AtTopOf(View, 10),
+                _vacationStatusPicker.Below(_title, labelMargin),
                 _vacationStatusPicker.Width().EqualTo(rightColumnElementWidth),
                 _vacationStatusPicker.Height().EqualTo(height),
 
                 _vacationTypeLabel.Below(_vacationStatusPicker, labelMargin),
-                _vacationTypeLabel.AtLeftOf(View),
+                _vacationTypeLabel.AtLeftOf(View, labelMargin),
 
                 _vacationTypePicker.Below(_vacationStatusPicker, labelMargin),
                 _vacationTypePicker.Height().EqualTo(height),
@@ -120,7 +141,7 @@ namespace EpamVTSClientNative.iOS.Controllers
                 _vacationTypePicker.Width().EqualTo(rightColumnElementWidth),
 
                 _startDateLabel.Below(_vacationTypePicker, labelMargin),
-                _startDateLabel.AtLeftOf(View),
+                _startDateLabel.AtLeftOf(View, labelMargin),
 
                 _startDatePicker.Below(_vacationTypePicker, labelMargin),
                 _startDatePicker.AtRightOf(View),
@@ -128,7 +149,7 @@ namespace EpamVTSClientNative.iOS.Controllers
                 _startDatePicker.Height().EqualTo(height),
 
                 _endDateLabel.Below(_startDatePicker, labelMargin),
-                _endDateLabel.AtLeftOf(View),
+                _endDateLabel.AtLeftOf(View, labelMargin),
 
                 _endDatePicker.Below(_startDatePicker, labelMargin),
                 _endDatePicker.Height().EqualTo(height),
@@ -136,23 +157,24 @@ namespace EpamVTSClientNative.iOS.Controllers
                 _endDatePicker.Width().EqualTo(rightColumnElementWidth),
 
                 _imageView.Below(_endDatePicker, labelMargin),
-                _imageView.Width().EqualTo(buttonWidth),
-                _imageView.Height().EqualTo(buttonWidth),
+                _imageView.AtRightOf(View, labelMargin),
+                _imageView.Width().EqualTo(imageHeight),
+                _imageView.Height().EqualTo(imageHeight),
 
-                _choosePhotoButton.Below(_imageView, labelMargin),
+                _choosePhotoButton.Below(_endDatePicker, labelMargin),
                 _choosePhotoButton.AtLeftOf(View, labelMargin),
-                _choosePhotoButton.Width().EqualTo(buttonWidth),
+                _choosePhotoButton.Width().EqualTo().WidthOf(_vacationStatusLabel),
 
-                _cameraButton.Below(_imageView, labelMargin),
-                _cameraButton.AtRightOf(View, labelMargin),
-                _cameraButton.Width().EqualTo(buttonWidth),
+                _cameraButton.Below(_choosePhotoButton, labelMargin),
+                _cameraButton.AtLeftOf(View, labelMargin),
+                _cameraButton.Width().EqualTo().WidthOf(_vacationStatusLabel),
 
-                _saveButton.Below(_cameraButton, labelMargin),
+                _saveButton.Below(_imageView, labelMargin),
                 _saveButton.AtLeftOf(View, labelMargin),
-                _saveButton.Width().EqualTo(buttonWidth),
+                _saveButton.Width().EqualTo().WidthOf(_vacationStatusLabel),
 
-                _cancelButton.Below(_cameraButton, labelMargin),
-                _cancelButton.Width().EqualTo(buttonWidth),
+                _cancelButton.Below(_imageView, labelMargin),
+                _cancelButton.Width().EqualTo().WidthOf(_vacationStatusLabel),
                 _cancelButton.AtRightOf(View, labelMargin)
                 );
         }

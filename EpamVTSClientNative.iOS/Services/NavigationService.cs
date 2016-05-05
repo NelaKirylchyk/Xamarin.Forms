@@ -7,6 +7,7 @@ using EpamVTSClient.BLL.ViewModels.Base;
 using EpamVTSClientNative.iOS.Controllers;
 using EpamVTSClientNative.iOS.Helpers;
 using Microsoft.Practices.Unity;
+using SidebarNavigation;
 using UIKit;
 
 namespace EpamVTSClientNative.iOS.Services
@@ -48,8 +49,11 @@ namespace EpamVTSClientNative.iOS.Services
                 }
                 try
                 {
-                    //vc.PresentViewController(baseViewController, false, null);
-                    baseViewController?.SidebarController.ChangeContentView(baseViewController);
+                    if (baseViewController != null)
+                    {
+                        baseViewController.SidebarController.Disabled = false;
+                        baseViewController.SidebarController.ChangeContentView(baseViewController);
+                    }
                 }
                 catch (Exception e)
                 {

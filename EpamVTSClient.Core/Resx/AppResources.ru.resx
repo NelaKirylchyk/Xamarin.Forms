@@ -166,10 +166,10 @@
     <value>Имя пользователя</value>
   </data>
   <data name="vacationEndDateLabel" xml:space="preserve">
-    <value>Дата окончания : </value>
+    <value>Конец:</value>
   </data>
   <data name="vacationStartDateLabel" xml:space="preserve">
-    <value>Дата начала : </value>
+    <value>Начало:</value>
   </data>
   <data name="vacationStatusInfoLabel" xml:space="preserve">
     <value>Статус : </value>
@@ -214,7 +214,7 @@
     <value>Что-то пошло не так. Попробуйте ещё раз.</value>
   </data>
   <data name="openCameraBtn" xml:space="preserve">
-    <value>Фото с камеры</value>
+    <value>Камера</value>
   </data>
   <data name="addVacation" xml:space="preserve">
     <value>Добавить отпуск</value>
@@ -223,6 +223,6 @@
     <value>Список отпусков</value>
   </data>
   <data name="menu" xml:space="preserve">
-    <value>Меню навигации</value>
+    <value>Меню</value>
   </data>
 </root>
