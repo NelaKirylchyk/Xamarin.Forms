@@ -24,21 +24,8 @@ namespace EpamVTSClientNative.iOS.Controllers
             _userNameTextField = ControlsExtensions.SetTextField(LocalizationService.Localize("UserName"));
             _passwordTextField = ControlsExtensions.SetSecureTextField(LocalizationService.Localize("Password"));
             _deviceInfoLabel = ControlsExtensions.SetUiLabel(ViewModel.Copyright);
-            _errorLabel = new UILabel()
-            {
-                Enabled = false,
-                MinimumFontSize = 2,
-                TextColor = UIColor.Red
-            };
+            _errorLabel = ControlsExtensions.SetErrorUiLabel();
 
-            ViewModel.PropertyChanged += (o, args) =>
-            {
-                if (args.PropertyName == "ErrorMessage")
-                {
-                    _errorLabel.Text = ViewModel.ErrorMessage;
-                    _errorLabel.Enabled = true;
-                }
-            };
             _loginButton = ControlsExtensions.SetButton(LocalizationService.Localize("LoginBtn"));
             _loginButton.TouchUpInside += LoginButtonOnTouchUpInside;
 
@@ -59,6 +46,15 @@ namespace EpamVTSClientNative.iOS.Controllers
 
             _userNameTextField.Text = "dz@epam.com";
             _passwordTextField.Text = "test1";
+
+            ViewModel.PropertyChanged += (o, args) =>
+            {
+                if (args.PropertyName == "ErrorMessage")
+                {
+                    _errorLabel.Text = ViewModel.ErrorMessage;
+                    _errorLabel.Enabled = true;
+                }
+            };
         }
 
         private void AddConstraints()

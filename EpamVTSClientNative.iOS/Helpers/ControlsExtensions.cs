@@ -19,6 +19,16 @@ namespace EpamVTSClientNative.iOS.Helpers
             };
         }
 
+        public static UILabel SetErrorUiLabel()
+        {
+            return new UILabel()
+            {
+                Enabled = false,
+                MinimumFontSize = 2,
+                TextColor = UIColor.Red
+            };
+        }
+
         public static UITextField SetTextField(string placeholder)
         {
             return new UITextField()

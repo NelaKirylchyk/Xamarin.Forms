@@ -82,20 +82,9 @@ namespace EpamVTSClientNative.iOS.Controllers
                 _imageView.Image = ImageHelper.Base64ToImage(ViewModel.VacationForm);
             }
 
-            Add(_title);
-            Add(_vacationStatusLabel);
-            Add(_vacationStatusPicker);
-            Add(_vacationTypeLabel);
-            Add(_vacationTypePicker);
-            Add(_startDateLabel);
-            Add(_startDatePicker);
-            Add(_endDateLabel);
-            Add(_endDatePicker);
-            Add(_choosePhotoButton);
-            Add(_cameraButton);
-            Add(_imageView);
-            Add(_saveButton);
-            Add(_cancelButton);
+            View.AddSubviews(_title, _vacationStatusLabel, _vacationStatusPicker, _vacationTypeLabel,
+                _vacationTypePicker, _startDateLabel, _startDatePicker, _endDateLabel, _endDatePicker,
+                _choosePhotoButton, _cameraButton, _imageView, _saveButton, _cancelButton);
 
             View.SubviewsDoNotTranslateAutoresizingMaskIntoConstraints();
             View.InsertSubview(new UIImageView(UIImage.FromBundle("illustration")), 0);
