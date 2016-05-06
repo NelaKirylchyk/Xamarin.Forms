@@ -60,7 +60,6 @@ namespace EpamVTSClientNative.iOS.Controllers
             _userNameTextField.Text = "dz@epam.com";
             _passwordTextField.Text = "test1";
         }
-        
 
         private void AddConstraints()
         {

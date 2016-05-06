@@ -10,13 +10,7 @@ namespace EpamVTSClientNative.iOS.Controllers
 {
     public class BaseViewController<TViewModel> : UIViewController where TViewModel : ViewModelBase
     {
-        public SidebarController SidebarController
-        {
-            get
-            {
-                return (UIApplication.SharedApplication.Delegate as AppDelegate).SidebarController;
-            }
-        }
+        public SidebarController SidebarController => (UIApplication.SharedApplication.Delegate as AppDelegate).SidebarController;
 
         public string Args { get; set; }
 

@@ -18,9 +18,10 @@ namespace EpamVTSClientNative.iOS
             Factory.Init();
             DatabaseInitializer.Initialize(Factory.UnityContainer);
 
-            WindowHelper.Window = new UIWindow(UIScreen.MainScreen.Bounds);
-            var loginPageViewController = new LoginPageViewController();
-            WindowHelper.Window.RootViewController = loginPageViewController;
+            WindowHelper.Window = new UIWindow(UIScreen.MainScreen.Bounds)
+            {
+                RootViewController = new LoginPageViewController()
+            };
 
             SidebarController = new SidebarController(WindowHelper.Window.RootViewController, new LoginPageViewController(), new SideMenuController())
             {

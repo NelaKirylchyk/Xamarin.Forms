@@ -7,7 +7,6 @@ using EpamVTSClient.BLL.ViewModels.Base;
 using EpamVTSClientNative.iOS.Controllers;
 using EpamVTSClientNative.iOS.Helpers;
 using Microsoft.Practices.Unity;
-using SidebarNavigation;
 using UIKit;
 
 namespace EpamVTSClientNative.iOS.Services
