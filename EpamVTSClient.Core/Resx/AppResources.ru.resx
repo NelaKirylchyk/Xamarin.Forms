@@ -130,7 +130,7 @@
     <value>черновик</value>
   </data>
   <data name="EmptyUserNameOrPasswordErrorMsg" xml:space="preserve">
-    <value>Имя пользователя или пароль пустые</value>
+    <value>Имя пользователя/пароль пустые</value>
   </data>
   <data name="ExceptionalLeave" xml:space="preserve">
     <value>Исключительный отпуск</value>

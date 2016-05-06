@@ -31,18 +31,7 @@ namespace EpamVTSClientNative.iOS.Controllers.Table
         {
             TableItem tableItem = _tableItems[indexPath.Row];
             await _navigationService.NavigateToAsync<EditVacationViewModel>(tableItem.Id.ToString());
-            // tableView.DeselectRow(indexPath, true);
         }
-
-        //public override void AccessoryButtonTapped(UITableView tableView, NSIndexPath indexPath)
-        //{
-        //    base.AccessoryButtonTapped(tableView, indexPath);
-        //    TableItem tableItem = _tableItems[indexPath.Row];
-        //    _navigationService.NavigateToAsync<VacationViewModel>(tableItem.Id.ToString());
-
-        //    tableView.DeselectRow(indexPath, true);
-        //    _owner.DismissModalViewController(true);
-        //}
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
@@ -67,9 +56,6 @@ namespace EpamVTSClientNative.iOS.Controllers.Table
                 cell.DetailTextLabel.Text = _tableItems[indexPath.Row].SubHeading;
             }
 
-            //if (cellStyle != UITableViewCellStyle.Value2)
-            //    cell.ImageView.Image = UIImage.FromBundle("rainbow");
-
             return cell;
         }
         public override void CommitEditingStyle(UITableView tableView, UITableViewCellEditingStyle editingStyle, NSIndexPath indexPath)
@@ -82,7 +68,7 @@ namespace EpamVTSClientNative.iOS.Controllers.Table
                 {
                     _tableItems.RemoveAt(indexPath.Row);
                     tableView.DeleteRows(new[] { indexPath }, UITableViewRowAnimation.Fade);
-                    
+
                     vacationViewModel.DeleteVacationCommand.Execute(null);
                 }
             }

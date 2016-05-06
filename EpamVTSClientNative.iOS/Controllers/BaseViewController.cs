@@ -15,7 +15,6 @@ namespace EpamVTSClientNative.iOS.Controllers
             get
             {
                 return (UIApplication.SharedApplication.Delegate as AppDelegate).SidebarController;
-                //return (UIApplication.SharedApplication.Delegate as AppDelegate).RooSidebarController;
             }
         }
 

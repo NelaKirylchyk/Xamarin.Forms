@@ -26,7 +26,7 @@ namespace EpamVTSClientNative.iOS
             {
                 MenuLocation = SidebarController.MenuLocations.Left,
                 HasShadowing = false,
-                MenuWidth = 220,
+                MenuWidth = 210,
                 Disabled = true
             };
             WindowHelper.Window.MakeKeyAndVisible();

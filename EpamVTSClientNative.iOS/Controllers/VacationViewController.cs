@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using Cirrious.FluentLayouts.Touch;
-using CoreAnimation;
 using EpamVTSClient.BLL.ViewModels;
 using EpamVTSClient.Core.Enums;
 using EpamVTSClient.Core.Helpers;
@@ -60,14 +58,6 @@ namespace EpamVTSClientNative.iOS.Controllers
             _title.Font = UIFont.PreferredHeadline;
 
             _vacationStatusPicker = ControlsExtensions.SetUiPicker(_vacationStatusPickerViewModel, _vacationStatusPickerViewModel.SelectedIndex);
-            var layer = new CALayer();
-            layer.Frame = new RectangleF(15, 15, (float) (_vacationStatusPicker.Frame.Width - 30),
-                (float) (_vacationStatusPicker.Frame.Height - 30));
-            layer.CornerRadius = 10;
-            layer.BackgroundColor = UIColor.White.CGColor;
-
-            _vacationStatusPicker.Layer.Mask = layer;
-
             _vacationTypePicker = ControlsExtensions.SetUiPicker(_vacationTypePickerViewModel, _vacationTypePickerViewModel.SelectedIndex);
             _vacationStatusLabel = ControlsExtensions.SetUiLabel(LocalizationService.Localize("vacationStatusInfoLabel"));
             _vacationTypeLabel = ControlsExtensions.SetUiLabel(LocalizationService.Localize("vacationTypeInfoLabel"));
